@@ -1,0 +1,12 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#EFF6FF"/>
+  <rect y="410" width="800" height="190" fill="#DBEAFE"/>
+  <rect x="180" y="180" width="440" height="220" rx="20" fill="#FFFFFF"/>
+  <rect x="360" y="220" width="80" height="140" rx="12" fill="#BFDBFE"/>
+  <rect x="280" y="250" width="240" height="30" rx="10" fill="#1D4ED8"/>
+  <rect x="385" y="185" width="30" height="160" rx="8" fill="#DC2626"/>
+  <rect x="320" y="250" width="160" height="30" rx="8" fill="#DC2626"/>
+  <text x="54" y="72" fill="#0F172A" font-family="Arial, sans-serif" font-size="36" font-weight="700">
+    Clinica Medica Pinheiros
+  </text>
+</svg>

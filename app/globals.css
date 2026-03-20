@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Inter', system-ui, sans-serif;
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+  }
+
+  body {
+    @apply bg-white text-slate-800 antialiased transition-colors duration-300;
+  }
+
+  * {
+    @apply border-neutral-200;
+  }
+
+  ::selection {
+    @apply bg-primary-500/30 text-slate-950;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply px-4 py-16 sm:px-6 lg:px-8 lg:py-24;
+  }
+
+  .container-max {
+    @apply mx-auto max-w-7xl;
+  }
+
+  .section-eyebrow {
+    @apply mb-4 inline-block rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] sm:text-sm;
+  }
+
+  .section-title {
+    @apply text-3xl font-black leading-tight tracking-tight sm:text-4xl lg:text-5xl;
+  }
+
+  .section-subtitle {
+    @apply mx-auto max-w-4xl text-lg leading-8 sm:text-xl sm:leading-9;
+  }
+
+  .hero-title {
+    @apply text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl lg:text-7xl;
+  }
+
+  .hero-subtitle {
+    @apply mx-auto max-w-2xl text-base leading-relaxed sm:text-lg lg:text-xl;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
