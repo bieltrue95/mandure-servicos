@@ -1,0 +1,12 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#E2E8F0"/>
+  <rect y="360" width="800" height="240" fill="#CBD5E1"/>
+  <rect x="150" y="220" width="320" height="200" rx="12" fill="#F8FAFC"/>
+  <rect x="220" y="280" width="90" height="140" fill="#B8876D"/>
+  <rect x="340" y="260" width="90" height="80" fill="#BFDBFE"/>
+  <path d="M130 240L310 120L500 240H130Z" fill="#334155"/>
+  <rect x="520" y="290" width="120" height="130" rx="12" fill="#93C5FD"/>
+  <text x="56" y="70" fill="#0F172A" font-family="Arial, sans-serif" font-size="36" font-weight="700">
+    Residencia Alto da Lapa
+  </text>
+</svg>

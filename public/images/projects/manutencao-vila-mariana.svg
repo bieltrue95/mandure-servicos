@@ -1,0 +1,20 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#E2E8F0"/>
+  <rect y="410" width="800" height="190" fill="#CBD5E1"/>
+  <rect x="150" y="180" width="500" height="220" rx="18" fill="#1E293B"/>
+  <g fill="#94A3B8">
+    <rect x="190" y="220" width="70" height="50"/>
+    <rect x="290" y="220" width="70" height="50"/>
+    <rect x="390" y="220" width="70" height="50"/>
+    <rect x="490" y="220" width="70" height="50"/>
+    <rect x="190" y="300" width="70" height="50"/>
+    <rect x="290" y="300" width="70" height="50"/>
+    <rect x="390" y="300" width="70" height="50"/>
+    <rect x="490" y="300" width="70" height="50"/>
+  </g>
+  <path d="M600 170L640 210L600 250L560 210L600 170Z" fill="#B8876D"/>
+  <path d="M565 230L545 340L575 370L620 260L565 230Z" fill="#B8876D"/>
+  <text x="52" y="72" fill="#0F172A" font-family="Arial, sans-serif" font-size="34" font-weight="700">
+    Manutencao Predial Vila Mariana
+  </text>
+</svg>

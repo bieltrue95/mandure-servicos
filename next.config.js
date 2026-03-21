@@ -1,0 +1,55 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    qualities: [75, 90],
+    // Habilita otimização de imagens estáticas
+    minimumCacheTTL: 60,
+  },
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['lucide-react'],
+  },
+  output: 'standalone',
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
+  // Melhora code splitting
+  webpack: (config, { isServer }) => {
+    config.optimization.splitChunks.cacheGroups = {
+      ...config.optimization.splitChunks.cacheGroups,
+      // Separa componentes de UI em bundle separado
+      ui: {
+        test: /[\\/]components[\\/]ui[\\/]/,
+        name: 'ui-components',
+        priority: 10,
+        reuseExistingChunk: true,
+      },
+      // Separa seções em bundle separado
+      sections: {
+        test: /[\\/]components[\\/]sections[\\/]/,
+        name: 'sections',
+        priority: 9,
+        reuseExistingChunk: true,
+      },
+      // Separa Framer Motion em bundle separado (lazy loading)
+      motion: {
+        test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+        name: 'framer-motion',
+        priority: 8,
+        reuseExistingChunk: true,
+      },
+    };
+    return config;
+  },
+};
+
+module.exports = nextConfig;

@@ -1,0 +1,13 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#DCFCE7"/>
+  <rect y="390" width="800" height="210" fill="#BBF7D0"/>
+  <rect x="90" y="250" width="150" height="130" rx="12" fill="#F8FAFC"/>
+  <rect x="325" y="230" width="150" height="150" rx="12" fill="#FFFFFF"/>
+  <rect x="560" y="255" width="150" height="125" rx="12" fill="#F8FAFC"/>
+  <path d="M65 265L165 180L265 265H65Z" fill="#166534"/>
+  <path d="M300 245L400 160L500 245H300Z" fill="#15803D"/>
+  <path d="M535 270L635 195L735 270H535Z" fill="#166534"/>
+  <text x="56" y="70" fill="#14532D" font-family="Arial, sans-serif" font-size="36" font-weight="700">
+    Condominio Alphaville Green
+  </text>
+</svg>
