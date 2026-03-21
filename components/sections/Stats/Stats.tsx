@@ -9,7 +9,7 @@ export function Stats({ stats }: StatsProps) {
   return (
     <section
       id="stats"
-      className="bg-slate-100 py-16 transition-colors duration-300 dark:bg-slate-950 lg:py-20"
+      className="bg-slate-100 py-16 lg:py-20"
       aria-label="Estatísticas - Mandure Serviços"
     >
       <div className="container-max section-padding">
@@ -29,13 +29,9 @@ export function Stats({ stats }: StatsProps) {
               <div className="mb-2 text-4xl font-black text-primary-400 sm:text-5xl lg:text-6xl">
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-base font-semibold text-slate-900 dark:text-white sm:text-lg">
-                {stat.label}
-              </div>
+              <div className="text-base font-semibold text-slate-900 sm:text-lg">{stat.label}</div>
               {stat.description && (
-                <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                  {stat.description}
-                </div>
+                <div className="mt-1 text-sm text-slate-500">{stat.description}</div>
               )}
             </motion.div>
           ))}

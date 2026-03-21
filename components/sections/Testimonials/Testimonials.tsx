@@ -1,7 +1,7 @@
 'use client';
 
+import { FADE_IN_UP, SCROLL_REVEAL_CONFIG, STAGGER_CONTAINER } from '@/lib/constants/animations';
 import { motion } from 'framer-motion';
-import { STAGGER_CONTAINER, FADE_IN_UP, SCROLL_REVEAL_CONFIG } from '@/lib/constants/animations';
 import { TestimonialCard } from './TestimonialCard';
 import type { TestimonialsProps } from './Testimonials.types';
 
@@ -9,7 +9,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
   return (
     <section
       id="depoimentos"
-      className="bg-slate-50 py-20 transition-colors duration-300 dark:bg-slate-950 lg:py-28"
+      className="bg-slate-50 py-20 lg:py-28"
       aria-label="Depoimentos - Mandure Serviços"
     >
       <div className="container-max section-padding">
@@ -22,10 +22,10 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
           className="mb-16 text-center"
         >
           <span className="section-eyebrow bg-primary-100 text-primary-700">Depoimentos</span>
-          <h2 className="section-title mb-4 text-balance text-slate-900 dark:text-white">
+          <h2 className="section-title mb-4 text-balance text-slate-900">
             O Que Nossos Clientes Dizem
           </h2>
-          <p className="section-subtitle text-balance text-slate-500 dark:text-slate-300">
+          <p className="section-subtitle text-balance text-slate-500">
             A satisfação dos nossos clientes é a nossa maior conquista.
           </p>
         </motion.div>

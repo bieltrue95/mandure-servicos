@@ -1,7 +1,27 @@
-import { SiteHeader } from '@/components/sections/SiteHeader';
 import type { Metadata, Viewport } from 'next';
+import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import './globals.css';
+
+// Lazy-load SiteHeader com SSR habilitado para não impactar Time to First Byte
+const SiteHeader = dynamic(
+  () => import('@/components/sections/SiteHeader').then((mod) => ({ default: mod.SiteHeader })),
+  {
+    loading: () => (
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white">
+        <div className="container-max flex h-16 items-center justify-between px-4 py-4">
+          <div className="h-6 w-24 animate-pulse rounded bg-slate-200" />
+          <div className="hidden gap-4 md:flex">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="h-4 w-16 animate-pulse rounded bg-slate-200" />
+            ))}
+          </div>
+        </div>
+      </header>
+    ),
+    ssr: true,
+  }
+);
 
 const inter = Inter({
   subsets: ['latin'],
@@ -106,15 +126,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="pt-BR" className={inter.variable}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/images/logo/logo_128.avif" type="image/avif" sizes="any" />
+        <link rel="apple-touch-icon" href="/images/logo/logo_256.avif" type="image/avif" />
         <link rel="manifest" href="/manifest.json" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-white text-slate-800 antialiased transition-colors duration-300">
+      <body className="bg-white text-slate-800 antialiased">
         <SiteHeader />
         {children}
       </body>

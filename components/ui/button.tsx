@@ -1,7 +1,7 @@
-import * as React from 'react';
+import { cn } from '@/lib/utils/cn';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@/lib/utils/cn';
+import * as React from 'react';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
@@ -12,8 +12,7 @@ const buttonVariants = cva(
           'bg-primary-500 text-white shadow-primary hover:bg-primary-600 hover:shadow-primary-hover active:scale-95',
         outline:
           'border-2 border-primary-500 text-primary-500 bg-transparent hover:bg-primary-500 hover:text-white active:scale-95',
-        ghost:
-          'text-slate-700 hover:bg-slate-100 hover:text-slate-900 active:scale-95 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white',
+        ghost: 'text-slate-700 hover:bg-slate-100 hover:text-slate-900 active:scale-95',
         secondary: 'bg-slate-800 text-white hover:bg-slate-700 shadow-lg active:scale-95',
         whatsapp: 'bg-whatsapp-500 text-white hover:bg-whatsapp-600 shadow-lg active:scale-95',
         destructive: 'bg-red-500 text-white hover:bg-red-600',

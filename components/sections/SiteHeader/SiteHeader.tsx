@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowUpRight, Building2, Menu, X } from 'lucide-react';
+import { Logo } from '@/components/ui/logo';
 import { PAGE_CONFIG } from '@/lib/constants/config';
 import { NAV_ITEMS } from '@/lib/constants/routes';
 import { cn } from '@/lib/utils/cn';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { useEffect, useId, useRef, useState } from 'react';
 import type { SiteHeaderProps } from './SiteHeader.types';
 
 const DESKTOP_BREAKPOINT = 1024;
@@ -180,8 +181,8 @@ export function SiteHeader({ navigationItems = NAV_ITEMS }: SiteHeaderProps) {
     <>
       <header
         className={cn(
-          'fixed inset-x-0 top-0 z-[70] w-full border-b bg-white/95 backdrop-blur-xl transition-all duration-300',
-          isScrolled ? 'border-slate-200 shadow-lg shadow-slate-200/50' : 'border-slate-200/80'
+          'fixed inset-x-0 top-0 z-[70] w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-xl transition-all duration-300',
+          isScrolled && 'border-slate-200 shadow-lg shadow-slate-200/50'
         )}
         role="banner"
       >
@@ -191,8 +192,8 @@ export function SiteHeader({ navigationItems = NAV_ITEMS }: SiteHeaderProps) {
             className="flex min-w-0 shrink-0 items-center gap-3"
             aria-label="Voltar para o topo da página"
           >
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-bronze-shimmer text-white shadow-primary">
-              <Building2 className="h-5 w-5" />
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl shadow-primary">
+              <Logo size="sm" />
             </span>
             <span className="min-w-0">
               <span className="block truncate text-sm font-black uppercase tracking-[0.24em] text-slate-900">
@@ -217,7 +218,7 @@ export function SiteHeader({ navigationItems = NAV_ITEMS }: SiteHeaderProps) {
                 className={cn(
                   'rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300',
                   activeHref === item.href
-                    ? 'bg-slate-900 text-white'
+                    ? 'bg-slate-100 text-slate-900'
                     : 'text-slate-600 hover:bg-slate-100 hover:text-slate-950'
                 )}
                 onClick={() => handleNavigationItemClick(item.href)}

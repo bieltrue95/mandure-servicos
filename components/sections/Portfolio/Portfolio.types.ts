@@ -7,6 +7,14 @@ export interface PortfolioProps {
 
 export interface ProjectCardProps {
   project: Project;
+  onSelect: (project: Project) => void;
+}
+
+export interface ProjectGalleryModalProps {
+  project: Project;
+  activeImageSrc?: string;
+  onImageChange: (imageSrc: string) => void;
+  onClose: () => void;
 }
 
 export interface CategoryFilterProps {

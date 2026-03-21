@@ -38,4 +38,9 @@ Uses `STAGGER_CONTAINER` variant with `viewport: { once: true }` so animations f
 ## Customization
 
 Edit `lib/data/hero.data.ts` to change headline, badge text, and background image path.  
-Background image should be placed at `public/images/hero/` and referenced as `/images/hero/filename.jpg`.
+Background image should be placed at `public/images/hero/` and referenced as a local path such as `/images/hero/filename.svg`.
+
+## Asset Strategy
+
+- Hero background now uses a dedicated local construction visual
+- This avoids unrelated remote photos and keeps the first fold visually stable

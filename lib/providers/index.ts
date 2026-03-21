@@ -1,1 +1,2 @@
-export * from './theme-provider';
+// Arquivo de providers limpo - dark mode removido
+export {};

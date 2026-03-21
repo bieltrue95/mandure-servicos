@@ -13,7 +13,7 @@ export function Certifications({ certifications }: CertificationsProps) {
   return (
     <section
       id="certificacoes"
-      className="bg-white py-16 transition-colors duration-300 dark:bg-slate-900 lg:py-20"
+      className="bg-white py-16 lg:py-20"
       aria-label="Certificações - Mandure Serviços"
     >
       <div className="container-max section-padding">
@@ -28,10 +28,10 @@ export function Certifications({ certifications }: CertificationsProps) {
           <span className="section-eyebrow bg-primary-100 text-primary-700">
             Qualidade Certificada
           </span>
-          <h2 className="section-title mb-4 text-balance text-slate-900 dark:text-white">
+          <h2 className="section-title mb-4 text-balance text-slate-900">
             Certificações e Associações
           </h2>
-          <p className="section-subtitle text-balance text-slate-500 dark:text-slate-300">
+          <p className="section-subtitle text-balance text-slate-500">
             Trabalhamos com os mais altos padrões de qualidade, reconhecidos por órgãos nacionais e
             internacionais.
           </p>
@@ -49,17 +49,16 @@ export function Certifications({ certifications }: CertificationsProps) {
             <motion.div
               key={cert.id}
               variants={STAGGER_ITEM}
-              whileHover={{ scale: 1.05 }}
-              className="group mx-auto flex h-full w-full max-w-[18rem] flex-col items-center gap-4 text-center"
+              className="group mx-auto flex h-full w-full max-w-[18rem] flex-col items-center gap-4 text-center transition-transform duration-300 hover:scale-105"
             >
               {/* O selo recebe mais área e contraste para equilibrar com a descrição logo abaixo. */}
-              <div className="relative flex h-20 w-full items-center justify-center rounded-2xl bg-slate-50 px-5 py-4 shadow-sm transition-all duration-300 group-hover:shadow-md dark:bg-slate-950/60 dark:shadow-none">
-                <div className="text-2xl font-black tracking-tight text-slate-500 transition-colors duration-300 group-hover:text-primary-600 dark:text-slate-400 dark:group-hover:text-primary-300">
+              <div className="relative flex h-20 w-full items-center justify-center rounded-2xl bg-slate-50 px-5 py-4 shadow-sm transition-all duration-300 group-hover:shadow-md">
+                <div className="text-2xl font-black tracking-tight text-slate-500 transition-colors duration-300 group-hover:text-primary-600">
                   {cert.name}
                 </div>
               </div>
               {cert.description && (
-                <p className="max-w-[16rem] text-base leading-7 text-slate-600 dark:text-slate-300">
+                <p className="max-w-[16rem] text-base leading-7 text-slate-600">
                   {cert.description}
                 </p>
               )}

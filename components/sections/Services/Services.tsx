@@ -1,7 +1,7 @@
 'use client';
 
+import { FADE_IN_UP, SCROLL_REVEAL_CONFIG, STAGGER_CONTAINER } from '@/lib/constants/animations';
 import { motion } from 'framer-motion';
-import { STAGGER_CONTAINER, FADE_IN_UP, SCROLL_REVEAL_CONFIG } from '@/lib/constants/animations';
 import { ServiceCard } from './ServiceCard';
 import type { ServicesProps } from './Services.types';
 
@@ -9,7 +9,7 @@ export function Services({ services, whatsappUrl }: ServicesProps) {
   return (
     <section
       id="servicos"
-      className="bg-slate-50 py-20 transition-colors duration-300 dark:bg-slate-950 lg:py-28"
+      className="bg-slate-50 py-20 lg:py-28"
       aria-label="Serviços - Mandure Serviços"
     >
       <div className="container-max section-padding">
@@ -22,10 +22,8 @@ export function Services({ services, whatsappUrl }: ServicesProps) {
           className="mb-16 text-center"
         >
           <span className="section-eyebrow bg-primary-100 text-primary-700">O Que Fazemos</span>
-          <h2 className="section-title mb-4 text-balance text-slate-900 dark:text-white">
-            Nossos Serviços
-          </h2>
-          <p className="section-subtitle text-balance text-slate-500 dark:text-slate-300">
+          <h2 className="section-title mb-4 text-balance text-slate-900">Nossos Serviços</h2>
+          <p className="section-subtitle text-balance text-slate-500">
             Soluções completas em construção civil para projetos residenciais e comerciais, com
             qualidade e pontualidade garantidas.
           </p>

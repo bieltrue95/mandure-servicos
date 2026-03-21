@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { STAGGER_ITEM } from '@/lib/constants/animations';
+import { motion } from 'framer-motion';
 import type { ProcessStepCardProps } from './Process.types';
 
 export function ProcessStepCard({ step, isLast }: ProcessStepCardProps) {
@@ -16,15 +16,15 @@ export function ProcessStepCard({ step, isLast }: ProcessStepCardProps) {
       )}
 
       {/* No mobile o número continua visível, mas sem a linha de fundo. */}
-      <div className="relative z-10 mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-primary-500 text-2xl font-black text-white shadow-primary ring-4 ring-primary-100 dark:ring-primary-500/20">
+      <div className="relative z-10 mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-primary-500 text-2xl font-black text-white shadow-primary ring-4 ring-primary-100">
         {step.step}
       </div>
 
       {/* Content */}
-      <h3 className="mb-3 text-xl font-bold tracking-tight text-slate-900 dark:text-white xl:text-[1.625rem]">
+      <h3 className="mb-3 text-xl font-bold tracking-tight text-slate-900 xl:text-[1.625rem]">
         {step.title}
       </h3>
-      <p className="max-w-[19rem] text-base leading-8 text-slate-600 dark:text-slate-300 xl:text-lg">
+      <p className="max-w-[19rem] text-base leading-8 text-slate-600 xl:text-lg">
         {step.description}
       </p>
     </motion.div>

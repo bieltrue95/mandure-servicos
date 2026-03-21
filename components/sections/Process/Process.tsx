@@ -1,15 +1,15 @@
 'use client';
 
+import { FADE_IN_UP, SCROLL_REVEAL_CONFIG, STAGGER_CONTAINER } from '@/lib/constants/animations';
 import { motion } from 'framer-motion';
-import { STAGGER_CONTAINER, FADE_IN_UP, SCROLL_REVEAL_CONFIG } from '@/lib/constants/animations';
-import { ProcessStepCard } from './ProcessStepCard';
 import type { ProcessProps } from './Process.types';
+import { ProcessStepCard } from './ProcessStepCard';
 
 export function Process({ steps }: ProcessProps) {
   return (
     <section
       id="processo"
-      className="bg-white py-20 transition-colors duration-300 dark:bg-slate-900 lg:py-28"
+      className="bg-white py-20 lg:py-28"
       aria-label="Processo - Mandure Serviços"
     >
       <div className="container-max section-padding">
@@ -22,10 +22,8 @@ export function Process({ steps }: ProcessProps) {
           className="mb-16 text-center"
         >
           <span className="section-eyebrow bg-primary-100 text-primary-700">Como Trabalhamos</span>
-          <h2 className="section-title mb-4 text-balance text-slate-900 dark:text-white">
-            Nosso Processo
-          </h2>
-          <p className="section-subtitle text-balance text-slate-500 dark:text-slate-300">
+          <h2 className="section-title mb-4 text-balance text-slate-900">Nosso Processo</h2>
+          <p className="section-subtitle text-balance text-slate-500">
             Da visita técnica à entrega final, cada etapa é executada com rigor e transparência.
           </p>
         </motion.div>

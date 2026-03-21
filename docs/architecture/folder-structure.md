@@ -14,13 +14,6 @@ mandure-servicos/
 │   ├── robots.ts           # SEO robots
 │   └── sitemap.ts          # Sitemap XML
 │
-├── claude/                 # Claude AI documentation
-│   ├── claude.md           # Orquestracao central
-│   ├── agents/             # Code review, architecture, tests
-│   ├── skills/             # Next.js, Tailwind, Framer, TS
-│   ├── docs/               # Project overview, decisions
-│   └── prompts/            # Prompt templates
-│
 ├── components/
 │   ├── sections/           # 9 page sections
 │   │   ├── Hero/           # .tsx + .types.ts + index.ts

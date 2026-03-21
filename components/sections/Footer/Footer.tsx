@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui/button';
+import { Logo } from '@/components/ui/logo';
 import { PAGE_CONFIG, SITE_CONFIG } from '@/lib/constants/config';
 import { NAV_ITEMS } from '@/lib/constants/routes';
 import {
   ArrowUpRight,
-  Building2,
   Facebook,
   Instagram,
   Mail,
@@ -58,7 +58,7 @@ export function Footer({ whatsappUrl, navigationItems = NAV_ITEMS }: FooterProps
 
   return (
     <footer
-      className="relative overflow-hidden bg-slate-100 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-white"
+      className="relative overflow-hidden bg-slate-100 text-slate-900"
       role="contentinfo"
       aria-label="Rodapé - Mandure Serviços"
     >
@@ -75,28 +75,26 @@ export function Footer({ whatsappUrl, navigationItems = NAV_ITEMS }: FooterProps
               className="inline-flex items-center gap-3"
               aria-label="Mandure Serviços - voltar ao topo"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-bronze-shimmer text-white shadow-primary">
-                <Building2 className="h-5 w-5" />
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl shadow-primary">
+                <Logo size="sm" />
               </span>
               <span>
-                <span className="block text-sm font-black uppercase tracking-[0.26em] text-slate-950 dark:text-white">
+                <span className="block text-sm font-black uppercase tracking-[0.26em] text-slate-950">
                   {PAGE_CONFIG.companyName}
                 </span>
-                <span className="block text-sm text-slate-500 dark:text-slate-400">
-                  {PAGE_CONFIG.companyTagline}
-                </span>
+                <span className="block text-sm text-slate-500">{PAGE_CONFIG.companyTagline}</span>
               </span>
             </a>
 
-            <p className="mt-6 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="mt-6 text-base leading-relaxed text-slate-600">
               {SITE_CONFIG.description}
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-600 dark:text-slate-300">
-              <span className="rounded-full border border-slate-200 bg-white px-4 py-2 dark:border-white/10 dark:bg-white/[0.03]">
+            <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-600">
+              <span className="rounded-full border border-slate-200 bg-white px-4 py-2">
                 Obras residenciais e comerciais
               </span>
-              <span className="rounded-full border border-slate-200 bg-white px-4 py-2 dark:border-white/10 dark:bg-white/[0.03]">
+              <span className="rounded-full border border-slate-200 bg-white px-4 py-2">
                 Atendimento em São Paulo e Grande SP
               </span>
             </div>
@@ -121,7 +119,7 @@ export function Footer({ whatsappUrl, navigationItems = NAV_ITEMS }: FooterProps
                 <a
                   key={item.href}
                   href={item.href}
-                  className="group inline-flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition-all duration-300 hover:border-primary-500/40 hover:bg-primary-500/10 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-200 dark:hover:text-white"
+                  className="group inline-flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition-all duration-300 hover:border-primary-500/40 hover:bg-primary-500/10 hover:text-slate-950"
                 >
                   <span>{item.label}</span>
                   <ArrowUpRight className="h-4 w-4 text-primary-300 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -146,16 +144,16 @@ export function Footer({ whatsappUrl, navigationItems = NAV_ITEMS }: FooterProps
                     href={item.href}
                     target={item.label === 'Endereço' ? '_blank' : undefined}
                     rel={item.label === 'Endereço' ? 'noopener noreferrer' : undefined}
-                    className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition-all duration-300 hover:border-slate-300 hover:bg-slate-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/20 dark:hover:bg-white/[0.05]"
+                    className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition-all duration-300 hover:border-slate-300 hover:bg-slate-50"
                   >
                     <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-500/10 text-primary-300">
                       <Icon className="h-4 w-4" />
                     </span>
                     <span>
-                      <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-500">
+                      <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
                         {item.label}
                       </span>
-                      <span className="mt-1 block text-sm leading-relaxed text-slate-700 dark:text-slate-200">
+                      <span className="mt-1 block text-sm leading-relaxed text-slate-700">
                         {item.value}
                       </span>
                     </span>
@@ -175,7 +173,7 @@ export function Footer({ whatsappUrl, navigationItems = NAV_ITEMS }: FooterProps
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.label}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 transition-all duration-300 hover:border-primary-500/40 hover:bg-primary-500/10 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-200 dark:hover:text-white"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 transition-all duration-300 hover:border-primary-500/40 hover:bg-primary-500/10 hover:text-slate-950"
                   >
                     <Icon className="h-4 w-4" />
                   </a>
@@ -186,7 +184,7 @@ export function Footer({ whatsappUrl, navigationItems = NAV_ITEMS }: FooterProps
         </div>
 
         {/* Faixa final com assinatura institucional e atalhos operacionais. */}
-        <div className="mt-12 flex flex-col gap-4 border-t border-slate-200 pt-6 text-sm text-slate-500 dark:border-white/10 dark:text-slate-400 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
+        <div className="mt-12 flex flex-col gap-4 border-t border-slate-200 pt-6 text-sm text-slate-500 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
           <p>
             © Todos os direitos reservados {PAGE_CONFIG.companyName} {currentYear}.
           </p>

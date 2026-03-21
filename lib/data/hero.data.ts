@@ -1,5 +1,6 @@
-const heroBackgroundImage =
-  'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NjYyNDF8MHwxfHBob3RvfHx8fHx8Mnx8MTc5ODMzMTE2MXw&ixlib=rb-4.1.0&q=85';
+// O hero usa um asset local dedicado para evitar fotos externas incoerentes
+// com o contexto de obra e manter a dobra principal estavel.
+const heroBackgroundImage = '/images/hero/mandure-obra-principal.svg';
 
 export const heroData = {
   headline: 'Construímos o Futuro com\nSolidez e Precisão',
@@ -9,7 +10,7 @@ export const heroData = {
   ctaSubtext: 'Resposta em até 24 horas',
   backgroundImage: {
     src: heroBackgroundImage,
-    alt: 'Obra de construção civil moderna - Mandure Serviços',
+    alt: 'Obra de construcao civil com gruas, estrutura e predio em execucao - Mandure Servicos',
   },
   badge: '⭐ +500 Projetos Entregues',
 } as const;

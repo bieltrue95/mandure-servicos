@@ -14,7 +14,7 @@ export function CategoryFilter({ activeCategory, onChange }: CategoryFilterProps
         onValueChange={(val) => onChange(val as ProjectCategory)}
         className="w-full max-w-2xl"
       >
-        <TabsList className="flex h-auto flex-wrap gap-1 bg-white p-1 shadow-sm dark:bg-slate-900 dark:shadow-none">
+        <TabsList className="flex h-auto flex-wrap gap-1 bg-white p-1 shadow-sm">
           {CATEGORIES.map((category) => (
             <TabsTrigger
               key={category}

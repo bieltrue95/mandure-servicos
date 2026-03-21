@@ -1,6 +1,16 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { ServiceIcon } from '@/lib/types';
+import { cn } from '@/lib/utils/cn';
 import {
   Building2,
   Hammer,
@@ -9,18 +19,6 @@ import {
   Wrench,
   type LucideIcon,
 } from 'lucide-react';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { STAGGER_ITEM } from '@/lib/constants/animations';
-import { ServiceIcon } from '@/lib/types';
-import { cn } from '@/lib/utils/cn';
 import type { ServiceCardProps } from './Services.types';
 
 export function ServiceCard({ service, whatsappUrl }: ServiceCardProps) {
@@ -40,12 +38,7 @@ export function ServiceCard({ service, whatsappUrl }: ServiceCardProps) {
   })();
 
   return (
-    <motion.div
-      variants={STAGGER_ITEM}
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.3 }}
-      className="h-full"
-    >
+    <div className="h-full transition-transform duration-300 hover:-translate-y-1.5">
       <Card
         className={cn(
           'flex h-full flex-col overflow-hidden',
@@ -54,11 +47,11 @@ export function ServiceCard({ service, whatsappUrl }: ServiceCardProps) {
       >
         {/* Layout mais compacto para sustentar 4 cards lado a lado sem aumentar demais a altura. */}
         <CardHeader className="p-5 lg:p-6">
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-50 dark:bg-primary-500/10">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-50">
             <IconComponent className="h-6 w-6 text-primary-500" />
           </div>
           <CardTitle className="text-xl leading-tight">{service.title}</CardTitle>
-          <CardDescription className="text-base leading-7 text-slate-600 dark:text-slate-300">
+          <CardDescription className="text-base leading-7 text-slate-600">
             {service.description}
           </CardDescription>
         </CardHeader>
@@ -68,7 +61,7 @@ export function ServiceCard({ service, whatsappUrl }: ServiceCardProps) {
             {service.features.map((feature, idx) => (
               <li
                 key={idx}
-                className="rounded-full bg-slate-100 px-3 py-1.5 text-sm leading-5 text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                className="rounded-full bg-slate-100 px-3 py-1.5 text-sm leading-5 text-slate-700"
               >
                 {feature}
               </li>
@@ -84,6 +77,6 @@ export function ServiceCard({ service, whatsappUrl }: ServiceCardProps) {
           </a>
         </CardFooter>
       </Card>
-    </motion.div>
+    </div>
   );
 }
