@@ -9,7 +9,7 @@ export function Services({ services, whatsappUrl }: ServicesProps) {
   return (
     <section
       id="servicos"
-      className="scroll-mt-16 bg-slate-50 py-20 lg:scroll-mt-20 lg:py-28"
+      className="scroll-mt-6 bg-slate-50 py-20 lg:scroll-mt-8 lg:py-28"
       aria-label="Serviços - Mandure Serviços"
     >
       <div className="container-max section-padding">
