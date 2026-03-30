@@ -6,28 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "build:azure": "node scripts/build-azure.js",
-    "start": "next start",
+    "start": "node .next/standalone/server.js",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,json,md,css}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,json,md,css}\"",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "test:e2e:headed": "playwright test --headed",
-    "test:e2e:debug": "playwright test --debug",
-    "test:e2e:report": "playwright show-report",
-    "test:e2e:full": "playwright test --reporter=html,json,junit,list",
-    "test:e2e:all": "npm run test:e2e && npm run test:e2e:report",
-    "test:e2e:consolidated": "node scripts/run-full-tests.js",
-    "test:e2e:codegen": "playwright codegen http://localhost:3000",
     "docker:dev": "docker-compose up",
     "docker:build": "docker-compose build",
     "docker:prod": "docker-compose up -d app",
     "docker:down": "docker-compose down",
     "docker:logs": "docker-compose logs -f",
     "prepare": "husky install",
-    "clean": "rm -rf .next out coverage test-results playwright-report"
+    "clean": "rm -rf .next out coverage"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.0",
@@ -42,7 +33,6 @@
     "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.40.0",
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
