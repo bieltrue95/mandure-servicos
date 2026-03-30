@@ -9,7 +9,7 @@ export function Stats({ stats }: StatsProps) {
   return (
     <section
       id="stats"
-      className="bg-slate-100 pt-1 pb-8 scroll-mt-0 lg:pt-2 lg:pb-12 lg:scroll-mt-0"
+      className="bg-slate-100 pt-0 pb-8 scroll-mt-0 lg:pt-0 lg:pb-12 lg:scroll-mt-0"
       aria-label="Estatísticas - Mandure Serviços"
     >
       <div className="container-max section-padding">
