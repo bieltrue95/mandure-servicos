@@ -10,6 +10,14 @@ fix/*         → bug fixes
 chore/*       → maintenance tasks
 ```
 
+## Environment Mapping
+
+```
+feature/* PR → preview environment on Azure Static Web Apps
+develop      → test / homolog environment on Azure Static Web Apps
+main         → reserved for production release
+```
+
 ## Commit Convention
 
 Follow [Conventional Commits](https://www.conventionalcommits.org/):
@@ -42,6 +50,9 @@ git push origin feature/portfolio-lightbox
 # Open PR to develop
 ```
 
+After the PR is opened against `develop`, GitHub Actions creates or updates the
+Azure preview environment for review.
+
 ### Bug Fix
 
 ```bash
@@ -72,3 +83,6 @@ git merge develop --no-ff
 git tag -a v1.0.0 -m "Release v1.0.0"
 git push origin main --tags
 ```
+
+After `develop` is merged into `main`, production can be published by a separate
+workflow or Azure app dedicated to production.

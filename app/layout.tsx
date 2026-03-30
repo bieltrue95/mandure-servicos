@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
+import { PAGE_CONFIG, SITE_CONFIG } from '@/lib/constants/config';
 import './globals.css';
 
 // Lazy-load SiteHeader com SSR habilitado para não impactar Time to First Byte
@@ -29,6 +30,11 @@ const inter = Inter({
   display: 'swap',
 });
 
+const siteUrl = SITE_CONFIG.url;
+const companyName = PAGE_CONFIG.companyName;
+const companyDescription =
+  'Empreiteira especializada em construção civil, reformas e manutenção predial em São Paulo e Grande SP.';
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -38,11 +44,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'Mandure Serviços | Empreiteira em São Paulo',
-    template: '%s | Mandure Serviços',
+    default: `${companyName} | Empreiteira em São Paulo`,
+    template: `%s | ${companyName}`,
   },
-  description:
-    'Empreiteira especializada em construção civil, reformas e manutenção predial em São Paulo e Grande SP. Mais de 15 anos de experiência, 500+ projetos entregues.',
+  description: `${companyDescription} Mais de 15 anos de experiência, 500+ projetos entregues.`,
   keywords: [
     'empreiteira',
     'construção civil',
@@ -54,10 +59,10 @@ export const metadata: Metadata = {
     'empreiteira SP',
     'mandure servicos',
   ],
-  authors: [{ name: 'Mandure Serviços' }],
-  creator: 'Mandure Serviços',
-  publisher: 'Mandure Serviços',
-  metadataBase: new URL('https://mandureservicos.com.br'),
+  authors: [{ name: companyName }],
+  creator: companyName,
+  publisher: companyName,
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: '/',
     languages: {
@@ -67,25 +72,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://mandureservicos.com.br',
-    title: 'Mandure Serviços | Empreiteira em São Paulo',
-    description:
-      'Empreiteira especializada em construção civil, reformas e manutenção predial em São Paulo e Grande SP.',
-    siteName: 'Mandure Serviços',
+    url: siteUrl,
+    title: `${companyName} | Empreiteira em São Paulo`,
+    description: companyDescription,
+    siteName: companyName,
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Mandure Serviços - Empreiteira em São Paulo',
+        alt: `${companyName} - Empreiteira em São Paulo`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mandure Serviços | Empreiteira em São Paulo',
-    description:
-      'Empreiteira especializada em construção civil, reformas e manutenção predial em São Paulo.',
+    title: `${companyName} | Empreiteira em São Paulo`,
+    description: companyDescription,
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -104,22 +107,21 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'GeneralContractor',
-  name: 'Mandure Serviços',
-  description:
-    'Empreiteira especializada em construção civil, reformas e manutenção predial em São Paulo e Grande SP.',
-  url: 'https://mandureservicos.com.br',
-  telephone: '+55-11-99999-9999',
-  email: 'contato@mandureservicos.com.br',
+  name: companyName,
+  description: companyDescription,
+  url: siteUrl,
+  telephone: PAGE_CONFIG.phone,
+  email: PAGE_CONFIG.email,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Av. Paulista, 1000, Sala 101',
-    addressLocality: 'São Paulo',
-    addressRegion: 'SP',
+    streetAddress: PAGE_CONFIG.address,
+    addressLocality: PAGE_CONFIG.city,
+    addressRegion: PAGE_CONFIG.state,
     addressCountry: 'BR',
   },
   foundingDate: '2009',
   numberOfEmployees: { '@type': 'QuantitativeValue', value: 80 },
-  sameAs: ['https://instagram.com/mandureservicos', 'https://facebook.com/mandureservicos'],
+  sameAs: [PAGE_CONFIG.instagram, PAGE_CONFIG.facebook].filter(Boolean),
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

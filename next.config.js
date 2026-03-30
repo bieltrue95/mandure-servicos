@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
+const isStaticExport = process.env.NEXT_OUTPUT_MODE === 'export';
+
 const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
+    unoptimized: isStaticExport,
     remotePatterns: [
       {
         protocol: 'https',
@@ -18,7 +21,7 @@ const nextConfig = {
     optimizeCss: true,
     optimizePackageImports: ['lucide-react'],
   },
-  output: 'standalone',
+  output: isStaticExport ? 'export' : 'standalone',
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,

@@ -1,5 +1,9 @@
 import type { PageConfig, FeatureFlags } from '@/lib/types';
 
+const DEFAULT_SITE_URL = 'https://mandureservicos.com.br';
+const normalizeSiteUrl = (url: string): string => url.replace(/\/+$/, '');
+const siteUrl = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL);
+
 export const PAGE_CONFIG: PageConfig = {
   companyName: process.env.NEXT_PUBLIC_COMPANY_NAME || 'Mandure Serviços',
   companyTagline:
@@ -20,7 +24,7 @@ export const PAGE_CONFIG: PageConfig = {
 
 export const SITE_CONFIG = {
   name: process.env.NEXT_PUBLIC_COMPANY_NAME || 'Mandure Serviços',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://mandureservicos.com.br',
+  url: siteUrl,
   description:
     'Empreiteira especializada em construção civil, reformas e manutenção predial. Atendemos São Paulo e Grande SP com excelência e pontualidade.',
   keywords: [

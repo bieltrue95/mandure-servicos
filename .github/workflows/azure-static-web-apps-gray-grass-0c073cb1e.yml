@@ -1,0 +1,9 @@
+name: Disabled Azure Static Web Apps Workflow (replaced by azure-static-web-apps-test.yml)
+
+on: []
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Workflow disabled; use azure-static-web-apps-test.yml instead."
