@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:azure": "node scripts/build-azure.js",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",

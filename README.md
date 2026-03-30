@@ -14,7 +14,10 @@
 [![CI](https://github.com/bieltrue95/mandure-servicos/actions/workflows/ci.yml/badge.svg)](https://github.com/bieltrue95/mandure-servicos/actions/workflows/ci.yml)
 [![Playwright Tests](https://github.com/bieltrue95/mandure-servicos/actions/workflows/playwright.yml/badge.svg)](https://github.com/bieltrue95/mandure-servicos/actions/workflows/playwright.yml)
 
-> Plataforma digital de conversão e showcase premium de projetos para empreiteira. Desenvolvida com foco em **performance extrema**, **SEO técnico completo** e **experiência visual imersiva** que transmite solidez e confiança.
+> Plataforma digital de conversão e showcase premium de projetos para
+> empreiteira. Desenvolvida com foco em **performance extrema**, **SEO técnico
+> completo** e **experiência visual imersiva** que transmite solidez e
+> confiança.
 
 </div>
 
@@ -61,49 +64,52 @@
 
 ## 🏢 Sobre o Projeto
 
-A **Mandure Serviços** é uma empreiteira especializada em construção civil, reformas, manutenção predial e obras especiais no estado de São Paulo. Esta landing page foi concebida como uma **ferramenta de negócio** — não apenas uma vitrine — com conversão para WhatsApp como objetivo central.
+A **Mandure Serviços** é uma empreiteira especializada em construção civil,
+reformas, manutenção predial e obras especiais no estado de São Paulo. Esta
+landing page foi concebida como uma **ferramenta de negócio** — não apenas uma
+vitrine — com conversão para WhatsApp como objetivo central.
 
 ### Objetivos de Negócio
 
-| Objetivo | Implementação |
-|----------|--------------|
-| Transmitir credibilidade premium | Design com paleta Bronze, tipografia forte, animações suaves |
-| Converter visitantes em leads | WhatsApp button flutuante, CTAs estratégicos em todas as seções |
-| Showcasing de projetos | Portfolio filtrável com galeria modal de fotos por obra |
-| Construir autoridade | Seção de certificações (CREA-SP, CBIC, ISO 9001, PBQP-H) |
-| SEO local (São Paulo) | JSON-LD LocalBusiness, sitemap, robots.txt, OG metadata |
-| Performance mobile | PWA, AVIF/WebP, responsive em 5 breakpoints |
+| Objetivo                         | Implementação                                                   |
+| -------------------------------- | --------------------------------------------------------------- |
+| Transmitir credibilidade premium | Design com paleta Bronze, tipografia forte, animações suaves    |
+| Converter visitantes em leads    | WhatsApp button flutuante, CTAs estratégicos em todas as seções |
+| Showcasing de projetos           | Portfolio filtrável com galeria modal de fotos por obra         |
+| Construir autoridade             | Seção de certificações (CREA-SP, CBIC, ISO 9001, PBQP-H)        |
+| SEO local (São Paulo)            | JSON-LD LocalBusiness, sitemap, robots.txt, OG metadata         |
+| Performance mobile               | PWA, AVIF/WebP, responsive em 5 breakpoints                     |
 
 ### Métricas Alvo
 
-| Métrica | Meta |
-|---------|------|
-| Lighthouse Performance | > 90 |
-| LCP (Largest Contentful Paint) | < 2.5s |
-| CLS (Cumulative Layout Shift) | < 0.1 |
-| FID / INP | < 100ms |
-| Acessibilidade | WCAG 2.1 AA |
-| Bundle JS inicial | < 150kb gzip |
+| Métrica                        | Meta         |
+| ------------------------------ | ------------ |
+| Lighthouse Performance         | > 90         |
+| LCP (Largest Contentful Paint) | < 2.5s       |
+| CLS (Cumulative Layout Shift)  | < 0.1        |
+| FID / INP                      | < 100ms      |
+| Acessibilidade                 | WCAG 2.1 AA  |
+| Bundle JS inicial              | < 150kb gzip |
 
 ---
 
 ## 🛠️ Stack Tecnológica
 
-| Tecnologia | Versão | Papel no Projeto |
-|-----------|--------|-----------------|
-| **Next.js** | 15 | Framework React com App Router, SSR, otimização de imagens |
-| **React** | 18.3 | Biblioteca de UI, Server/Client Components |
-| **TypeScript** | 5.3 | Type safety strict mode, contratos entre módulos |
-| **Tailwind CSS** | 3.4 | Estilização utility-first integrada ao design system |
-| **Framer Motion** | 11 | Animações com GPU acceleration, scroll-triggered |
-| **Radix UI** | latest | Componentes acessíveis (Tabs, Dialog, primitives) |
-| **lucide-react** | latest | Ícones SVG consistentes e tree-shakeable |
-| **clsx + tailwind-merge** | latest | Composição condicional de classes CSS |
-| **Playwright** | 1.40 | Testes E2E em 5 browsers/dispositivos |
-| **ESLint** | latest | Linting com regras Next.js + TypeScript |
-| **Prettier** | latest | Formatação de código consistente |
-| **Husky + lint-staged** | latest | Pre-commit hooks de qualidade |
-| **Docker** | latest | Containerização multi-stage |
+| Tecnologia                | Versão | Papel no Projeto                                           |
+| ------------------------- | ------ | ---------------------------------------------------------- |
+| **Next.js**               | 15     | Framework React com App Router, SSR, otimização de imagens |
+| **React**                 | 18.3   | Biblioteca de UI, Server/Client Components                 |
+| **TypeScript**            | 5.3    | Type safety strict mode, contratos entre módulos           |
+| **Tailwind CSS**          | 3.4    | Estilização utility-first integrada ao design system       |
+| **Framer Motion**         | 11     | Animações com GPU acceleration, scroll-triggered           |
+| **Radix UI**              | latest | Componentes acessíveis (Tabs, Dialog, primitives)          |
+| **lucide-react**          | latest | Ícones SVG consistentes e tree-shakeable                   |
+| **clsx + tailwind-merge** | latest | Composição condicional de classes CSS                      |
+| **Playwright**            | 1.40   | Testes E2E em 5 browsers/dispositivos                      |
+| **ESLint**                | latest | Linting com regras Next.js + TypeScript                    |
+| **Prettier**              | latest | Formatação de código consistente                           |
+| **Husky + lint-staged**   | latest | Pre-commit hooks de qualidade                              |
+| **Docker**                | latest | Containerização multi-stage                                |
 
 ---
 
@@ -111,7 +117,8 @@ A **Mandure Serviços** é uma empreiteira especializada em construção civil, 
 
 ### Camadas da Aplicação
 
-O projeto implementa uma **arquitetura em 5 camadas** com separação clara de responsabilidades:
+O projeto implementa uma **arquitetura em 5 camadas** com separação clara de
+responsabilidades:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -153,20 +160,22 @@ graph TD
     style E fill:#fce7f3,stroke:#ec4899
 ```
 
-**Regra fundamental**: Os dados fluem de forma **unidirecional** — da camada de dados até os componentes via props. Componentes nunca buscam dados diretamente; recebem tudo via props do `app/page.tsx`.
+**Regra fundamental**: Os dados fluem de forma **unidirecional** — da camada de
+dados até os componentes via props. Componentes nunca buscam dados diretamente;
+recebem tudo via props do `app/page.tsx`.
 
 ### Server vs Client Components
 
-| Arquivo | Tipo | Razão |
-|---------|------|-------|
-| `app/layout.tsx` | **Server Component** | Metadata, JSON-LD, fonts — sem interatividade |
-| `app/page.tsx` | **Client Component** | Composição das seções, lazy loading dinâmico |
-| `components/sections/*/` | **Client Components** (`'use client'`) | Framer Motion exige acesso ao DOM e hooks |
-| `components/ui/button.tsx` | **Server-compatible** | Sem estado, sem hooks |
-| `components/ui/tabs.tsx` | **Client Component** | Radix UI usa estado interno |
-| `lib/services/*` | **Isomórfico** | Funciona em server e client |
-| `app/robots.ts` | **Server** | Geração de robots.txt |
-| `app/sitemap.ts` | **Server** | Geração de sitemap XML |
+| Arquivo                    | Tipo                                   | Razão                                         |
+| -------------------------- | -------------------------------------- | --------------------------------------------- |
+| `app/layout.tsx`           | **Server Component**                   | Metadata, JSON-LD, fonts — sem interatividade |
+| `app/page.tsx`             | **Client Component**                   | Composição das seções, lazy loading dinâmico  |
+| `components/sections/*/`   | **Client Components** (`'use client'`) | Framer Motion exige acesso ao DOM e hooks     |
+| `components/ui/button.tsx` | **Server-compatible**                  | Sem estado, sem hooks                         |
+| `components/ui/tabs.tsx`   | **Client Component**                   | Radix UI usa estado interno                   |
+| `lib/services/*`           | **Isomórfico**                         | Funciona em server e client                   |
+| `app/robots.ts`            | **Server**                             | Geração de robots.txt                         |
+| `app/sitemap.ts`           | **Server**                             | Geração de sitemap XML                        |
 
 ### Design Patterns
 
@@ -176,15 +185,15 @@ Encapsula integrações externas com interface limpa e testável:
 
 ```typescript
 // lib/services/whatsapp.service.ts
-WhatsAppService.generateUrl(phone, message)
-WhatsAppService.open(phone, message)
-WhatsAppService.generateBudgetMessage(projectType)
-WhatsAppService.isValidBrazilianNumber(phone)
+WhatsAppService.generateUrl(phone, message);
+WhatsAppService.open(phone, message);
+WhatsAppService.generateBudgetMessage(projectType);
+WhatsAppService.isValidBrazilianNumber(phone);
 
 // lib/services/analytics.service.ts
-AnalyticsService.trackWhatsAppClick(source)
-AnalyticsService.trackPortfolioFilter(category)
-AnalyticsService.trackSectionView(sectionName)
+AnalyticsService.trackWhatsAppClick(source);
+AnalyticsService.trackPortfolioFilter(category);
+AnalyticsService.trackSectionView(sectionName);
 ```
 
 #### 2. Hierarquia de Erros Customizados
@@ -196,20 +205,22 @@ AppError (base)
 └── NetworkError     (503 — falha de conexão externa)
 ```
 
-Acompanhado por `ErrorHandler` com logging condicional por ambiente e `ErrorBoundary` React como safety net.
+Acompanhado por `ErrorHandler` com logging condicional por ambiente e
+`ErrorBoundary` React como safety net.
 
 #### 3. Barrel Exports
 
-Cada módulo expõe um `index.ts` que centraliza todos os exports, permitindo imports limpos e desacoplados da estrutura interna de arquivos:
+Cada módulo expõe um `index.ts` que centraliza todos os exports, permitindo
+imports limpos e desacoplados da estrutura interna de arquivos:
 
 ```typescript
 // ✅ Correto — desacoplado da estrutura interna
-import { WhatsAppService } from '@/lib/services'
-import { ProjectCategory } from '@/lib/types'
-import { Portfolio } from '@/components/sections/Portfolio'
+import { WhatsAppService } from '@/lib/services';
+import { ProjectCategory } from '@/lib/types';
+import { Portfolio } from '@/components/sections/Portfolio';
 
 // ❌ Evitar — acoplado à localização física
-import { WhatsAppService } from '@/lib/services/whatsapp.service'
+import { WhatsAppService } from '@/lib/services/whatsapp.service';
 ```
 
 #### 4. Domain Types com Enums
@@ -222,20 +233,21 @@ enum ProjectCategory {
   RESIDENCIAL = 'residencial',
   COMERCIAL = 'comercial',
   REFORMA = 'reforma',
-  MANUTENCAO = 'manutencao'
+  MANUTENCAO = 'manutencao',
 }
 
 enum ServiceIcon {
   BUILDING = 'building',
   WRENCH = 'wrench',
   HAMMER = 'hammer',
-  SHIELD = 'shield'
+  SHIELD = 'shield',
 }
 ```
 
 #### 5. Component-Driven Development (CDD)
 
 Cada seção é um **módulo completamente isolado**:
+
 - Pasta própria em `components/sections/NomeSec/`
 - Arquivo de tipos dedicado `NomeSec.types.ts`
 - Sub-componentes internos quando necessário
@@ -260,20 +272,21 @@ styles/
     └── z-index.ts            Escala z-index: base, dropdown, sticky, fixed, modal
 ```
 
-Ambas as camadas são **injetadas no Tailwind** via `tailwind.config.ts` — uma única fonte de verdade propagada globalmente.
+Ambas as camadas são **injetadas no Tailwind** via `tailwind.config.ts` — uma
+única fonte de verdade propagada globalmente.
 
 ### Arquitetura de Performance
 
-| Técnica | Implementação | Impacto |
-|---------|--------------|---------|
-| Formatos modernos de imagem | AVIF + WebP com fallback automático (`next/image`) | -60% tamanho de imagens |
-| Responsive images | `deviceSizes` e `imageSizes` por breakpoint | Sem over-serving |
-| CSS otimizado | `experimental.optimizeCss: true` em produção | CSS menor no bundle |
-| Compressão HTTP | `compress: true` no servidor Next.js | Gzip/Brotli automático |
-| GPU acceleration | Animações Framer Motion com `transform` + `opacity` (compositor thread) | Zero jank |
-| Bundle splitting | Webpack separa ui, sections e Framer em chunks | Lazy loading eficiente |
-| Dynamic imports | Portfolio e CTAFinal com `next/dynamic` | Reduz JS inicial |
-| Strict Mode React | Detecta side effects em desenvolvimento | Menos bugs em produção |
+| Técnica                     | Implementação                                                           | Impacto                 |
+| --------------------------- | ----------------------------------------------------------------------- | ----------------------- |
+| Formatos modernos de imagem | AVIF + WebP com fallback automático (`next/image`)                      | -60% tamanho de imagens |
+| Responsive images           | `deviceSizes` e `imageSizes` por breakpoint                             | Sem over-serving        |
+| CSS otimizado               | `experimental.optimizeCss: true` em produção                            | CSS menor no bundle     |
+| Compressão HTTP             | `compress: true` no servidor Next.js                                    | Gzip/Brotli automático  |
+| GPU acceleration            | Animações Framer Motion com `transform` + `opacity` (compositor thread) | Zero jank               |
+| Bundle splitting            | Webpack separa ui, sections e Framer em chunks                          | Lazy loading eficiente  |
+| Dynamic imports             | Portfolio e CTAFinal com `next/dynamic`                                 | Reduz JS inicial        |
+| Strict Mode React           | Detecta side effects em desenvolvimento                                 | Menos bugs em produção  |
 
 ### Arquitetura de SEO
 
@@ -287,6 +300,7 @@ public/manifest.json → PWA manifest (ícones, tema, display)
 ```
 
 **JSON-LD implementado** (`GeneralContractor` + `LocalBusiness`):
+
 - Nome, descrição, endereço, telefone, área de atendimento
 - Horário de funcionamento
 - Imagem do negócio
@@ -512,6 +526,7 @@ mandure-servicos/
 O `app/page.tsx` compõe **10 seções** na seguinte ordem:
 
 ### 1. `SiteHeader` — Navegação Principal
+
 - Navbar fixa com scroll detection
 - Links de âncora para todas as seções
 - Drawer mobile com menu completo
@@ -519,6 +534,7 @@ O `app/page.tsx` compõe **10 seções** na seguinte ordem:
 - CTA "Solicitar Orçamento" no header (link para WhatsApp)
 
 ### 2. `Hero` — Seção de Impacto
+
 - Background com imagem de obra em alta resolução
 - Overlay gradiente escuro para legibilidade
 - Título principal + subtítulo com proposta de valor
@@ -526,46 +542,58 @@ O `app/page.tsx` compõe **10 seções** na seguinte ordem:
 - Animações de entrada com Framer Motion
 
 ### 3. `Stats` — Credenciais Numéricas
-- 4 estatísticas: anos de mercado, projetos concluídos, profissionais, satisfação
+
+- 4 estatísticas: anos de mercado, projetos concluídos, profissionais,
+  satisfação
 - `AnimatedCounter`: números sobem de 0 ao valor final ao entrar na viewport
 - Ativado por `useInView` do Framer Motion
 
 ### 4. `Services` — Serviços Oferecidos
-- Grid de 4 cards: Construção Civil, Reformas, Manutenção Predial, Obras Especiais
+
+- Grid de 4 cards: Construção Civil, Reformas, Manutenção Predial, Obras
+  Especiais
 - Cada `ServiceCard` com ícone, título, descrição e lista de diferenciais
 - Hover animations com escala e sombra
 
-### 5. `Portfolio` — Galeria de Projetos *(Dynamic Import)*
-- 6 projetos com filtro por categoria (Todos, Residencial, Comercial, Reforma, Manutenção)
+### 5. `Portfolio` — Galeria de Projetos _(Dynamic Import)_
+
+- 6 projetos com filtro por categoria (Todos, Residencial, Comercial, Reforma,
+  Manutenção)
 - `CategoryFilter`: abas Radix UI com animação de indicador ativo
 - `ProjectCard`: hover revela informações do projeto
 - `ProjectGalleryModal`: modal com carrossel de até 10 fotos por projeto
 - Lógica de filtro isolada em `Portfolio.utils.ts`
 
 ### 6. `Process` — Como Trabalhamos
+
 - Timeline vertical com 4 etapas: Consulta → Projeto → Execução → Entrega
 - `ProcessStepCard` com número da etapa, ícone, título e descrição
 - Animação stagger: cada card entra com delay incremental
 
 ### 7. `Testimonials` — Depoimentos de Clientes
+
 - Cards de depoimento com foto, nome, tipo de obra e avaliação em estrelas
 - Grid responsivo: 1 coluna mobile, 2 tablet, 3 desktop
 
 ### 8. `Certifications` — Certificações e Selos
+
 - Logos: CREA-SP, CBIC, ISO 9001:2015, PBQP-H
 - Transmite credibilidade institucional e conformidade técnica
 
-### 9. `CTAFinal` — Chamada para Ação Final *(Dynamic Import)*
+### 9. `CTAFinal` — Chamada para Ação Final _(Dynamic Import)_
+
 - Fundo com gradiente bronze (cor primária do design system)
 - Mensagem de urgência/benefício + CTA grande para WhatsApp
 - Carregado com skeleton loader enquanto o bundle não chega
 
 ### 10. `Footer` — Rodapé Institucional
+
 - Dados da empresa: endereço, CNPJ, telefone, e-mail
 - Links rápidos para as seções
 - Direitos autorais
 
 ### Flutuante: `WhatsAppButton`
+
 - Botão circular verde fixo no canto inferior direito
 - Animação de pulse para chamar atenção
 - Presente em todas as páginas
@@ -578,41 +606,53 @@ O `app/page.tsx` compõe **10 seções** na seguinte ordem:
 Localizados em `components/ui/` — reutilizáveis em qualquer seção:
 
 ### `Button`
+
 Usa **CVA (Class Variance Authority)** para variantes:
+
 ```typescript
 // Variantes de aparência
-variant: 'default' | 'primary' | 'outline' | 'ghost' | 'whatsapp'
+variant: 'default' | 'primary' | 'outline' | 'ghost' | 'whatsapp';
 // Variantes de tamanho
-size: 'sm' | 'md' | 'lg' | 'icon'
+size: 'sm' | 'md' | 'lg' | 'icon';
 ```
 
 ### `Badge`
+
 Labels e categorias com estilos semânticos:
+
 ```typescript
-variant: 'default' | 'primary' | 'secondary' | 'success' | 'warning'
+variant: 'default' | 'primary' | 'secondary' | 'success' | 'warning';
 ```
 
 ### `Card`
-Container com sombra e bordas arredondadas. Inclui sub-componentes: `CardHeader`, `CardContent`, `CardFooter`.
+
+Container com sombra e bordas arredondadas. Inclui sub-componentes:
+`CardHeader`, `CardContent`, `CardFooter`.
 
 ### `Tabs`
-Baseado em **Radix UI** — acessível por teclado, ARIA compliant. Usado no Portfolio para os filtros de categoria.
+
+Baseado em **Radix UI** — acessível por teclado, ARIA compliant. Usado no
+Portfolio para os filtros de categoria.
 
 ### `OptimizedImage`
+
 Wrapper em torno de `next/image` com:
+
 - Aspect ratio automático
 - Blur placeholder durante carregamento
 - Formatos AVIF/WebP automáticos
 - `sizes` responsivo pré-configurado
 
 ### `Logo`
+
 SVG inline do logo com variante `light` e `dark`.
 
 ---
 
 ## 📦 Sistema de Dados
 
-Todos os dados da aplicação residem em `lib/data/` como **TypeScript puro** — sem banco de dados, sem CMS, sem API externa.
+Todos os dados da aplicação residem em `lib/data/` como **TypeScript puro** —
+sem banco de dados, sem CMS, sem API externa.
 
 ### Como os dados chegam aos componentes
 
@@ -628,7 +668,7 @@ components/sections/*.tsx
 
 ```typescript
 // lib/data/services.data.ts
-import { Service } from '@/lib/types'
+import { Service } from '@/lib/types';
 
 export const servicesData: Service[] = [
   {
@@ -636,23 +676,23 @@ export const servicesData: Service[] = [
     icon: ServiceIcon.BUILDING,
     title: 'Construção Civil',
     description: '...',
-    highlights: ['...', '...']
+    highlights: ['...', '...'],
   },
   // ...
-]
+];
 ```
 
 ### Arquivos de dados
 
-| Arquivo | Dados | Tipo |
-|---------|-------|------|
-| `hero.data.ts` | Título, subtítulo, CTAs do hero | `HeroContent` |
-| `services.data.ts` | 4 serviços com ícone e destaques | `Service[]` |
-| `projects.data.ts` | 6 projetos com fotos e categorias | `Project[]` |
-| `stats.data.ts` | 4 estatísticas animadas | `StatItem[]` |
-| `testimonials.data.ts` | Depoimentos com nota e foto | `Testimonial[]` |
-| `process.data.ts` | 4 etapas do processo | `ProcessStep[]` |
-| `certifications.data.ts` | Logos e nomes das certificações | `Certification[]` |
+| Arquivo                  | Dados                             | Tipo              |
+| ------------------------ | --------------------------------- | ----------------- |
+| `hero.data.ts`           | Título, subtítulo, CTAs do hero   | `HeroContent`     |
+| `services.data.ts`       | 4 serviços com ícone e destaques  | `Service[]`       |
+| `projects.data.ts`       | 6 projetos com fotos e categorias | `Project[]`       |
+| `stats.data.ts`          | 4 estatísticas animadas           | `StatItem[]`      |
+| `testimonials.data.ts`   | Depoimentos com nota e foto       | `Testimonial[]`   |
+| `process.data.ts`        | 4 etapas do processo              | `ProcessStep[]`   |
+| `certifications.data.ts` | Logos e nomes das certificações   | `Certification[]` |
 
 ---
 
@@ -693,40 +733,40 @@ AnalyticsService.trackSectionView(sectionName: string): void
 
 ### Paleta de Cores
 
-| Token | Valor HEX | Uso |
-|-------|-----------|-----|
+| Token         | Valor HEX | Uso                                   |
+| ------------- | --------- | ------------------------------------- |
 | `primary-500` | `#b8876d` | Bronze — cor principal, CTAs, acentos |
-| `primary-400` | `#c49a82` | Bronze hover states |
-| `primary-600` | `#a3735a` | Bronze active states |
-| `slate-900` | `#0f172a` | Fundos escuros, hero |
-| `slate-800` | `#1e293b` | Cards escuros, navbar |
-| `slate-700` | `#334155` | Textos secundários |
-| `slate-50` | `#f8fafc` | Fundos claros |
-| `whatsapp` | `#25D366` | Botões e elementos WhatsApp |
-| `accent-500` | `#3b82f6` | Azul para destaques pontuais |
+| `primary-400` | `#c49a82` | Bronze hover states                   |
+| `primary-600` | `#a3735a` | Bronze active states                  |
+| `slate-900`   | `#0f172a` | Fundos escuros, hero                  |
+| `slate-800`   | `#1e293b` | Cards escuros, navbar                 |
+| `slate-700`   | `#334155` | Textos secundários                    |
+| `slate-50`    | `#f8fafc` | Fundos claros                         |
+| `whatsapp`    | `#25D366` | Botões e elementos WhatsApp           |
+| `accent-500`  | `#3b82f6` | Azul para destaques pontuais          |
 
 ### Escala Tipográfica
 
-| Classe Tailwind | Tamanho | Uso |
-|----------------|---------|-----|
-| `text-9xl` | 128px | — |
-| `text-7xl` | 72px | Títulos hero desktop |
-| `text-5xl` | 48px | Títulos de seção desktop |
-| `text-3xl` | 30px | Títulos de seção mobile |
-| `text-xl` | 20px | Subtítulos, destaques |
-| `text-base` | 16px | Corpo de texto padrão |
-| `text-sm` | 14px | Labels, captions |
+| Classe Tailwind | Tamanho | Uso                      |
+| --------------- | ------- | ------------------------ |
+| `text-9xl`      | 128px   | —                        |
+| `text-7xl`      | 72px    | Títulos hero desktop     |
+| `text-5xl`      | 48px    | Títulos de seção desktop |
+| `text-3xl`      | 30px    | Títulos de seção mobile  |
+| `text-xl`       | 20px    | Subtítulos, destaques    |
+| `text-base`     | 16px    | Corpo de texto padrão    |
+| `text-sm`       | 14px    | Labels, captions         |
 
 ### Animações (Framer Motion)
 
-| Animação | Descrição | Componente |
-|----------|-----------|-----------|
-| **Build-In** | Elementos sobem de baixo com fade | Todas as seções |
-| **Curtain Reveal** | Máscara deslizante nos títulos | Hero, CTAFinal |
-| **Stagger Gallery** | Cards aparecem em cascata diagonal | Services, Portfolio |
-| **Parallax** | Imagem se move em velocidade menor que o scroll | Hero |
-| **Counter** | Número aumenta de 0 ao valor alvo | Stats |
-| **Pulse** | Pulsação suave de atenção | WhatsAppButton |
+| Animação            | Descrição                                       | Componente          |
+| ------------------- | ----------------------------------------------- | ------------------- |
+| **Build-In**        | Elementos sobem de baixo com fade               | Todas as seções     |
+| **Curtain Reveal**  | Máscara deslizante nos títulos                  | Hero, CTAFinal      |
+| **Stagger Gallery** | Cards aparecem em cascata diagonal              | Services, Portfolio |
+| **Parallax**        | Imagem se move em velocidade menor que o scroll | Hero                |
+| **Counter**         | Número aumenta de 0 ao valor alvo               | Stats               |
+| **Pulse**           | Pulsação suave de atenção                       | WhatsAppButton      |
 
 ### Gradientes
 
@@ -747,7 +787,8 @@ bg-gradient-to-br from-slate-800 to-slate-900
 
 ### 1. Adicionar Nova Seção
 
-**Quando usar**: Adicionar uma nova seção à landing page (ex: FAQ, Equipe, Blog).
+**Quando usar**: Adicionar uma nova seção à landing page (ex: FAQ, Equipe,
+Blog).
 
 ```bash
 # Passo 1: Criar a estrutura de pastas
@@ -760,14 +801,16 @@ touch components/sections/NomeSec/index.ts
 ```
 
 **`NomeSec.types.ts`**:
+
 ```typescript
 export interface NomeSecProps {
-  whatsappUrl: string
+  whatsappUrl: string;
   // ... outras props
 }
 ```
 
 **`NomeSec.tsx`**:
+
 ```typescript
 'use client'
 
@@ -784,16 +827,20 @@ export function NomeSec({ whatsappUrl }: NomeSecProps) {
 ```
 
 **`index.ts`**:
+
 ```typescript
-export { NomeSec } from './NomeSec'
-export type { NomeSecProps } from './NomeSec.types'
+export { NomeSec } from './NomeSec';
+export type { NomeSecProps } from './NomeSec.types';
 ```
 
-**Passo 3**: Se a seção tiver dados próprios, criar `lib/data/nomeSec.data.ts` e exportar em `lib/data/index.ts`.
+**Passo 3**: Se a seção tiver dados próprios, criar `lib/data/nomeSec.data.ts` e
+exportar em `lib/data/index.ts`.
 
-**Passo 4**: Se a seção precisar de tipos novos, criar em `lib/types/` e exportar em `lib/types/index.ts`.
+**Passo 4**: Se a seção precisar de tipos novos, criar em `lib/types/` e
+exportar em `lib/types/index.ts`.
 
 **Passo 5**: Importar e usar em `app/page.tsx`:
+
 ```typescript
 import { NomeSec } from '@/components/sections/NomeSec'
 
@@ -817,7 +864,7 @@ export const statsData: StatItem[] = [
   { value: 15, label: 'Anos de mercado', suffix: '+' },
   { value: 300, label: 'Projetos concluídos', suffix: '+' },
   // ...
-]
+];
 
 // lib/data/services.data.ts — Alterar serviços
 // lib/data/testimonials.data.ts — Adicionar depoimentos
@@ -825,17 +872,20 @@ export const statsData: StatItem[] = [
 ```
 
 Após editar, execute:
+
 ```bash
 npm run build  # Verifica tipos e gera build de produção
 ```
 
-**Não esqueça**: Se alterar a **estrutura** (adicionar novos campos), atualizar também a interface TypeScript em `lib/types/`.
+**Não esqueça**: Se alterar a **estrutura** (adicionar novos campos), atualizar
+também a interface TypeScript em `lib/types/`.
 
 ---
 
 ### 3. Adicionar Projeto ao Portfólio
 
 **Passo 1**: Adicionar imagens em `public/images/projects/`:
+
 ```
 public/images/projects/
 └── nome-do-projeto/
@@ -846,6 +896,7 @@ public/images/projects/
 ```
 
 **Passo 2**: Adicionar entrada em `lib/data/projects.data.ts`:
+
 ```typescript
 {
   id: 'nome-do-projeto',
@@ -865,11 +916,12 @@ public/images/projects/
 ```
 
 **Passo 3**: Se precisar de nova categoria:
+
 ```typescript
 // lib/types/common.types.ts
 enum ProjectCategory {
   // ...
-  NOVA_CATEGORIA = 'nova-categoria'
+  NOVA_CATEGORIA = 'nova-categoria',
 }
 
 // Portfolio.utils.ts — adicionar ao filtro
@@ -881,56 +933,61 @@ enum ProjectCategory {
 ### 4. Modificar Design Tokens
 
 #### Alterar cor primária (bronze):
+
 ```typescript
 // styles/themes/colors.ts
 export const colors = {
   primary: {
-    500: '#NOVA_COR',  // ← cor principal
+    500: '#NOVA_COR', // ← cor principal
     400: '#COR_CLARA', // ← hover
     600: '#COR_ESCURA', // ← active
     // ...gerar escala completa
-  }
-}
+  },
+};
 ```
 
 #### Alterar no Tailwind:
+
 ```typescript
 // tailwind.config.ts
 theme: {
   extend: {
     colors: {
-      primary: colors.primary  // ← já linkado ao colors.ts
+      primary: colors.primary; // ← já linkado ao colors.ts
     }
   }
 }
 ```
 
-> A mudança em `colors.ts` propaga automaticamente para todas as classes `primary-*` do Tailwind.
+> A mudança em `colors.ts` propaga automaticamente para todas as classes
+> `primary-*` do Tailwind.
 
 #### Alterar timing de animações:
+
 ```typescript
 // styles/tokens/transitions.ts
 export const transitions = {
   duration: {
     fast: '150ms',
-    normal: '300ms',  // ← alterar aqui
+    normal: '300ms', // ← alterar aqui
     slow: '600ms',
   },
   easing: {
     smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
-  }
-}
+  },
+};
 ```
 
 #### Alterar tipografia:
+
 ```typescript
 // styles/themes/typography.ts
 export const typography = {
   fontSize: {
     hero: ['4.5rem', { lineHeight: '1.1' }],
     // ...
-  }
-}
+  },
+};
 ```
 
 ---
@@ -979,8 +1036,9 @@ export function NewComponent({ className, variant, size, ...props }: NewComponen
 ```
 
 Adicionar ao `components/ui/index.ts`:
+
 ```typescript
-export { NewComponent } from './new-component'
+export { NewComponent } from './new-component';
 ```
 
 ---
@@ -990,6 +1048,7 @@ export { NewComponent } from './new-component'
 Para adicionar uma nova integração (ex: Google Analytics, formulário):
 
 **Passo 1**: Criar `lib/services/novo.service.ts`:
+
 ```typescript
 export class NovoService {
   static metodo(): void {
@@ -999,13 +1058,15 @@ export class NovoService {
 ```
 
 **Passo 2**: Exportar em `lib/services/index.ts`:
+
 ```typescript
-export { NovoService } from './novo.service'
+export { NovoService } from './novo.service';
 ```
 
 **Passo 3**: Usar nos componentes:
+
 ```typescript
-import { NovoService } from '@/lib/services'
+import { NovoService } from '@/lib/services';
 ```
 
 ---
@@ -1048,12 +1109,14 @@ npm run type-check       # Verificação de tipos TypeScript
 ### Configuração do Editor (VSCode)
 
 Instale as extensões recomendadas:
+
 - **ESLint** — feedback em tempo real
 - **Prettier** — formatação ao salvar
 - **Tailwind CSS IntelliSense** — autocomplete de classes
 - **TypeScript** — type checking inline
 
 Configurar `settings.json`:
+
 ```json
 {
   "editor.formatOnSave": true,
@@ -1092,26 +1155,26 @@ npm run test:e2e:consolidated
 
 ### Suites de Teste
 
-| Arquivo | Cobertura |
-|---------|-----------|
-| `home.spec.ts` | Renderização completa da home, conteúdo de cada seção |
-| `navigation.spec.ts` | Header, links de âncora, drawer mobile |
-| `portfolio-filter.spec.ts` | Filtros de categoria, contagem de cards |
-| `portfolio-gallery.spec.ts` | Abertura de modal, navegação de fotos |
-| `whatsapp-cta.spec.ts` | Todos os botões WhatsApp e links gerados |
-| `footer.spec.ts` | Conteúdo, links e informações do rodapé |
-| `accessibility.spec.ts` | WCAG 2.1 AA, ARIA, teclado navigation |
-| `performance.spec.ts` | Core Web Vitals, Lighthouse score |
+| Arquivo                     | Cobertura                                             |
+| --------------------------- | ----------------------------------------------------- |
+| `home.spec.ts`              | Renderização completa da home, conteúdo de cada seção |
+| `navigation.spec.ts`        | Header, links de âncora, drawer mobile                |
+| `portfolio-filter.spec.ts`  | Filtros de categoria, contagem de cards               |
+| `portfolio-gallery.spec.ts` | Abertura de modal, navegação de fotos                 |
+| `whatsapp-cta.spec.ts`      | Todos os botões WhatsApp e links gerados              |
+| `footer.spec.ts`            | Conteúdo, links e informações do rodapé               |
+| `accessibility.spec.ts`     | WCAG 2.1 AA, ARIA, teclado navigation                 |
+| `performance.spec.ts`       | Core Web Vitals, Lighthouse score                     |
 
 ### Browsers Testados
 
-| Browser | Dispositivo |
-|---------|------------|
-| Chromium | Desktop |
-| Firefox | Desktop |
-| WebKit (Safari) | Desktop |
-| Mobile Chrome | Pixel 5 |
-| Mobile Safari | iPhone 12 |
+| Browser         | Dispositivo |
+| --------------- | ----------- |
+| Chromium        | Desktop     |
+| Firefox         | Desktop     |
+| WebKit (Safari) | Desktop     |
+| Mobile Chrome   | Pixel 5     |
+| Mobile Safari   | iPhone 12   |
 
 ### Artifacts
 
@@ -1125,13 +1188,13 @@ npm run test:e2e:consolidated
 
 ### Targets
 
-| Métrica | Meta | Técnica |
-|---------|------|---------|
-| Lighthouse Performance | > 90 | Bundle splitting, lazy loading |
-| LCP | < 2.5s | AVIF/WebP, `priority` na imagem hero |
-| CLS | < 0.1 | Reserva de espaço para imagens |
-| FID / INP | < 100ms | Hydration eficiente, animações no compositor |
-| Bundle JS inicial | < 150kb | Dynamic imports para Portfolio e CTAFinal |
+| Métrica                | Meta    | Técnica                                      |
+| ---------------------- | ------- | -------------------------------------------- |
+| Lighthouse Performance | > 90    | Bundle splitting, lazy loading               |
+| LCP                    | < 2.5s  | AVIF/WebP, `priority` na imagem hero         |
+| CLS                    | < 0.1   | Reserva de espaço para imagens               |
+| FID / INP              | < 100ms | Hydration eficiente, animações no compositor |
+| Bundle JS inicial      | < 150kb | Dynamic imports para Portfolio e CTAFinal    |
 
 ### Técnicas Implementadas
 
@@ -1156,7 +1219,8 @@ npm run test:e2e:consolidated
 
 ### JSON-LD (Dados Estruturados)
 
-Implementado em `app/layout.tsx` com schema `GeneralContractor` + `LocalBusiness`:
+Implementado em `app/layout.tsx` com schema `GeneralContractor` +
+`LocalBusiness`:
 
 ```json
 {
@@ -1257,9 +1321,9 @@ jobs:
   quality:
     steps:
       - npm ci
-      - npm run lint         # ESLint
-      - npm run type-check   # TypeScript
-      - npm run build        # Build de produção
+      - npm run lint # ESLint
+      - npm run type-check # TypeScript
+      - npm run build # Build de produção
 ```
 
 ### `playwright.yml` — E2E Tests
@@ -1272,7 +1336,7 @@ jobs:
     steps:
       - npm ci
       - npx playwright install
-      - npm run build        # Testa sempre em produção build
+      - npm run build # Testa sempre em produção build
       - npm run test:e2e
       - Upload artifacts (reports, videos)
 ```
@@ -1329,22 +1393,23 @@ git push origin main --tags
 
 ## 📚 Documentação Completa
 
-| Documento | Descrição |
-|-----------|-----------|
-| [Começando](docs/getting-started.md) | Instalação, setup e primeiro deploy |
-| [Visão Geral da Arquitetura](docs/architecture/overview.md) | Decisões arquiteturais detalhadas |
-| [Estrutura de Pastas](docs/architecture/folder-structure.md) | Organização e convenções |
-| [Design Patterns](docs/architecture/design-patterns.md) | Patterns aplicados e motivações |
-| [Guia de Componentes](docs/components/component-guide.md) | Documentação de todos os componentes |
-| [Sistema de Animações](docs/components/animation-system.md) | Framer Motion patterns e receitas |
-| [Padrões de Código](docs/development/coding-standards.md) | Convenções e boas práticas |
-| [Git Workflow](docs/development/git-workflow.md) | Branching, commits e releases |
-| [Guia de Testes](docs/development/testing.md) | Playwright, suites e melhores práticas |
-| [Deploy Docker](docs/deployment/docker.md) | Configuração e deployment com Docker |
-| [Deploy Vercel](docs/deployment/vercel.md) | Configuração e deployment na Vercel |
-| [Performance](docs/maintenance/performance-optimization.md) | Tuning e monitoramento |
-| [Troubleshooting](docs/maintenance/common-issues.md) | Problemas comuns e soluções |
-| [Diagrama de Fluxo](docs/architecture/fluxo-completo.excalidraw) | Diagrama visual completo do projeto |
+| Documento                                                                | Descrição                                         |
+| ------------------------------------------------------------------------ | ------------------------------------------------- |
+| [Começando](docs/getting-started.md)                                     | Instalação, setup e primeiro deploy               |
+| [Visão Geral da Arquitetura](docs/architecture/overview.md)              | Decisões arquiteturais detalhadas                 |
+| [Estrutura de Pastas](docs/architecture/folder-structure.md)             | Organização e convenções                          |
+| [Design Patterns](docs/architecture/design-patterns.md)                  | Patterns aplicados e motivações                   |
+| [Guia de Componentes](docs/components/component-guide.md)                | Documentação de todos os componentes              |
+| [Sistema de Animações](docs/components/animation-system.md)              | Framer Motion patterns e receitas                 |
+| [Padrões de Código](docs/development/coding-standards.md)                | Convenções e boas práticas                        |
+| [Git Workflow](docs/development/git-workflow.md)                         | Branching, commits e releases                     |
+| [Guia de Testes](docs/development/testing.md)                            | Playwright, suites e melhores práticas            |
+| [Deploy Azure Static Web Apps](docs/deployment/azure-static-web-apps.md) | Homologação na Azure com GitFlow e preview de PRs |
+| [Deploy Docker](docs/deployment/docker.md)                               | Configuração e deployment com Docker              |
+| [Deploy Vercel](docs/deployment/vercel.md)                               | Configuração e deployment na Vercel               |
+| [Performance](docs/maintenance/performance-optimization.md)              | Tuning e monitoramento                            |
+| [Troubleshooting](docs/maintenance/common-issues.md)                     | Problemas comuns e soluções                       |
+| [Diagrama de Fluxo](docs/architecture/fluxo-completo.excalidraw)         | Diagrama visual completo do projeto               |
 
 ---
 
@@ -1358,6 +1423,8 @@ MIT © 2026 Gabriel Santos — Mandure Serviços
 
 Desenvolvido com dedicação, TypeScript strict mode e muito café.
 
-**[Reportar Bug](https://github.com/bieltrue95/mandure-servicos/issues)** · **[Solicitar Feature](https://github.com/bieltrue95/mandure-servicos/issues)** · **[Documentação](docs/)**
+**[Reportar Bug](https://github.com/bieltrue95/mandure-servicos/issues)** ·
+**[Solicitar Feature](https://github.com/bieltrue95/mandure-servicos/issues)** ·
+**[Documentação](docs/)**
 
 </div>

@@ -104,7 +104,7 @@ export function Portfolio({ projects }: PortfolioProps) {
   return (
     <section
       id="projetos"
-      className="bg-slate-100 py-20 lg:py-28"
+      className="bg-slate-100"
       aria-label="Portfolio - Mandure Serviços"
     >
       <div className="container-max section-padding">

@@ -1,4 +1,7 @@
 import { MetadataRoute } from 'next';
+import { SITE_CONFIG } from '@/lib/constants/config';
+
+export const dynamic = 'force-static';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/'],
     },
-    sitemap: 'https://mandureservicos.com.br/sitemap.xml',
+    sitemap: `${SITE_CONFIG.url}/sitemap.xml`,
   };
 }

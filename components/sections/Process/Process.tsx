@@ -9,7 +9,7 @@ export function Process({ steps }: ProcessProps) {
   return (
     <section
       id="processo"
-      className="bg-white py-20 lg:py-28"
+      className="bg-white"
       aria-label="Processo - Mandure Serviços"
     >
       <div className="container-max section-padding">

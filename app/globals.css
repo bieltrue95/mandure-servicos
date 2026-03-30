@@ -9,7 +9,7 @@
 
 @layer base {
   html {
-    scroll-padding-top: 7rem;
+    scroll-padding-top: 4rem;
   }
 
   body {
@@ -23,7 +23,7 @@
 
 @layer utilities {
   .section-padding {
-    @apply px-4 py-16 sm:px-6 lg:px-8 lg:py-24;
+    @apply px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-14;
   }
 
   .container-max {
