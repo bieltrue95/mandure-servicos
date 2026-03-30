@@ -9,7 +9,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
   return (
     <section
       id="depoimentos"
-      className="bg-slate-50 pt-12 pb-20 scroll-mt-4 lg:pt-16 lg:pb-28 lg:scroll-mt-6"
+      className="bg-slate-50 pt-8 pb-20 scroll-mt-0 lg:pt-12 lg:pb-28 lg:scroll-mt-0"
       aria-label="Depoimentos - Mandure Serviços"
     >
       <div className="container-max section-padding">
