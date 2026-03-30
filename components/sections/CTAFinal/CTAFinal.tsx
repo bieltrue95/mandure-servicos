@@ -11,7 +11,7 @@ export function CTAFinal({ whatsappUrl }: CTAFinalProps) {
   return (
     <section
       id="contato"
-      className="relative overflow-hidden bg-primary-600 pt-4 pb-16 scroll-mt-0 lg:pt-6 lg:pb-24 lg:scroll-mt-0"
+      className="relative overflow-hidden bg-primary-600 pt-2 pb-14 scroll-mt-0 lg:pt-4 lg:pb-22 lg:scroll-mt-0"
       aria-label="CTA Final - Mandure Serviços"
     >
       {/* Background decoration */}
