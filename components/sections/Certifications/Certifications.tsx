@@ -13,7 +13,7 @@ export function Certifications({ certifications }: CertificationsProps) {
   return (
     <section
       id="certificacoes"
-      className="bg-white pt-8 pb-16 scroll-mt-0 lg:pt-12 lg:pb-20 lg:scroll-mt-0"
+      className="bg-white pt-4 pb-12 scroll-mt-0 lg:pt-6 lg:pb-16 lg:scroll-mt-0"
       aria-label="Certificações - Mandure Serviços"
     >
       <div className="container-max section-padding">
