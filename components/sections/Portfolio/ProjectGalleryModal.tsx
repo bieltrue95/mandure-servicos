@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { X } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Calendar, MapPin, Maximize2, X } from 'lucide-react';
 import { getProjectGalleryImages, resolveProjectGalleryImageSrc } from './Portfolio.utils';
 import type { ProjectGalleryModalProps } from './Portfolio.types';
 
@@ -49,7 +50,10 @@ export function ProjectGalleryModal({
     document.body.style.overflow = 'hidden';
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { onClose(); return; }
+      if (e.key === 'Escape') {
+        onClose();
+        return;
+      }
       if (galleryImages.length <= 1) return;
       if (e.key === 'ArrowRight') handleNext();
       if (e.key === 'ArrowLeft') handlePrevious();
@@ -156,17 +160,81 @@ export function ProjectGalleryModal({
               </motion.div>
             </AnimatePresence>
 
-            {/* Contador de imagens */}
-            {galleryImages.length > 1 && (
-              <div className="absolute bottom-3 left-3 rounded-full bg-slate-950/70 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
-                {safeActiveImageIndex + 1} de {galleryImages.length}
-              </div>
-            )}
           </div>
 
           {/* Faixa de informações */}
           <div className="shrink-0 border-t border-slate-200 bg-white px-6 py-4">
-            <p className="text-slate-900">{project.title}</p>
+            {/* Linha 1: badge + título + contador */}
+            <div className="flex items-center justify-between gap-4">
+              <Badge variant="default">{project.category}</Badge>
+              <h3 className="mx-3 flex-1 truncate text-lg font-bold text-slate-900">
+                {project.title}
+              </h3>
+              {galleryImages.length > 1 && (
+                <span className="shrink-0 whitespace-nowrap text-sm text-slate-400">
+                  {safeActiveImageIndex + 1} de {galleryImages.length}
+                </span>
+              )}
+            </div>
+
+            {/* Linha 2: metadados */}
+            <div className="mt-1 flex flex-wrap items-center gap-x-1 text-sm text-slate-500">
+              <MapPin className="h-3.5 w-3.5 text-primary-500" />
+              <span>{project.location}</span>
+              <span className="mx-1.5 text-slate-300">·</span>
+              <Calendar className="h-3.5 w-3.5 text-primary-500" />
+              <span>{project.year}</span>
+              {project.area && (
+                <>
+                  <span className="mx-1.5 text-slate-300">·</span>
+                  <Maximize2 className="h-3.5 w-3.5 text-primary-500" />
+                  <span>{project.area}</span>
+                </>
+              )}
+            </div>
+
+            {/* Linha 3: thumbnails */}
+            {galleryImages.length > 1 && (
+              <div className="mt-3 flex gap-2 overflow-x-auto pb-0.5">
+                {galleryImages.map((image, index) => (
+                  <button
+                    key={image.src}
+                    type="button"
+                    aria-label={`Selecionar imagem ${index + 1}`}
+                    aria-pressed={safeActiveImageIndex === index}
+                    data-testid="gallery-thumbnail"
+                    className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-xl border-2 transition-all duration-200 ${
+                      safeActiveImageIndex === index
+                        ? 'border-primary-500 shadow-sm'
+                        : 'border-transparent hover:border-slate-300'
+                    }`}
+                    onClick={() => navigateToImage(image.src, index > safeActiveImageIndex ? 1 : -1)}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="80px"
+                      className="object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Linha 4: tags */}
+            {project.tags && project.tags.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs text-slate-600"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </motion.div>
       </div>
