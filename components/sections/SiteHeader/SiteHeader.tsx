@@ -181,12 +181,12 @@ export function SiteHeader({ navigationItems = NAV_ITEMS }: SiteHeaderProps) {
     <>
       <header
         className={cn(
-          'fixed inset-x-0 top-0 z-[70] w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-xl transition-all duration-300',
+          'fixed inset-x-0 top-0 z-header w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-xl transition-all duration-300',
           isScrolled && 'border-slate-200 shadow-lg shadow-slate-200/50'
         )}
         role="banner"
       >
-        <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+        <div className="mx-auto flex w-full max-w-container-2xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
           <a
             href="#hero"
             className="flex min-w-0 shrink-0 items-center gap-3"
@@ -196,7 +196,7 @@ export function SiteHeader({ navigationItems = NAV_ITEMS }: SiteHeaderProps) {
               <Logo size="sm" />
             </span>
             <span className="min-w-0">
-              <span className="block truncate text-sm font-black uppercase tracking-[0.24em] text-slate-900">
+              <span className="block truncate text-sm font-black uppercase tracking-caps-md text-slate-900">
                 {PAGE_CONFIG.companyName}
               </span>
               <span className="hidden truncate text-xs text-slate-500 sm:block">
@@ -249,7 +249,7 @@ export function SiteHeader({ navigationItems = NAV_ITEMS }: SiteHeaderProps) {
             {/* Overlay clicável para fechar o drawer sem depender do botão de fechar. */}
             <motion.button
               type="button"
-              className="fixed inset-0 z-[78] bg-slate-950/35 lg:hidden"
+              className="fixed inset-0 z-drawer-overlay bg-slate-950/35 lg:hidden"
               aria-label="Fechar menu"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -263,7 +263,7 @@ export function SiteHeader({ navigationItems = NAV_ITEMS }: SiteHeaderProps) {
               role="dialog"
               aria-modal="true"
               aria-label="Menu de navegação"
-              className="fixed inset-y-0 right-0 z-[79] flex h-screen w-full max-w-sm flex-col border-l border-slate-200 bg-white opacity-100 shadow-2xl shadow-slate-200/50 lg:hidden"
+              className="fixed inset-y-0 right-0 z-drawer flex h-screen w-full max-w-sm flex-col border-l border-slate-200 bg-white opacity-100 shadow-2xl shadow-slate-200/50 lg:hidden"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -272,14 +272,14 @@ export function SiteHeader({ navigationItems = NAV_ITEMS }: SiteHeaderProps) {
               <div className="border-b border-slate-200 bg-white px-6 py-5">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary-300">
+                    <p className="text-xs font-semibold uppercase tracking-caps-xl text-primary-300">
                       Menu
                     </p>
                     <h2 className="mt-2 text-xl font-black text-slate-950">
                       {PAGE_CONFIG.companyName}
                     </h2>
                     <p className="mt-1 text-sm leading-relaxed text-slate-500">
-                      Navegação otimizada para mobile e tablet com foco nas seções da página.
+                      Construindo com solidez e precisão há mais de 15 anos.
                     </p>
                   </div>
 

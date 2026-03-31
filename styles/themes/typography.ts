@@ -54,6 +54,14 @@ export const typography = {
     wide: '0.025em',
     wider: '0.05em',
     widest: '0.1em',
+    // Escala caps — textos uppercase com tracking acentuado
+    'caps-xs': '0.18em',
+    'caps-sm': '0.2em',
+    caps: '0.22em',
+    'caps-md': '0.24em',
+    'caps-lg': '0.26em',
+    'caps-xl': '0.3em',
+    'caps-2xl': '0.32em',
   },
 
   lineHeight: {

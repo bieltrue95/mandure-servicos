@@ -49,7 +49,7 @@ export function Certifications({ certifications }: CertificationsProps) {
             <motion.div
               key={cert.id}
               variants={STAGGER_ITEM}
-              className="group mx-auto flex h-full w-full max-w-[18rem] flex-col items-center gap-4 text-center transition-transform duration-300 hover:scale-105"
+              className="group mx-auto flex h-full w-full max-w-72 flex-col items-center gap-4 text-center transition-transform duration-300 hover:scale-105"
             >
               {/* O selo recebe mais área e contraste para equilibrar com a descrição logo abaixo. */}
               <div className="relative flex h-20 w-full items-center justify-center rounded-2xl bg-slate-50 px-5 py-4 shadow-sm transition-all duration-300 group-hover:shadow-md">
@@ -58,7 +58,7 @@ export function Certifications({ certifications }: CertificationsProps) {
                 </div>
               </div>
               {cert.description && (
-                <p className="max-w-[16rem] text-base leading-7 text-slate-600">
+                <p className="max-w-64 text-base leading-7 text-slate-600">
                   {cert.description}
                 </p>
               )}

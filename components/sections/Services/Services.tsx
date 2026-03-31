@@ -35,7 +35,7 @@ export function Services({ services, whatsappUrl }: ServicesProps) {
           initial={SCROLL_REVEAL_CONFIG.initial}
           whileInView={SCROLL_REVEAL_CONFIG.whileInView}
           viewport={SCROLL_REVEAL_CONFIG.viewport}
-          className="mx-auto grid max-w-[1500px] gap-6 md:grid-cols-2 md:gap-8 xl:grid-cols-4"
+          className="mx-auto grid max-w-container-xl gap-6 md:grid-cols-2 md:gap-8 xl:grid-cols-4"
         >
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} whatsappUrl={whatsappUrl} />
