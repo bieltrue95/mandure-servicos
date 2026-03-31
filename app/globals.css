@@ -9,7 +9,9 @@
 
 @layer base {
   html {
-    scroll-padding-top: 4rem;
+    scroll-behavior: smooth;
+    /* Header: py-3 (24px) + h-11 (44px) + border (1px) ≈ 69px → 4.5rem dá folga segura */
+    scroll-padding-top: 4.5rem;
   }
 
   body {
