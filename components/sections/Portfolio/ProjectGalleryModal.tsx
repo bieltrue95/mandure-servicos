@@ -25,6 +25,16 @@ export function ProjectGalleryModal({
   const dragX = useMotionValue(0);
   const rotateY = useTransform(dragX, [-300, 0, 300], [2, 0, -2]);
 
+  const [isPanelExpanded, setIsPanelExpanded] = useState(false);
+  const [panelExpandDelta, setPanelExpandDelta] = useState(0);
+
+  useEffect(() => {
+    const calc = () => setPanelExpandDelta(window.innerHeight * 0.45 - 180);
+    calc();
+    window.addEventListener('resize', calc);
+    return () => window.removeEventListener('resize', calc);
+  }, []);
+
   const navigateToImage = useCallback(
     (src: string, dir: 1 | -1) => {
       setDirection(dir);
@@ -163,79 +173,104 @@ export function ProjectGalleryModal({
           </div>
 
           {/* Faixa de informações */}
-          <div className="shrink-0 border-t border-slate-200 bg-white px-6 py-4">
-            {/* Linha 1: badge + título + contador */}
-            <div className="flex items-center justify-between gap-4">
-              <Badge variant="default">{project.category}</Badge>
-              <h3 className="mx-3 flex-1 truncate text-lg font-bold text-slate-900">
-                {project.title}
-              </h3>
-              {galleryImages.length > 1 && (
-                <span className="shrink-0 whitespace-nowrap text-sm text-slate-400">
-                  {safeActiveImageIndex + 1} de {galleryImages.length}
-                </span>
-              )}
+          <motion.div
+            className="shrink-0 overflow-hidden border-t border-slate-200 bg-white"
+            animate={{ height: isPanelExpanded ? '45vh' : '180px' }}
+            transition={{ type: 'spring', stiffness: 400, damping: 40 }}
+            drag="y"
+            dragConstraints={{ top: -panelExpandDelta, bottom: 0 }}
+            dragElastic={0.08}
+            onDragEnd={(_, info) => {
+              if (info.offset.y < -60 || info.velocity.y < -300) {
+                setIsPanelExpanded(true);
+              } else {
+                setIsPanelExpanded(false);
+              }
+            }}
+            style={{ touchAction: 'none' }}
+          >
+            {/* Handle de swipe — visível apenas no mobile */}
+            <div className="flex justify-center pb-1 pt-2 lg:hidden">
+              <div className="h-1 w-10 rounded-full bg-slate-300" />
             </div>
 
-            {/* Linha 2: metadados */}
-            <div className="mt-1 flex flex-wrap items-center gap-x-1 text-sm text-slate-500">
-              <MapPin aria-hidden="true" className="h-3.5 w-3.5 text-primary-500" />
-              <span>{project.location}</span>
-              <span className="mx-1.5 text-slate-300">·</span>
-              <Calendar aria-hidden="true" className="h-3.5 w-3.5 text-primary-500" />
-              <span>{project.year}</span>
-              {project.area && (
-                <>
-                  <span className="mx-1.5 text-slate-300">·</span>
-                  <Ruler aria-hidden="true" className="h-3.5 w-3.5 text-primary-500" />
-                  <span>{project.area}</span>
-                </>
-              )}
-            </div>
-
-            {/* Linha 3: thumbnails */}
-            {galleryImages.length > 1 && (
-              <div className="mt-3 flex gap-2 overflow-x-auto pb-0.5">
-                {galleryImages.map((image, index) => (
-                  <button
-                    key={image.src}
-                    type="button"
-                    aria-label={`Selecionar imagem ${index + 1}`}
-                    aria-pressed={safeActiveImageIndex === index}
-                    data-testid="gallery-thumbnail"
-                    className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-xl border-2 transition-all duration-200 ${
-                      safeActiveImageIndex === index
-                        ? 'border-primary-500 shadow-sm'
-                        : 'border-transparent hover:border-slate-300'
-                    }`}
-                    onClick={() => navigateToImage(image.src, index > safeActiveImageIndex ? 1 : -1)}
-                  >
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      sizes="80px"
-                      className="object-cover"
-                    />
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {/* Linha 4: tags */}
-            {project.tags && project.tags.length > 0 && (
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs text-slate-600"
-                  >
-                    {tag}
+            <div
+              className={`px-6 pb-4 ${isPanelExpanded ? 'overflow-y-auto' : 'overflow-hidden'}`}
+              style={{ maxHeight: isPanelExpanded ? 'calc(45vh - 20px)' : undefined }}
+            >
+              {/* Linha 1: badge + título + contador */}
+              <div className="flex items-center justify-between gap-4">
+                <Badge variant="default">{project.category}</Badge>
+                <h3 className="mx-3 flex-1 truncate text-lg font-bold text-slate-900">
+                  {project.title}
+                </h3>
+                {galleryImages.length > 1 && (
+                  <span className="shrink-0 whitespace-nowrap text-sm text-slate-400">
+                    {safeActiveImageIndex + 1} de {galleryImages.length}
                   </span>
-                ))}
+                )}
               </div>
-            )}
-          </div>
+
+              {/* Linha 2: metadados */}
+              <div className="mt-1 flex flex-wrap items-center gap-x-1 text-sm text-slate-500">
+                <MapPin aria-hidden="true" className="h-3.5 w-3.5 text-primary-500" />
+                <span>{project.location}</span>
+                <span className="mx-1.5 text-slate-300">·</span>
+                <Calendar aria-hidden="true" className="h-3.5 w-3.5 text-primary-500" />
+                <span>{project.year}</span>
+                {project.area && (
+                  <>
+                    <span className="mx-1.5 text-slate-300">·</span>
+                    <Ruler aria-hidden="true" className="h-3.5 w-3.5 text-primary-500" />
+                    <span>{project.area}</span>
+                  </>
+                )}
+              </div>
+
+              {/* Linha 3: thumbnails */}
+              {galleryImages.length > 1 && (
+                <div className="mt-3 flex gap-2 overflow-x-auto pb-0.5">
+                  {galleryImages.map((image, index) => (
+                    <button
+                      key={image.src}
+                      type="button"
+                      aria-label={`Selecionar imagem ${index + 1}`}
+                      aria-pressed={safeActiveImageIndex === index}
+                      data-testid="gallery-thumbnail"
+                      className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-xl border-2 transition-all duration-200 ${
+                        safeActiveImageIndex === index
+                          ? 'border-primary-500 shadow-sm'
+                          : 'border-transparent hover:border-slate-300'
+                      }`}
+                      onClick={() => navigateToImage(image.src, index > safeActiveImageIndex ? 1 : -1)}
+                    >
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        sizes="80px"
+                        className="object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Linha 4: tags */}
+              {project.tags && project.tags.length > 0 && (
+                <div className={`mt-2 flex flex-wrap gap-1.5 ${!isPanelExpanded ? 'lg:flex hidden' : 'flex'}`}>
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs text-slate-600"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </>
