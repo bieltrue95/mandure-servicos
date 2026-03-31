@@ -15,6 +15,11 @@ export const zIndex = {
   toast: 60,
   tooltip: 70,
   whatsapp: 50,
+  header: 70,
+  drawerOverlay: 78,
+  drawer: 79,
+  galleryOverlay: 89,
+  gallery: 90,
 } as const;
 
 export type ZIndex = typeof zIndex;

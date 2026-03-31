@@ -1,5 +1,6 @@
 /**
  * Sistema de sombras - Mandure Serviços
+ * Chaves em kebab-case para uso direto como tokens Tailwind (shadow-card-hover, etc.)
  */
 
 export const shadows = {
@@ -11,9 +12,9 @@ export const shadows = {
   '2xl': '0 25px 50px rgba(0, 0, 0, 0.25)',
   inner: 'inset 0 2px 4px rgba(0, 0, 0, 0.06)',
   card: '0 4px 20px rgba(0, 0, 0, 0.08)',
-  cardHover: '0 8px 40px rgba(0, 0, 0, 0.15)',
-  primary: '0 4px 20px rgba(184, 135, 109, 0.3)',
-  primaryHover: '0 8px 40px rgba(184, 135, 109, 0.4)',
+  'card-hover': '0 8px 40px rgba(0, 0, 0, 0.15)',
+  primary: '0 4px 20px rgba(194, 65, 12, 0.3)',
+  'primary-hover': '0 8px 40px rgba(194, 65, 12, 0.4)',
   none: 'none',
 } as const;
 

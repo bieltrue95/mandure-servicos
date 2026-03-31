@@ -2,23 +2,24 @@
  * Sistema de cores - Mandure Serviços
  *
  * Conceito visual: Solidez, Confiança, Modernidade
- * Inspiração: Aço escovado, Concreto arquitetônico, Detalhes em cobre/bronze
+ * Inspiração: Aço escovado, Concreto arquitetônico, Detalhes em terracota
  */
 
 export const colors = {
-  // Primary: Bronze/Copper (CTAs, acentos, hover states)
+  // Primary: Terracota (CTAs, acentos, hover states)
+  // Centrado em #c2410c — vermelho-laranja queimado, arquitetura, sofisticação
   primary: {
-    50: '#fdf8f6',
-    100: '#f2e8e5',
-    200: '#eaddd7',
-    300: '#e0cec7',
-    400: '#d2bab0',
-    500: '#b8876d',
-    600: '#a47764',
-    700: '#8b6555',
-    800: '#6d4f43',
-    900: '#583f36',
-    950: '#33251f',
+    50: '#fef4ef',
+    100: '#fce4d4',
+    200: '#f9c4a3',
+    300: '#f49e6e',
+    400: '#ec7440',
+    500: '#c2410c',
+    600: '#a13409',
+    700: '#822907',
+    800: '#641f05',
+    900: '#461504',
+    950: '#280c02',
   },
 
   // Secondary: Slate (backgrounds, cards, estrutura)
@@ -88,14 +89,19 @@ export const colors = {
 } as const;
 
 /**
- * Gradientes para efeitos premium
+ * Gradientes e background-images para efeitos premium.
+ * Chaves em kebab-case para uso direto como tokens Tailwind (bg-hero-gradient, etc.)
  */
 export const gradients = {
-  heroDark: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
-  heroOverlay: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.9))',
-  bronzeShimmer: 'linear-gradient(135deg, #b8876d 0%, #a47764 50%, #8b6555 100%)',
-  slateToBlue: 'linear-gradient(135deg, #334155 0%, #2563eb 100%)',
-  cardHover: 'linear-gradient(to top, rgba(184, 135, 109, 0.1), transparent)',
+  'hero-gradient': 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
+  'hero-overlay': 'linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.9))',
+  'primary-shimmer': 'linear-gradient(135deg, #c2410c 0%, #a13409 50%, #822907 100%)',
+  'slate-to-blue': 'linear-gradient(135deg, #334155 0%, #2563eb 100%)',
+  'card-hover-gradient': 'linear-gradient(to top, rgba(194, 65, 12, 0.1), transparent)',
+  'hero-grid':
+    'linear-gradient(rgba(194, 65, 12, 0.3) 1px, transparent 1px), linear-gradient(to right, rgba(194, 65, 12, 0.3) 1px, transparent 1px)',
+  'footer-radial':
+    'radial-gradient(circle at top left, rgba(194, 65, 12, 0.18), transparent 30%), radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12), transparent 28%)',
 } as const;
 
 export type Colors = typeof colors;
