@@ -13,10 +13,15 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
           <Quote className="mb-4 h-8 w-8 text-primary-300" />
 
           {/* Stars */}
-          <div className="mb-4 flex gap-1" aria-label={`${testimonial.rating} estrelas`}>
+          <div
+            className="mb-4 flex gap-1"
+            role="img"
+            aria-label={`Avaliacao: ${testimonial.rating} de 5 estrelas`}
+          >
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
                 key={i}
+                aria-hidden="true"
                 className={`h-4 w-4 ${
                   i < testimonial.rating ? 'fill-primary-500 text-primary-500' : 'text-neutral-300'
                 }`}

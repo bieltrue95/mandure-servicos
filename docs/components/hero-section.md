@@ -11,36 +11,32 @@ Full-viewport hero with background image, gradient overlay, animated text, and t
 
 ```ts
 interface HeroProps {
-  headline: string;
-  subheadline: string;
-  badge?: string;
-  ctaText: string;
-  ctaWhatsAppUrl: string;
-  backgroundImage: string;
+  whatsappUrl: string;
 }
 ```
 
-Data is sourced from `lib/data/hero.data.ts`.
+Conteudo visual e textual principal vem de `lib/data/hero.data.ts`.
 
 ## Key Features
 
 - `next/image` with `fill` + `priority` for LCP optimization
-- `fetchpriority="high"` on the background image
-- Gradient overlay: `from-slate-900/95 via-slate-900/80 to-transparent`
-- Framer Motion `STAGGER_CONTAINER` + `FADE_IN_UP` for headline animation
-- Bouncing scroll indicator (ArrowDown icon) anchors to `#servicos`
-- Trust badge with shield icon and tagline text
+- `fetchPriority="high"` on the background image
+- Gradient overlay: `from-slate-900/80 via-slate-900/70 to-slate-950/90`
+- Framer Motion `STAGGER_CONTAINER` + `STAGGER_ITEM`
+- CTA principal de WhatsApp recebe `whatsappUrl` por props
+- CTA secundario ancora em `#projetos`
+- Indicador de scroll (ArrowDown) aponta para `#stats`
 
 ## Animation
 
-Uses `STAGGER_CONTAINER` variant with `viewport: { once: true }` so animations fire once on scroll-in.
+Usa animacao inicial em `animate="visible"` para o bloco principal e loop infinito no indicador de scroll.
 
 ## Customization
 
-Edit `lib/data/hero.data.ts` to change headline, badge text, and background image path.  
-Background image should be placed at `public/images/hero/` and referenced as a local path such as `/images/hero/filename.svg`.
+Edite `lib/data/hero.data.ts` para alterar imagem de fundo (`backgroundImage`) e textos.
+Imagens do hero ficam em `public/images/hero/`.
 
 ## Asset Strategy
 
-- Hero background now uses a dedicated local construction visual
-- This avoids unrelated remote photos and keeps the first fold visually stable
+- Prioriza asset local para estabilidade visual no first fold
+- Mantem compatibilidade com `next/image` e formatos modernos (AVIF/WebP quando aplicavel)

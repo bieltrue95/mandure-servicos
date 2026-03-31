@@ -5,8 +5,8 @@
 O componente `SiteHeader` implementa a navegação principal da landing page com
 comportamento responsivo:
 
-- Desktop (`lg` ou maior): links inline + CTA de orçamento
-- Mobile e tablet (`< lg`): drawer lateral com overlay, links e bloco de contato
+- Desktop (`lg` ou maior): links inline centralizados
+- Mobile e tablet (`< lg`): drawer lateral com overlay e links de navegacao
 
 ## Arquivos
 
@@ -18,11 +18,12 @@ comportamento responsivo:
 
 - Usa `NAV_ITEMS` de `lib/constants/routes.ts` para manter as âncoras
   centralizadas
-- Destaca o link ativo com `IntersectionObserver` conforme o scroll da página
+- Destaca o link ativo com scroll spy baseado em `scroll` + `requestAnimationFrame`
 - Fecha o drawer ao clicar em um link, ao pressionar `Esc`, ao clicar no overlay
   e ao voltar para viewport desktop
 - Bloqueia o scroll do `body` enquanto o drawer está aberto
-- Aplica visual dark theme com `backdrop-blur`, bordas suaves e CTA em bronze
+- Header fixo em tema claro (`bg-white/95`) com `backdrop-blur`
+- Mantem sincronizacao com `window.location.hash` e com a posicao atual da pagina
 
 ## Acessibilidade
 

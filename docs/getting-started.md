@@ -9,7 +9,7 @@
 ## Instalacao
 
 ```bash
-git clone https://github.com/seu-usuario/mandure-servicos.git
+git clone https://github.com/bieltrue95/mandure-servicos.git
 cd mandure-servicos
 npm install
 ```
@@ -22,30 +22,30 @@ npm run dev
 
 Acesse http://localhost:3000
 
-## Configuracao obrigatoria antes do deploy
+## Configuracao antes do deploy
 
-Edite `lib/constants/config.ts`:
+Copie `.env.example` para `.env.local` e personalize:
 
-```typescript
-export const PAGE_CONFIG: PageConfig = {
-  companyName: 'Mandure Servicos',        // Nome real
-  whatsappNumber: '5511999999999',         // WhatsApp real (somente digitos)
-  email: 'contato@mandureservicos.com.br', // E-mail real
-  phone: '(11) 9 9999-9999',              // Telefone real
-  address: 'Av. Paulista, 1000',          // Endereco real
-};
+```bash
+cp .env.example .env.local
 ```
 
-## Adicionar imagens reais
+Variaveis mais importantes:
 
-Substitua os placeholders em `public/images/`:
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_WHATSAPP_NUMBER`
+- `NEXT_PUBLIC_EMAIL`
 
-```
+## Adicionar/atualizar imagens
+
+Assets ficam em `public/images/`:
+
+```text
 public/images/
-├── hero/construction-hero.jpg    # Foto de obra (1920x1080+)
-├── projects/                     # 6 fotos de projetos (800x600)
-├── testimonials/                 # Fotos opcionais de clientes
-└── certifications/               # Logos (SVG preferivel)
+├── hero/                # Hero principal
+├── projects/            # Pastas por projeto (ex.: 01.svg ... 10.svg)
+├── logo/                # Variacoes da logo
+└── certifications/      # Logos e selos
 ```
 
 ## Scripts disponiveis
@@ -54,7 +54,8 @@ public/images/
 |--------|-----------|
 | `npm run dev` | Servidor de desenvolvimento |
 | `npm run build` | Build de producao |
+| `npm run start` | Run local do build standalone |
 | `npm run type-check` | Verificar tipos TypeScript |
 | `npm run lint` | ESLint |
 | `npm run format` | Prettier |
-| `npm run test:e2e` | Testes Playwright |
+| `npm run build:azure` | Build para Azure Static Web Apps (`out/`) |

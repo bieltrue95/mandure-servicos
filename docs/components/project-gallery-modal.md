@@ -28,9 +28,8 @@ The modal syncs the active state with the page URL using:
 - `?projeto=<project-slug>`
 - `&imagem=<image-src>`
 
-Examples:
+Example:
 
-- `?projeto=residencia-alto-da-lapa&imagem=https%3A%2F%2Fimages.unsplash.com%2Fphoto...`
 - `?projeto=residencia-alto-da-lapa&imagem=%2Fimages%2Fprojects%2Fresidencia-alto-lapa%2F01.svg`
 
 Project slugs are generated from the visible project title, and the active image
@@ -60,3 +59,4 @@ is shared using the exact `src` rendered in the modal.
 - Thumbnails are horizontally scrollable to stay usable on smaller screens
 - The modal is rendered outside the portfolio grid flow so it does not affect
   layout
+- On mobile, the details panel can be hidden/reopened with drag/gesture

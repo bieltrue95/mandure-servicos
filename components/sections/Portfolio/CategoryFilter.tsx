@@ -1,6 +1,6 @@
 'use client';
 
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ProjectCategory } from '@/lib/types';
 import type { CategoryFilterProps } from './Portfolio.types';
 
@@ -25,6 +25,12 @@ export function CategoryFilter({ activeCategory, onChange }: CategoryFilterProps
             </TabsTrigger>
           ))}
         </TabsList>
+
+        {CATEGORIES.map((category) => (
+          <TabsContent key={category} value={category} className="sr-only !mt-0">
+            Categoria ativa: {category}
+          </TabsContent>
+        ))}
       </Tabs>
     </div>
   );

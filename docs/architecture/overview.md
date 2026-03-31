@@ -2,52 +2,57 @@
 
 ## Stack
 
-- **Next.js 15** (App Router) — Framework React com SSR/SSG
-- **TypeScript strict** — Type safety em toda a aplicacao
-- **Tailwind CSS** — Utility-first CSS com design tokens
-- **Framer Motion** — Animacoes com GPU acceleration
-- **Radix UI** — Componentes acessiveis sem estilos
+- **Next.js 15** (App Router)
+- **React 18 + TypeScript strict**
+- **Tailwind CSS** com tokens centralizados
+- **Framer Motion** para interacoes e transicoes
+- **Radix UI** para primitives acessiveis
 
 ## Principios
 
-1. **Modularidade**: Barrel exports em cada modulo
-2. **Type Safety**: Interfaces e Enums para todos os dados
-3. **Colocacao**: Tipos junto com componentes que os usam
-4. **Separacao**: UI / Logica / Dados em camadas distintas
+1. **Modularidade**: barrel exports por dominio
+2. **Type Safety**: contratos em `lib/types`
+3. **Colocacao**: componente e tipos no mesmo modulo
+4. **Separacao de camadas**: dados, servicos, apresentacao
 
 ## Fluxo de Dados
 
+```text
+lib/data/ (conteudo tipado)
+  ↓
+app/page.tsx (Client Component compositor)
+  ↓
+components/sections/ (renderizacao)
+  ↘
+lib/services/ (geracao de URL e tracking opcional)
 ```
-lib/data/ (mock data)
-  ↓ tipado por
-lib/types/ (interfaces + enums)
-  ↓ processado por
-lib/services/ (WhatsAppService)
-  ↓ passado para
-app/page.tsx (Server Component)
-  ↓ renderiza
-components/sections/ (Client Components)
-```
+
+`lib/types` e `lib/constants` suportam todas as camadas com contratos e configuracoes.
 
 ## Server vs Client
 
-- `app/layout.tsx` → Server Component (metadata, JSON-LD)
-- `app/page.tsx` → Server Component (composicao das secoes)
-- `components/sections/*/` → Client Components (`'use client'`, Framer Motion)
-- `components/ui/` → Client/Server conforme necessario
+- `app/layout.tsx` → **Server Component** (metadata, JSON-LD, fonte, shell global)
+- `app/page.tsx` → **Client Component** (composicao + dynamic imports)
+- `components/sections/SiteHeader` → **Client** (drawer, scroll spy, eventos de viewport)
+- `components/sections/Footer` → **Server-compatible** (sem hooks/browser API)
+- `components/sections/*` (demais secoes) → majoritariamente **Client** por animacao/interacao
+- `components/ui/*` → misto (ex.: `tabs.tsx` client, `button.tsx` server-compatible)
 
 ## Design System
 
 Camadas de tokens em `styles/`:
-```
+
+```text
 styles/
 ├── themes/
-│   ├── colors.ts      # Paleta Bronze + Slate + Accent
-│   ├── typography.ts  # Fontes e tamanhos
-│   ├── spacing.ts     # Section/container spacing
-│   └── shadows.ts     # Sombras custom
+│   ├── colors.ts
+│   ├── typography.ts
+│   ├── spacing.ts
+│   └── shadows.ts
 └── tokens/
-    ├── breakpoints.ts # sm/md/lg/xl/2xl
-    ├── transitions.ts # Duration + easing curves
-    └── z-index.ts     # Layering semantico
+    ├── breakpoints.ts
+    ├── transitions.ts
+    └── z-index.ts
 ```
+
+`tailwind.config.ts` consome esses tokens para manter uma unica fonte de verdade visual.

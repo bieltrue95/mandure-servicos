@@ -1,21 +1,22 @@
 # Estrutura de Pastas
 
-```
+```text
 mandure-servicos/
 │
 ├── .github/workflows/      # GitHub Actions CI/CD
-│   ├── ci.yml              # Lint + type-check + build
-│   └── playwright.yml      # E2E tests
+│   ├── ci.yml              # Lint + type-check + format-check + build
+│   └── azure-static-web-apps-test.yml
 │
 ├── app/                    # Next.js App Router
 │   ├── layout.tsx          # Root layout + metadata
-│   ├── page.tsx            # Home (Server Component)
+│   ├── page.tsx            # Home (Client Component)
 │   ├── globals.css         # Tailwind + CSS vars
 │   ├── robots.ts           # SEO robots
 │   └── sitemap.ts          # Sitemap XML
 │
 ├── components/
-│   ├── sections/           # 9 page sections
+│   ├── sections/           # Seções da landing page
+│   │   ├── SiteHeader/     # Header fixo + drawer responsivo
 │   │   ├── Hero/           # .tsx + .types.ts + index.ts
 │   │   ├── Stats/          # + AnimatedCounter.tsx
 │   │   ├── Services/       # + ServiceCard.tsx
@@ -24,6 +25,7 @@ mandure-servicos/
 │   │   ├── Testimonials/   # + TestimonialCard.tsx
 │   │   ├── Certifications/
 │   │   ├── CTAFinal/
+│   │   ├── Footer/
 │   │   └── WhatsAppButton/
 │   └── ui/                 # Button, Badge, Card, Tabs
 │
@@ -44,8 +46,10 @@ mandure-servicos/
 │   ├── themes/             # colors, typography, spacing, shadows
 │   └── tokens/             # breakpoints, transitions, z-index
 │
-└── tests/
-    ├── e2e/                # Playwright specs
-    ├── fixtures/           # Test data
-    └── helpers/            # Utilities
+├── scripts/
+│   ├── build-azure.js      # Build para Azure Static Web Apps (export)
+│   └── performance-check.js
+│
+├── playwright-report/      # Artefatos de execucoes anteriores (quando existir)
+└── test-results/           # Artefatos de execucoes anteriores (quando existir)
 ```

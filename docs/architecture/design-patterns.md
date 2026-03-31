@@ -1,51 +1,58 @@
 # Design Patterns
 
-## 1. Barrel Exports
+## 1. Barrel Exports por modulo
 
-Cada modulo expoe via `index.ts`:
+Cada dominio expoe um `index.ts` para reduzir acoplamento com caminhos internos:
 
 ```typescript
-// components/sections/index.ts
-export * from './Hero';
-export * from './Stats';
-// ...
+// lib/services/index.ts
+export * from './whatsapp.service';
+export * from './analytics.service';
 
-// Uso em page.tsx
-import { Hero, Stats } from '@/components/sections';
+// uso
+import { WhatsAppService } from '@/lib/services';
 ```
 
-## 2. Component + Types Colocation
+## 2. Colocation de componente + tipos
 
-```
+Cada secao mantém implementacao e contrato no mesmo diretorio:
+
+```text
 Hero/
-├── Hero.tsx           # Implementacao
-├── Hero.types.ts      # Interface HeroProps
-└── index.ts           # export * from './Hero'
+├── Hero.tsx
+├── Hero.types.ts
+└── index.ts
 ```
 
-## 3. Static Service Classes
+## 3. Service Layer com classes estaticas
+
+Integracoes e utilitarios de dominio ficam em `lib/services/` sem necessidade de instancia:
 
 ```typescript
-// Sem instanciacao necessaria
-const url = WhatsAppService.generateUrl({ phone, message });
+const whatsappUrl = WhatsAppService.generateUrl();
+AnalyticsService.trackEvent('portfolio_filter', { category: 'Residencial' });
 ```
 
-## 4. Framer Motion Variants Centralizados
+## 4. Animacoes reutilizaveis centralizadas
+
+Variantes e configs compartilhadas ficam em `lib/constants/animations.ts`.
+Animacoes pequenas e locais (ex.: hover pontual) podem ficar inline no componente.
 
 ```typescript
-// De lib/constants/animations.ts
-import { FADE_IN_UP, STAGGER_CONTAINER } from '@/lib/constants/animations';
-
-// Nao definir inline no componente
-const variants = { hidden: {...}, visible: {...} }; // evitar
+import { FADE_IN_UP, GALLERY_STAGGER_CONTAINER } from '@/lib/constants/animations';
 ```
 
-## 5. Design Tokens via Tailwind
+## 5. Sincronizacao de estado com URL
 
-```typescript
-// tailwind.config.ts importa os tokens
-colors: { primary: { 500: '#b8876d' } }
+No portfolio, o estado do modal e da imagem ativa e sincronizado com query params:
 
-// Componentes usam classes Tailwind
-className="bg-primary-500 text-white hover:bg-primary-600"
+```text
+?projeto=<slug>&imagem=<src-da-imagem>
 ```
+
+Isso permite compartilhamento de link e restauracao de estado via `popstate`.
+
+## 6. Design tokens como fonte de verdade
+
+Tokens semanticos e primitivos ficam em `styles/themes/*` e `styles/tokens/*`,
+e sao injetados no Tailwind em `tailwind.config.ts`.

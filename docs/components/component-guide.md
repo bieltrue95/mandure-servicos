@@ -4,7 +4,7 @@
 
 Components follow a two-layer structure:
 
-```
+```text
 components/
 ├── ui/           # Primitive, reusable UI atoms
 │   ├── button.tsx
@@ -12,6 +12,7 @@ components/
 │   ├── card.tsx
 │   └── tabs.tsx
 └── sections/     # Page sections (feature components)
+    ├── SiteHeader/
     ├── Hero/
     ├── Stats/
     ├── Services/
@@ -20,6 +21,7 @@ components/
     ├── Testimonials/
     ├── Certifications/
     ├── CTAFinal/
+    ├── Footer/
     └── WhatsAppButton/
 ```
 
@@ -27,16 +29,16 @@ components/
 
 ### Client vs Server Components
 
-- Default to **Server Components** (no `'use client'`)
-- Add `'use client'` only when the component uses:
+- Prefer **Server Components** when possible
+- Add `'use client'` when the component uses:
   - React hooks (`useState`, `useEffect`, `useRef`, etc.)
   - Browser APIs
   - Framer Motion animations
-  - Event handlers that need client interactivity
+  - Interactions that depend on runtime client state
 
 ### File Structure per Section
 
-```
+```text
 SectionName/
 ├── SectionName.tsx        # Main component
 ├── SectionName.types.ts   # TypeScript interfaces/types
@@ -69,6 +71,7 @@ export function SectionName({ data, className }: SectionNameProps) {
 4. Add `index.ts` barrel export
 5. Export from `components/sections/index.ts`
 6. Import and render in `app/page.tsx`
+7. If the section must appear in the main nav/footer, update `lib/constants/routes.ts` (`NAV_ITEMS`)
 
 ## UI Components
 
@@ -84,8 +87,8 @@ import { Button } from '@/components/ui';
 </Button>;
 ```
 
-Available variants: `default`, `outline`, `ghost`, `secondary`, `whatsapp`,
-`destructive` Available sizes: `sm`, `default`, `lg`, `xl`, `icon`
+Available variants: `default`, `outline`, `ghost`, `secondary`, `whatsapp`, `destructive`  
+Available sizes: `sm`, `default`, `lg`, `xl`, `icon`
 
 ## Section Header Pattern
 

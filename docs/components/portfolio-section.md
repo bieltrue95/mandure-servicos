@@ -20,7 +20,7 @@ responsive modal gallery opened by clicking any project card.
 ## Filter Logic
 
 ```ts
-const filteredProjects =
+const filtered =
   activeCategory === ProjectCategory.TODOS
     ? projects
     : projects.filter((p) => p.category === activeCategory);
@@ -34,8 +34,8 @@ The modal state is also local to `Portfolio.tsx`:
 const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 ```
 
-When the category changes, the selected project is cleared so the UI never keeps
-an open modal for a project hidden by the current filter.
+When the category changes, both `selectedProject` and `selectedImageSrc` are
+cleared to avoid stale modal state.
 
 ## Animation
 
@@ -68,6 +68,9 @@ interface Project {
   tags?: string[];
 }
 ```
+
+No estado atual, cada projeto e criado com `createProjectGallery(...)`, que
+valida `10` imagens locais (`1` capa + `9` complementares).
 
 ## Gallery Rule
 
@@ -125,8 +128,8 @@ This keeps the modal stable and avoids depending only on remote sources.
 
 Defined in `lib/types/common.types.ts`:
 
-- `TODOS` - show all
-- `RESIDENCIAL`
-- `COMERCIAL`
-- `REFORMA`
-- `MANUTENCAO`
+- `TODOS` (`Todos`) - show all
+- `RESIDENCIAL` (`Residencial`)
+- `COMERCIAL` (`Comercial`)
+- `REFORMA` (`Reforma`)
+- `MANUTENCAO` (`Manutenção`)

@@ -3,7 +3,7 @@
 ## Objetivo
 
 O componente `Footer` fecha a landing page com um bloco institucional responsivo
-em dark theme.
+em tema claro com destaque para CTAs e contatos.
 
 - Reforça marca e posicionamento
 - Reaproveita as âncoras principais da home
@@ -22,7 +22,7 @@ em dark theme.
 - Usa `PAGE_CONFIG` e `SITE_CONFIG` para telefone, e-mail, endereço, redes e URL
   institucional
 - Gera o ano atual automaticamente para a faixa inferior
-- Mantém visual escuro com acentos em bronze e superfícies translúcidas
+- Mantem visual claro com cards, bordas suaves e acentos em bronze
 
 ## Acessibilidade
 
@@ -37,5 +37,4 @@ em dark theme.
   `lib/constants/config.ts`
 - Mudanças de âncoras da home devem continuar centralizadas em
   `lib/constants/routes.ts`
-- O componente pode permanecer server-side porque não depende de estado nem APIs
-  do navegador
+- O componente e server-compatible porque nao depende de estado nem APIs do navegador

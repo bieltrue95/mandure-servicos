@@ -71,7 +71,8 @@ git push origin fix/whatsapp-url-encoding
 
 - [ ] TypeScript compiles without errors (`npm run type-check`)
 - [ ] Lint passes (`npm run lint`)
-- [ ] E2E tests pass (`npm run test:e2e`)
+- [ ] Build passes (`npm run build`)
+- [ ] Formatting check passes (`npm run format:check`)
 - [ ] No console.log left in code
 - [ ] PR description explains the change and why
 

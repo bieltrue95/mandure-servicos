@@ -14,7 +14,7 @@ cp .env.example .env.local
 
 ## Variáveis disponíveis
 
-| Variável | Obrigatória | Descrição |
+| Variável | Recomendada | Descrição |
 |----------|-------------|-----------|
 | `NEXT_PUBLIC_COMPANY_NAME` | Não | Nome da empresa |
 | `NEXT_PUBLIC_COMPANY_TAGLINE` | Não | Slogan da empresa |
@@ -27,7 +27,7 @@ cp .env.example .env.local
 | `NEXT_PUBLIC_STATE` | Não | Estado (sigla) |
 | `NEXT_PUBLIC_INSTAGRAM` | Não | URL do Instagram |
 | `NEXT_PUBLIC_FACEBOOK` | Não | URL do Facebook |
-| `NEXT_PUBLIC_SITE_URL` | Sim | URL de produção do site |
+| `NEXT_PUBLIC_SITE_URL` | Sim | URL pública do site (usada em metadata/sitemap) |
 | `NEXT_PUBLIC_GA_ID` | Não | Google Analytics ID (G-XXXXXXXXXX) |
 
 ---

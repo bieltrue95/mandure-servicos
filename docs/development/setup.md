@@ -9,7 +9,7 @@
 ## Clone e Install
 
 ```bash
-git clone https://github.com/gabriel-santos/mandure-servicos.git
+git clone https://github.com/bieltrue95/mandure-servicos.git
 cd mandure-servicos
 npm install
 ```
@@ -33,8 +33,7 @@ Configurar `settings.json`:
 ## Variaveis de Ambiente
 
 ```bash
-# .env.local (opcional)
-NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+cp .env.example .env.local
 ```
 
 ## Verificar Setup
@@ -43,4 +42,5 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 npm run dev          # Deve abrir em localhost:3000
 npm run type-check   # Deve passar sem erros
 npm run lint         # Deve passar sem erros criticos
+npm run build        # Deve gerar .next sem erros
 ```

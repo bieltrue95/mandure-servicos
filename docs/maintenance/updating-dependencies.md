@@ -22,7 +22,6 @@ Fazer uma de cada vez, verificar changelog:
 # Exemplo: Next.js
 npm install next@latest
 npm run build
-npm run test:e2e
 ```
 
 ## Dependencias criticas
@@ -40,5 +39,5 @@ npm run test:e2e
 npm run type-check  # TypeScript OK?
 npm run lint        # ESLint OK?
 npm run build       # Build OK?
-npm run test:e2e    # Testes OK?
+npm run format:check # Formatacao OK?
 ```
