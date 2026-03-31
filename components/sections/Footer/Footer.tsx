@@ -63,7 +63,7 @@ export function Footer({ whatsappUrl, navigationItems = NAV_ITEMS }: FooterProps
       aria-label="Rodapé - Mandure Serviços"
     >
       {/* Camadas de fundo para manter o footer coerente com o visual dark premium da landing. */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(184,135,109,0.18),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.12),transparent_28%)]" />
+      <div className="absolute inset-0 bg-footer-radial" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-500/60 to-transparent" />
 
       <div className="container-max section-padding relative">
@@ -79,7 +79,7 @@ export function Footer({ whatsappUrl, navigationItems = NAV_ITEMS }: FooterProps
                 <Logo size="sm" />
               </span>
               <span>
-                <span className="block text-sm font-black uppercase tracking-[0.26em] text-slate-950">
+                <span className="block text-sm font-black uppercase tracking-caps-lg text-slate-950">
                   {PAGE_CONFIG.companyName}
                 </span>
                 <span className="block text-sm text-slate-500">{PAGE_CONFIG.companyTagline}</span>
@@ -111,7 +111,7 @@ export function Footer({ whatsappUrl, navigationItems = NAV_ITEMS }: FooterProps
 
           {/* Atalhos internos para reduzir atrito na navegação da home. */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-primary-300">
+            <p className="text-xs font-semibold uppercase tracking-caps-2xl text-primary-300">
               Navegação
             </p>
             <nav className="mt-5 flex flex-col gap-3" aria-label="Links rápidos do rodapé">
@@ -130,7 +130,7 @@ export function Footer({ whatsappUrl, navigationItems = NAV_ITEMS }: FooterProps
 
           {/* Coluna de contato com links clicáveis para telefone, e-mail, mapa e redes sociais. */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-primary-300">
+            <p className="text-xs font-semibold uppercase tracking-caps-2xl text-primary-300">
               Contato
             </p>
 
@@ -150,7 +150,7 @@ export function Footer({ whatsappUrl, navigationItems = NAV_ITEMS }: FooterProps
                       <Icon className="h-4 w-4" />
                     </span>
                     <span>
-                      <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                      <span className="block text-xs font-semibold uppercase tracking-caps-sm text-slate-500">
                         {item.label}
                       </span>
                       <span className="mt-1 block text-sm leading-relaxed text-slate-700">

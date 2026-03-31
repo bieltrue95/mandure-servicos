@@ -35,13 +35,7 @@ export function Hero({ whatsappUrl }: HeroProps) {
       </div>
 
       {/* Decorative background pattern */}
-      <div
-        className="absolute inset-0 z-0 opacity-10"
-        style={{
-          backgroundImage: `linear-gradient(rgba(184, 135, 109, 0.3) 1px, transparent 1px), linear-gradient(to right, rgba(184, 135, 109, 0.3) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
+      <div className="absolute inset-0 z-0 bg-hero-grid bg-grid-60 opacity-10" />
 
       {/* Content */}
       <div className="container-max section-padding relative z-10 text-center">
