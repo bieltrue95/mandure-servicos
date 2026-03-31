@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
-import { Calendar, MapPin, Maximize2, X } from 'lucide-react';
+import { Calendar, MapPin, Ruler, X } from 'lucide-react';
 import { getProjectGalleryImages, resolveProjectGalleryImageSrc } from './Portfolio.utils';
 import type { ProjectGalleryModalProps } from './Portfolio.types';
 
@@ -179,15 +179,15 @@ export function ProjectGalleryModal({
 
             {/* Linha 2: metadados */}
             <div className="mt-1 flex flex-wrap items-center gap-x-1 text-sm text-slate-500">
-              <MapPin className="h-3.5 w-3.5 text-primary-500" />
+              <MapPin aria-hidden="true" className="h-3.5 w-3.5 text-primary-500" />
               <span>{project.location}</span>
               <span className="mx-1.5 text-slate-300">·</span>
-              <Calendar className="h-3.5 w-3.5 text-primary-500" />
+              <Calendar aria-hidden="true" className="h-3.5 w-3.5 text-primary-500" />
               <span>{project.year}</span>
               {project.area && (
                 <>
                   <span className="mx-1.5 text-slate-300">·</span>
-                  <Maximize2 className="h-3.5 w-3.5 text-primary-500" />
+                  <Ruler aria-hidden="true" className="h-3.5 w-3.5 text-primary-500" />
                   <span>{project.area}</span>
                 </>
               )}
