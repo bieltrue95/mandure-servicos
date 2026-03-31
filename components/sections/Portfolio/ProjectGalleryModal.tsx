@@ -1,12 +1,18 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
+import { AnimatePresence, animate, motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
-import { Calendar, MapPin, Ruler, X } from 'lucide-react';
+import { Calendar, ChevronUp, MapPin, Ruler, X } from 'lucide-react';
 import { getProjectGalleryImages, resolveProjectGalleryImageSrc } from './Portfolio.utils';
 import type { ProjectGalleryModalProps } from './Portfolio.types';
+
+// Altura fixa do painel no mobile — suficiente para handle + título + meta + thumbnails
+const PANEL_HEIGHT_MOBILE = 168;
+const PANEL_HEIGHT_DESKTOP = 180;
+
+const SPRING = { type: 'spring', stiffness: 420, damping: 42 } as const;
 
 export function ProjectGalleryModal({
   project,
@@ -25,15 +31,39 @@ export function ProjectGalleryModal({
   const dragX = useMotionValue(0);
   const rotateY = useTransform(dragX, [-300, 0, 300], [2, 0, -2]);
 
-  const [isPanelExpanded, setIsPanelExpanded] = useState(false);
-  const [panelExpandDelta, setPanelExpandDelta] = useState(0);
+  // isMobile: calculado imediatamente no cliente para evitar flash
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth < 1024 : false,
+  );
 
   useEffect(() => {
-    const calc = () => setPanelExpandDelta(window.innerHeight * 0.45 - 180);
-    calc();
-    window.addEventListener('resize', calc);
-    return () => window.removeEventListener('resize', calc);
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
+
+  // panelY: motion value que controla a posição Y do painel no mobile.
+  // 0 = visível na base; PANEL_HEIGHT_MOBILE = deslizado para fora da tela.
+  const panelY = useMotionValue(0);
+  const [isPanelHidden, setIsPanelHidden] = useState(false);
+
+  // Reset quando sai do mobile (ex: resize para desktop)
+  useEffect(() => {
+    if (!isMobile) {
+      panelY.set(0);
+      setIsPanelHidden(false);
+    }
+  }, [isMobile, panelY]);
+
+  const showPanel = useCallback(() => {
+    animate(panelY, 0, SPRING);
+    setIsPanelHidden(false);
+  }, [panelY]);
+
+  const hidePanel = useCallback(() => {
+    animate(panelY, PANEL_HEIGHT_MOBILE, SPRING);
+    setIsPanelHidden(true);
+  }, [panelY]);
 
   const navigateToImage = useCallback(
     (src: string, dir: 1 | -1) => {
@@ -118,7 +148,9 @@ export function ProjectGalleryModal({
             <X className="h-5 w-5" />
           </button>
 
-          {/* Área da imagem com swipe */}
+          {/* Área da imagem
+              Mobile: flex-1 ocupa 100% do modal (painel overlay não consome espaço)
+              Desktop: flex-1 compartilha altura com o painel in-flow */}
           <div
             className="relative min-h-0 flex-1 overflow-hidden bg-slate-900"
             style={{ perspective: '1200px' }}
@@ -143,14 +175,6 @@ export function ProjectGalleryModal({
                 transition={{ duration: 0.2, ease: 'easeOut' }}
                 onDragEnd={(_, info) => {
                   const { offset, velocity } = info;
-
-                  // Fechar por swipe down (mobile)
-                  if (window.innerWidth < 1024 && velocity.y > 600) {
-                    onClose();
-                    return;
-                  }
-
-                  // Navegação horizontal
                   if (offset.x < -80 || velocity.x < -200) {
                     handleNext();
                   } else if (offset.x > 80 || velocity.x > 200) {
@@ -170,34 +194,60 @@ export function ProjectGalleryModal({
               </motion.div>
             </AnimatePresence>
 
+            {/* Botão para reexibir o painel — aparece quando oculto (mobile) */}
+            <AnimatePresence>
+              {isPanelHidden && isMobile && (
+                <motion.button
+                  type="button"
+                  aria-label="Exibir informações do projeto"
+                  className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-slate-950/60 px-4 py-2 text-xs font-medium text-white backdrop-blur-sm"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 6 }}
+                  onClick={showPanel}
+                >
+                  <ChevronUp className="h-3.5 w-3.5" />
+                  Informações
+                </motion.button>
+              )}
+            </AnimatePresence>
           </div>
 
-          {/* Faixa de informações */}
+          {/* Faixa de informações
+              Mobile : overlay absoluto fixo na base. Gesto pra baixo → oculta.
+              Desktop: in-flow abaixo da imagem, sem drag. */}
           <motion.div
-            className="shrink-0 overflow-hidden border-t border-slate-200 bg-white"
-            animate={{ height: isPanelExpanded ? '45vh' : '180px' }}
-            transition={{ type: 'spring', stiffness: 400, damping: 40 }}
-            drag="y"
-            dragConstraints={{ top: -panelExpandDelta, bottom: 0 }}
-            dragElastic={0.08}
+            className="
+              absolute bottom-0 left-0 right-0 z-10
+              overflow-hidden border-t border-slate-200
+              bg-white/95 backdrop-blur-md
+              lg:relative lg:bottom-auto lg:left-auto lg:right-auto lg:z-auto
+              lg:shrink-0 lg:bg-white lg:backdrop-blur-none
+            "
+            style={{
+              height: isMobile ? PANEL_HEIGHT_MOBILE : PANEL_HEIGHT_DESKTOP,
+              y: isMobile ? panelY : 0,
+              touchAction: 'none',
+            }}
+            drag={isMobile ? 'y' : false}
+            dragConstraints={{ top: 0, bottom: PANEL_HEIGHT_MOBILE }}
+            dragElastic={{ top: 0, bottom: 0.1 }}
+            dragMomentum={false}
             onDragEnd={(_, info) => {
-              if (info.offset.y < -60 || info.velocity.y < -300) {
-                setIsPanelExpanded(true);
+              if (info.offset.y > 60 || info.velocity.y > 350) {
+                hidePanel();
               } else {
-                setIsPanelExpanded(false);
+                // Volta para a posição original com spring
+                animate(panelY, 0, SPRING);
               }
             }}
-            style={{ touchAction: 'none' }}
           >
             {/* Handle de swipe — visível apenas no mobile */}
             <div className="flex justify-center pb-1 pt-2 lg:hidden">
               <div className="h-1 w-10 rounded-full bg-slate-300" />
             </div>
 
-            <div
-              className={`px-6 pb-4 ${isPanelExpanded ? 'overflow-y-auto' : 'overflow-hidden'}`}
-              style={{ maxHeight: isPanelExpanded ? 'calc(45vh - 20px)' : undefined }}
-            >
+            <div className="overflow-hidden px-6 pb-4">
               {/* Linha 1: badge + título + contador */}
               <div className="flex items-center justify-between gap-4">
                 <Badge variant="default">{project.category}</Badge>
@@ -242,7 +292,9 @@ export function ProjectGalleryModal({
                           ? 'border-primary-500 shadow-sm'
                           : 'border-transparent hover:border-slate-300'
                       }`}
-                      onClick={() => navigateToImage(image.src, index > safeActiveImageIndex ? 1 : -1)}
+                      onClick={() =>
+                        navigateToImage(image.src, index > safeActiveImageIndex ? 1 : -1)
+                      }
                     >
                       <Image
                         src={image.src}
@@ -256,9 +308,9 @@ export function ProjectGalleryModal({
                 </div>
               )}
 
-              {/* Linha 4: tags */}
+              {/* Linha 4: tags — visíveis apenas no desktop */}
               {project.tags && project.tags.length > 0 && (
-                <div className={`mt-2 flex flex-wrap gap-1.5 ${!isPanelExpanded ? 'lg:flex hidden' : 'flex'}`}>
+                <div className="mt-2 hidden flex-wrap gap-1.5 lg:flex">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
