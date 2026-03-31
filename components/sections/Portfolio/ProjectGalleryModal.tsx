@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { X } from 'lucide-react';
@@ -24,33 +24,35 @@ export function ProjectGalleryModal({
   const dragX = useMotionValue(0);
   const rotateY = useTransform(dragX, [-300, 0, 300], [2, 0, -2]);
 
+  const navigateToImage = useCallback(
+    (src: string, dir: 1 | -1) => {
+      setDirection(dir);
+      onImageChange(src);
+    },
+    [onImageChange],
+  );
+
+  const handlePrevious = useCallback(() => {
+    const prev =
+      galleryImages[(safeActiveImageIndex - 1 + galleryImages.length) % galleryImages.length];
+    navigateToImage(prev.src, -1);
+  }, [galleryImages, safeActiveImageIndex, navigateToImage]);
+
+  const handleNext = useCallback(() => {
+    const next = galleryImages[(safeActiveImageIndex + 1) % galleryImages.length];
+    navigateToImage(next.src, 1);
+  }, [galleryImages, safeActiveImageIndex, navigateToImage]);
+
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
 
     document.body.style.overflow = 'hidden';
 
-    // Teclado reutiliza a mesma troca por src para manter a URL e o estado visual sempre alinhados.
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose();
-      }
-
-      if (galleryImages.length <= 1) {
-        return;
-      }
-
-      if (event.key === 'ArrowRight') {
-        const nextImage = galleryImages[(safeActiveImageIndex + 1) % galleryImages.length];
-
-        onImageChange(nextImage.src);
-      }
-
-      if (event.key === 'ArrowLeft') {
-        const previousImage =
-          galleryImages[(safeActiveImageIndex - 1 + galleryImages.length) % galleryImages.length];
-
-        onImageChange(previousImage.src);
-      }
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { onClose(); return; }
+      if (galleryImages.length <= 1) return;
+      if (e.key === 'ArrowRight') handleNext();
+      if (e.key === 'ArrowLeft') handlePrevious();
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -59,23 +61,7 @@ export function ProjectGalleryModal({
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [galleryImages, onClose, onImageChange, safeActiveImageIndex]);
-
-  const navigateToImage = (src: string, dir: 1 | -1) => {
-    setDirection(dir);
-    onImageChange(src);
-  };
-
-  const handlePrevious = () => {
-    const prev =
-      galleryImages[(safeActiveImageIndex - 1 + galleryImages.length) % galleryImages.length];
-    navigateToImage(prev.src, -1);
-  };
-
-  const handleNext = () => {
-    const next = galleryImages[(safeActiveImageIndex + 1) % galleryImages.length];
-    navigateToImage(next.src, 1);
-  };
+  }, [galleryImages, safeActiveImageIndex, onClose, handleNext, handlePrevious]);
 
   return (
     <>
@@ -143,6 +129,14 @@ export function ProjectGalleryModal({
                 transition={{ duration: 0.2, ease: 'easeOut' }}
                 onDragEnd={(_, info) => {
                   const { offset, velocity } = info;
+
+                  // Fechar por swipe down (mobile)
+                  if (window.innerWidth < 1024 && velocity.y > 600) {
+                    onClose();
+                    return;
+                  }
+
+                  // Navegação horizontal
                   if (offset.x < -80 || velocity.x < -200) {
                     handleNext();
                   } else if (offset.x > 80 || velocity.x > 200) {
