@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useMemo } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useMemo, useState } from 'react';
+import { AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { X } from 'lucide-react';
 import { getProjectGalleryImages, resolveProjectGalleryImageSrc } from './Portfolio.utils';
@@ -19,6 +19,10 @@ export function ProjectGalleryModal({
   const activeImageIndex = galleryImages.findIndex((image) => image.src === resolvedImageSrc);
   const safeActiveImageIndex = activeImageIndex >= 0 ? activeImageIndex : 0;
   const activeImage = galleryImages[safeActiveImageIndex] ?? galleryImages[0];
+
+  const [direction, setDirection] = useState<1 | -1>(1);
+  const dragX = useMotionValue(0);
+  const rotateY = useTransform(dragX, [-300, 0, 300], [2, 0, -2]);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -57,17 +61,20 @@ export function ProjectGalleryModal({
     };
   }, [galleryImages, onClose, onImageChange, safeActiveImageIndex]);
 
-  const handlePreviousImage = () => {
-    const previousImage =
-      galleryImages[(safeActiveImageIndex - 1 + galleryImages.length) % galleryImages.length];
-
-    onImageChange(previousImage.src);
+  const navigateToImage = (src: string, dir: 1 | -1) => {
+    setDirection(dir);
+    onImageChange(src);
   };
 
-  const handleNextImage = () => {
-    const nextImage = galleryImages[(safeActiveImageIndex + 1) % galleryImages.length];
+  const handlePrevious = () => {
+    const prev =
+      galleryImages[(safeActiveImageIndex - 1 + galleryImages.length) % galleryImages.length];
+    navigateToImage(prev.src, -1);
+  };
 
-    onImageChange(nextImage.src);
+  const handleNext = () => {
+    const next = galleryImages[(safeActiveImageIndex + 1) % galleryImages.length];
+    navigateToImage(next.src, 1);
   };
 
   return (
@@ -111,16 +118,56 @@ export function ProjectGalleryModal({
             <X className="h-5 w-5" />
           </button>
 
-          {/* Área da imagem — ocupa todo espaço acima da faixa */}
-          <div className="relative min-h-0 flex-1 bg-slate-900">
-            <Image
-              src={activeImage.src}
-              alt={activeImage.alt}
-              fill
-              priority
-              sizes="(max-width: 1023px) 100vw, 80vw"
-              className="object-cover"
-            />
+          {/* Área da imagem com swipe */}
+          <div
+            className="relative min-h-0 flex-1 overflow-hidden bg-slate-900"
+            style={{ perspective: '1200px' }}
+          >
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={activeImage.src}
+                className="absolute inset-0"
+                drag={galleryImages.length > 1 ? 'x' : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                style={{ x: dragX, rotateY, touchAction: 'pan-y' }}
+                custom={direction}
+                variants={{
+                  enter: (dir: number) => ({ x: dir * 300, opacity: 0 }),
+                  center: { x: 0, opacity: 1, rotateY: 0 },
+                  exit: (dir: number) => ({ x: dir * -300, opacity: 0 }),
+                }}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                onDragEnd={(_, info) => {
+                  const { offset, velocity } = info;
+                  if (offset.x < -80 || velocity.x < -200) {
+                    handleNext();
+                  } else if (offset.x > 80 || velocity.x > 200) {
+                    handlePrevious();
+                  }
+                  dragX.set(0);
+                }}
+              >
+                <Image
+                  src={activeImage.src}
+                  alt={activeImage.alt}
+                  fill
+                  priority
+                  sizes="(max-width: 1023px) 100vw, 80vw"
+                  className="pointer-events-none object-cover"
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Contador de imagens */}
+            {galleryImages.length > 1 && (
+              <div className="absolute bottom-3 left-3 rounded-full bg-slate-950/70 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
+                {safeActiveImageIndex + 1} de {galleryImages.length}
+              </div>
+            )}
           </div>
 
           {/* Faixa de informações */}
