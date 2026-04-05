@@ -59,7 +59,7 @@ const nextConfig = {
 
 const sentryWebpackPluginOptions = {
   org: process.env.SENTRY_ORG || 'gabriel-db',
-  project: process.env.SENTRY_PROJECT || 'javascript-nextjs',
+  project: process.env.SENTRY_PROJECT || 'mandure-servicos',
   authToken: process.env.SENTRY_AUTH_TOKEN,
   silent: !process.env.CI,
   webpack: {

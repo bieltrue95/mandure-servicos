@@ -45,7 +45,7 @@ AZURE_TEST_SITE_URL
 AZURE_TEST_GA_ID   # opcional
 AZURE_TEST_SENTRY_DSN  # opcional
 SENTRY_ORG             # opcional (default: gabriel-db)
-SENTRY_PROJECT         # opcional (default: javascript-nextjs)
+SENTRY_PROJECT         # opcional (default: mandure-servicos)
 ```
 
 `AZURE_TEST_SITE_URL` deve conter a URL publica da app de teste, por exemplo:
