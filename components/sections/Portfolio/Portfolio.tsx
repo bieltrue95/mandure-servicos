@@ -102,11 +102,7 @@ export function Portfolio({ projects }: PortfolioProps) {
   }, [isUrlHydrated, selectedImageSrc, selectedProject]);
 
   return (
-    <section
-      id="projetos"
-      className="bg-slate-100"
-      aria-label="Portfolio - Mandure Serviços"
-    >
+    <section id="projetos" className="bg-slate-100" aria-label="Portfolio - Mandure Serviços">
       <div className="container-max section-padding">
         {/* Header */}
         <motion.div

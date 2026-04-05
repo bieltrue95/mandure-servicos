@@ -17,12 +17,14 @@ npm install
 ## Configurar Editor (VS Code)
 
 Instalar extensoes recomendadas:
+
 - Prettier - Code formatter
 - ESLint
 - Tailwind CSS IntelliSense
 - TypeScript + JavaScript
 
 Configurar `settings.json`:
+
 ```json
 {
   "editor.formatOnSave": true,

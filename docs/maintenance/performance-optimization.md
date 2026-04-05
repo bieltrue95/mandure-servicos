@@ -11,8 +11,7 @@
   sizes="(max-width: 768px) 100vw, 33vw" />
 ```
 
-Formatos suportados: AVIF (melhor), WebP, JPG
-Configurado em `next.config.js`.
+Formatos suportados: AVIF (melhor), WebP, JPG Configurado em `next.config.js`.
 
 ## Framer Motion
 
@@ -30,11 +29,11 @@ npm run build
 
 ## Core Web Vitals targets
 
-| Metrica | Meta | Como melhorar |
-|---------|------|---------------|
-| LCP | < 2.5s | `priority` no Hero image |
-| CLS | < 0.1 | Definir `width`/`height` nas imagens |
-| FID | < 100ms | Menos JS bloqueante |
+| Metrica | Meta    | Como melhorar                        |
+| ------- | ------- | ------------------------------------ |
+| LCP     | < 2.5s  | `priority` no Hero image             |
+| CLS     | < 0.1   | Definir `width`/`height` nas imagens |
+| FID     | < 100ms | Menos JS bloqueante                  |
 
 ## Lighthouse local
 

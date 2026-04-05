@@ -7,11 +7,7 @@ import type { TestimonialsProps } from './Testimonials.types';
 
 export function Testimonials({ testimonials }: TestimonialsProps) {
   return (
-    <section
-      id="depoimentos"
-      className="bg-slate-50"
-      aria-label="Depoimentos - Mandure Serviços"
-    >
+    <section id="depoimentos" className="bg-slate-50" aria-label="Depoimentos - Mandure Serviços">
       <div className="container-max section-padding">
         {/* Header */}
         <motion.div

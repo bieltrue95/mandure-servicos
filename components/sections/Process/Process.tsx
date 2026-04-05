@@ -7,11 +7,7 @@ import { ProcessStepCard } from './ProcessStepCard';
 
 export function Process({ steps }: ProcessProps) {
   return (
-    <section
-      id="processo"
-      className="bg-white"
-      aria-label="Processo - Mandure Serviços"
-    >
+    <section id="processo" className="bg-white" aria-label="Processo - Mandure Serviços">
       <div className="container-max section-padding">
         {/* Header */}
         <motion.div

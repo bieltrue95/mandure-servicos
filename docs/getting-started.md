@@ -50,12 +50,12 @@ public/images/
 
 ## Scripts disponiveis
 
-| Script | Descricao |
-|--------|-----------|
-| `npm run dev` | Servidor de desenvolvimento |
-| `npm run build` | Build de producao |
-| `npm run start` | Run local do build standalone |
-| `npm run type-check` | Verificar tipos TypeScript |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier |
+| Script                | Descricao                                 |
+| --------------------- | ----------------------------------------- |
+| `npm run dev`         | Servidor de desenvolvimento               |
+| `npm run build`       | Build de producao                         |
+| `npm run start`       | Run local do build standalone             |
+| `npm run type-check`  | Verificar tipos TypeScript                |
+| `npm run lint`        | ESLint                                    |
+| `npm run format`      | Prettier                                  |
 | `npm run build:azure` | Build para Azure Static Web Apps (`out/`) |

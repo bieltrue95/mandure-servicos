@@ -27,16 +27,21 @@ components/sections/ (renderizacao)
 lib/services/ (geracao de URL e tracking opcional)
 ```
 
-`lib/types` e `lib/constants` suportam todas as camadas com contratos e configuracoes.
+`lib/types` e `lib/constants` suportam todas as camadas com contratos e
+configuracoes.
 
 ## Server vs Client
 
-- `app/layout.tsx` → **Server Component** (metadata, JSON-LD, fonte, shell global)
+- `app/layout.tsx` → **Server Component** (metadata, JSON-LD, fonte, shell
+  global)
 - `app/page.tsx` → **Client Component** (composicao + dynamic imports)
-- `components/sections/SiteHeader` → **Client** (drawer, scroll spy, eventos de viewport)
+- `components/sections/SiteHeader` → **Client** (drawer, scroll spy, eventos de
+  viewport)
 - `components/sections/Footer` → **Server-compatible** (sem hooks/browser API)
-- `components/sections/*` (demais secoes) → majoritariamente **Client** por animacao/interacao
-- `components/ui/*` → misto (ex.: `tabs.tsx` client, `button.tsx` server-compatible)
+- `components/sections/*` (demais secoes) → majoritariamente **Client** por
+  animacao/interacao
+- `components/ui/*` → misto (ex.: `tabs.tsx` client, `button.tsx`
+  server-compatible)
 
 ## Design System
 
@@ -55,4 +60,5 @@ styles/
     └── z-index.ts
 ```
 
-`tailwind.config.ts` consome esses tokens para manter uma unica fonte de verdade visual.
+`tailwind.config.ts` consome esses tokens para manter uma unica fonte de verdade
+visual.

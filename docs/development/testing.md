@@ -42,7 +42,8 @@ Workflow: `.github/workflows/playwright.yml`
 
 ### PR/push no `develop`
 
-- roda automaticamente apenas em mudancas relevantes (app, components, lib, tests, config)
+- roda automaticamente apenas em mudancas relevantes (app, components, lib,
+  tests, config)
 - executa somente `@smoke` por padrao
 - publica artefatos (`playwright-report/` e `test-results/`)
 

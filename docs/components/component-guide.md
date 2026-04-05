@@ -71,7 +71,8 @@ export function SectionName({ data, className }: SectionNameProps) {
 4. Add `index.ts` barrel export
 5. Export from `components/sections/index.ts`
 6. Import and render in `app/page.tsx`
-7. If the section must appear in the main nav/footer, update `lib/constants/routes.ts` (`NAV_ITEMS`)
+7. If the section must appear in the main nav/footer, update
+   `lib/constants/routes.ts` (`NAV_ITEMS`)
 
 ## UI Components
 
@@ -87,7 +88,8 @@ import { Button } from '@/components/ui';
 </Button>;
 ```
 
-Available variants: `default`, `outline`, `ghost`, `secondary`, `whatsapp`, `destructive`  
+Available variants: `default`, `outline`, `ghost`, `secondary`, `whatsapp`,
+`destructive`  
 Available sizes: `sm`, `default`, `lg`, `xl`, `icon`
 
 ## Section Header Pattern

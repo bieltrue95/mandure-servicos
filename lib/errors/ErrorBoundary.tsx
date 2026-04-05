@@ -34,9 +34,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
 
       return (
         <div className="flex min-h-[200px] flex-col items-center justify-center p-8 text-center">
-          <h2 className="mb-2 text-xl font-semibold text-slate-800">
-            Algo deu errado
-          </h2>
+          <h2 className="mb-2 text-xl font-semibold text-slate-800">Algo deu errado</h2>
           <p className="text-slate-500">
             Por favor, recarregue a página ou entre em contato conosco.
           </p>

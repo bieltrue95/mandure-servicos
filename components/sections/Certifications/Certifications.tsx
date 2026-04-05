@@ -11,11 +11,7 @@ import type { CertificationsProps } from './Certifications.types';
 
 export function Certifications({ certifications }: CertificationsProps) {
   return (
-    <section
-      id="certificacoes"
-      className="bg-white"
-      aria-label="Certificações - Mandure Serviços"
-    >
+    <section id="certificacoes" className="bg-white" aria-label="Certificações - Mandure Serviços">
       <div className="container-max section-padding">
         {/* Header */}
         <motion.div
@@ -58,9 +54,7 @@ export function Certifications({ certifications }: CertificationsProps) {
                 </div>
               </div>
               {cert.description && (
-                <p className="max-w-64 text-base leading-7 text-slate-600">
-                  {cert.description}
-                </p>
+                <p className="max-w-64 text-base leading-7 text-slate-600">{cert.description}</p>
               )}
             </motion.div>
           ))}

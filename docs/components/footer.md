@@ -37,4 +37,5 @@ em tema claro com destaque para CTAs e contatos.
   `lib/constants/config.ts`
 - Mudanças de âncoras da home devem continuar centralizadas em
   `lib/constants/routes.ts`
-- O componente e server-compatible porque nao depende de estado nem APIs do navegador
+- O componente e server-compatible porque nao depende de estado nem APIs do
+  navegador
