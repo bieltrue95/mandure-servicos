@@ -2,56 +2,64 @@
 
 ## Estado atual
 
-No estado atual do repositorio **nao existe suite automatizada de testes**
-configurada em `package.json` (ex.: `test:e2e`, `test`, `vitest`, `jest`).
+O repositorio possui suite E2E com Playwright focada em smoke tests.
 
-Tambem nao existe pasta `tests/` versionada neste momento.
+Escopo inicial:
 
-Pastas como `playwright-report/` e `test-results/` podem aparecer como
-artefatos locais de execucoes anteriores, mas nao representam uma suite ativa
-no projeto hoje.
+- carregamento da home e secoes principais
+- navegacao por ancora em mobile e desktop
+- validacao dos links de WhatsApp
+- abertura/fechamento do modal de portfolio no desktop
 
-## Quality gate atual
+## Navegadores e estrategia mobile-first
 
-A validacao automatica principal acontece via:
+A configuracao do Playwright executa os testes nos projetos:
 
-- `npm run lint`
-- `npm run type-check`
-- `npm run format:check`
-- `npm run build`
+- `mobile-chromium`
+- `mobile-firefox`
+- `mobile-webkit`
+- `desktop-chromium`
+- `desktop-firefox`
+- `desktop-webkit`
 
-Esses checks tambem sao usados no workflow de CI (`.github/workflows/ci.yml`).
+Os cenarios priorizam mobile, com casos desktop dedicados para fluxos criticos.
 
-## Estrategia recomendada de QA manual
-
-### 1. Smoke local
-
-```bash
-npm run dev
-```
-
-Validar manualmente:
-
-- carregamento da home
-- navegacao por ancoras no `SiteHeader`
-- abertura do modal de portfolio
-- links de WhatsApp e contatos no footer
-
-### 2. Validacao de qualidade
+## Comandos locais
 
 ```bash
-npm run lint
-npm run type-check
-npm run build
+npm run test:e2e:install
+npm run test:e2e:smoke
+npm run test:e2e
 ```
 
-### 3. Revisao visual responsiva
+- `test:e2e:install`: instala browsers locais do Playwright
+- `test:e2e:smoke`: roda apenas testes com tag `@smoke`
+- `test:e2e`: roda a suite completa
 
-Conferir ao menos:
+## CI/CD no GitHub Actions
 
-- mobile (`< 768px`)
-- tablet (`>= 768px e < 1024px`)
-- desktop (`>= 1024px`)
+Workflow: `.github/workflows/playwright.yml`
+
+### PR/push no `develop`
+
+- roda automaticamente apenas em mudancas relevantes (app, components, lib, tests, config)
+- executa somente `@smoke` por padrao
+- publica artefatos (`playwright-report/` e `test-results/`)
+
+### Execucao manual
+
+Use `workflow_dispatch` com input `suite`:
+
+- `smoke` para validacao rapida
+- `full` para suite completa em todos os projetos
+
+## Como evitar pipeline lenta
+
+Para nao processar "uma eternidade" a cada alteracao:
+
+- smoke por padrao em PR/push
+- suite full sob demanda manual
+- gatilho por `paths` para nao rodar E2E em alteracao somente de documentacao
 
 ## Checklist antes de PR
 
@@ -59,13 +67,4 @@ Conferir ao menos:
 - `npm run type-check`
 - `npm run format:check`
 - `npm run build`
-- smoke manual de navegacao, portfolio e CTAs
-
-## Proximo passo sugerido (quando desejado)
-
-Se o time decidir retomar automacao, priorizar:
-
-1. smoke E2E da home
-2. fluxo do modal de portfolio
-3. validacao dos CTAs de WhatsApp
-4. checks basicos de SEO (metadata, sitemap, robots)
+- `npm run test:e2e:smoke`
