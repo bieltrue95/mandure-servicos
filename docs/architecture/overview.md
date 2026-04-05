@@ -62,3 +62,9 @@ styles/
 
 `tailwind.config.ts` consome esses tokens para manter uma unica fonte de verdade
 visual.
+
+## Diagrama Excalidraw
+
+Arquivo editavel com visao completa do projeto:
+
+- `docs/architecture/mandure-servicos-complete-diagram.excalidraw`
