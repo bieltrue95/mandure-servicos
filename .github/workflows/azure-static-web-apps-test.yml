@@ -23,6 +23,11 @@ jobs:
     env:
       NEXT_PUBLIC_SITE_URL: ${{ vars['AZURE_TEST_SITE_URL'] || '' }}
       NEXT_PUBLIC_GA_ID: ${{ vars['AZURE_TEST_GA_ID'] || '' }}
+      NEXT_PUBLIC_SENTRY_DSN: ${{ vars['AZURE_TEST_SENTRY_DSN'] || vars['NEXT_PUBLIC_SENTRY_DSN'] || '' }}
+      SENTRY_ENVIRONMENT: test
+      SENTRY_ORG: ${{ vars['SENTRY_ORG'] || 'gabriel-db' }}
+      SENTRY_PROJECT: ${{ vars['SENTRY_PROJECT'] || 'javascript-nextjs' }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       AZURE_DEPLOY_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_TEST }}
     steps:
       - name: Checkout repository

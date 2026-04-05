@@ -7,6 +7,7 @@
 - **Tailwind CSS** com tokens centralizados
 - **Framer Motion** para interacoes e transicoes
 - **Radix UI** para primitives acessiveis
+- **Sentry** para monitoramento de erros e tracing
 
 ## Principios
 
@@ -63,8 +64,16 @@ styles/
 `tailwind.config.ts` consome esses tokens para manter uma unica fonte de verdade
 visual.
 
-## Diagrama Excalidraw
+## Diagramas Excalidraw
 
-Arquivo editavel com visao completa do projeto:
+- `docs/architecture/mandure-servicos-complete-diagram.excalidraw` — visao geral
+  da arquitetura
+- `docs/architecture/project-complete-status.excalidraw` — diagrama com
+  checklist de status (implementado / parcial / pendente) — atualizado em
+  2026-04-05
 
-- `docs/architecture/mandure-servicos-complete-diagram.excalidraw`
+## Checklist de Status
+
+Auditoria completa com 55 itens tecnicos, evidencias e roadmap 30/60/90 dias:
+
+- `docs/architecture/project-checklist-status.md`
