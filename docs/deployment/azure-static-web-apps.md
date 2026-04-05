@@ -35,6 +35,7 @@ Adicionar os seguintes itens no repositorio:
 
 ```bash
 AZURE_STATIC_WEB_APPS_API_TOKEN_TEST
+SENTRY_AUTH_TOKEN            # opcional, para upload de sourcemaps
 ```
 
 ### Variables
@@ -42,6 +43,9 @@ AZURE_STATIC_WEB_APPS_API_TOKEN_TEST
 ```bash
 AZURE_TEST_SITE_URL
 AZURE_TEST_GA_ID   # opcional
+AZURE_TEST_SENTRY_DSN  # opcional
+SENTRY_ORG             # opcional (default: gabriel-db)
+SENTRY_PROJECT         # opcional (default: mandure-servicos)
 ```
 
 `AZURE_TEST_SITE_URL` deve conter a URL publica da app de teste, por exemplo:
@@ -105,6 +109,9 @@ No repositorio do GitHub:
    - `AZURE_STATIC_WEB_APPS_API_TOKEN_TEST`
 3. Em `Variables`, criar:
    - `AZURE_TEST_SITE_URL`
+   - `AZURE_TEST_SENTRY_DSN` (opcional)
+   - `SENTRY_ORG` (opcional)
+   - `SENTRY_PROJECT` (opcional)
 
 Valor sugerido para `AZURE_TEST_SITE_URL`:
 
@@ -125,6 +132,8 @@ Com isso:
 
 - `develop` publica a homologacao
 - PRs para `develop` geram preview environments temporarios
+- Se `SENTRY_AUTH_TOKEN` estiver configurado, sourcemaps tambem sao enviados
+  para o Sentry durante o build
 
 ### 5. Confirmar o deploy
 

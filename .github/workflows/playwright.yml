@@ -49,6 +49,10 @@ jobs:
               - 'package.json'
               - 'package-lock.json'
               - 'next.config.js'
+              - 'instrumentation.ts'
+              - 'instrumentation-client.ts'
+              - 'sentry.server.config.ts'
+              - 'sentry.edge.config.ts'
               - '.github/workflows/playwright.yml'
 
       - name: Skip E2E when no relevant files changed

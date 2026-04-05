@@ -1,3 +1,5 @@
+const { withSentryConfig } = require('@sentry/nextjs');
+
 /** @type {import('next').NextConfig} */
 const isStaticExport = process.env.NEXT_OUTPUT_MODE === 'export';
 
@@ -55,4 +57,19 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+const sentryWebpackPluginOptions = {
+  org: process.env.SENTRY_ORG || 'gabriel-db',
+  project: process.env.SENTRY_PROJECT || 'mandure-servicos',
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  silent: !process.env.CI,
+  webpack: {
+    treeshake: {
+      removeDebugLogging: true,
+    },
+  },
+  sourcemaps: {
+    disable: !process.env.SENTRY_AUTH_TOKEN,
+  },
+};
+
+module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
