@@ -42,9 +42,11 @@ Workflow: `.github/workflows/playwright.yml`
 
 ### PR/push no `develop`
 
-- roda automaticamente apenas em mudancas relevantes (app, components, lib,
-  tests, config)
+- roda automaticamente em todo push/PR para `develop`
+- detecta se houve mudanca relevante para E2E (app, components, lib, tests,
+  config)
 - executa somente `@smoke` por padrao
+- em PR docs-only, conclui o check `e2e` com sucesso sem rodar Playwright
 - publica artefatos (`playwright-report/` e `test-results/`)
 
 ### Execucao manual
@@ -60,7 +62,8 @@ Para nao processar "uma eternidade" a cada alteracao:
 
 - smoke por padrao em PR/push
 - suite full sob demanda manual
-- gatilho por `paths` para nao rodar E2E em alteracao somente de documentacao
+- detecao interna de paths para nao rodar E2E completo em alteracao somente de
+  documentacao
 
 ## Checklist antes de PR
 

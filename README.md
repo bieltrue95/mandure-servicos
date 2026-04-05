@@ -1327,8 +1327,10 @@ jobs:
 
 ### `playwright.yml` — E2E Tests
 
-Executado em push/PR para `develop` somente quando arquivos relevantes mudam
-(`app`, `components`, `lib`, `tests`, `playwright.config.ts`, etc.):
+Executado em todo push/PR para `develop`. No próprio job, os testes Playwright
+só rodam quando arquivos relevantes mudam (`app`, `components`, `lib`, `tests`,
+`playwright.config.ts`, etc.). Em PRs apenas de documentação, o check `e2e` é
+reportado como sucesso sem rodar a suíte.
 
 ```yaml
 jobs:
