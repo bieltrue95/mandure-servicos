@@ -76,6 +76,16 @@ git push origin fix/whatsapp-url-encoding
 - [ ] No console.log left in code
 - [ ] PR description explains the change and why
 
+## Branch Protection (`develop`)
+
+Current protection rules in GitHub:
+
+- Changes must go through Pull Request (direct push blocked)
+- Required status checks: `quality`, `build`, `e2e`
+- Required approvals: `0` (single-maintainer mode)
+- Stale reviews are dismissed on new commits
+- Conversation resolution is required before merge
+
 ## Release
 
 ```bash

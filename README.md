@@ -105,7 +105,7 @@ vitrine — com conversão para WhatsApp como objetivo central.
 | **Radix UI**              | latest | Componentes acessíveis (Tabs, Dialog, primitives)          |
 | **lucide-react**          | latest | Ícones SVG consistentes e tree-shakeable                   |
 | **clsx + tailwind-merge** | latest | Composição condicional de classes CSS                      |
-| **Playwright**            | 1.40   | Testes E2E em 5 browsers/dispositivos                      |
+| **Playwright**            | 1.59   | Testes E2E em 6 projetos (mobile + desktop)                |
 | **ESLint**                | latest | Linting com regras Next.js + TypeScript                    |
 | **Prettier**              | latest | Formatação de código consistente                           |
 | **Husky + lint-staged**   | latest | Pre-commit hooks de qualidade                              |
@@ -500,20 +500,21 @@ mandure-servicos/
 │   └── maintenance/                  # Troubleshooting e updates
 │
 ├── scripts/
-│   ├── run-full-tests.js             # Runner completo com relatório consolidado
+│   ├── build-azure.js                # Build estático para Azure Static Web Apps
 │   └── performance-check.js         # Benchmarking de performance
 │
 ├── .github/
 │   └── workflows/
-│       ├── ci.yml                    # Lint + type-check + build (quality gate)
-│       └── playwright.yml            # E2E tests em production build
+│       ├── ci.yml                    # Lint + type-check + format + build
+│       ├── azure-static-web-apps-test.yml # Deploy de homolog em develop
+│       └── playwright.yml            # E2E smoke automático + full manual
 │
 ├── Dockerfile                        # Build multi-stage (builder + runner)
 ├── docker-compose.yml                # Dev e prod environments
 ├── next.config.js                    # Otimizações Next.js
 ├── tailwind.config.ts                # Design system no Tailwind
 ├── tsconfig.json                     # TypeScript strict mode
-├── playwright.config.ts              # Configuração E2E (5 browsers)
+├── playwright.config.ts              # Configuração E2E (6 projetos: mobile + desktop)
 ├── .eslintrc.json
 ├── .prettierrc
 └── package.json
@@ -1134,37 +1135,30 @@ Configurar `settings.json`:
 ### Executar Testes
 
 ```bash
-# Todos os testes E2E (5 browsers)
+# Instalar browsers do Playwright
+npm run test:e2e:install
+
+# Smoke suite (rodada rápida, padrão no CI)
+npm run test:e2e:smoke
+
+# Suite completa (6 projetos: mobile + desktop)
 npm run test:e2e
 
 # Modo interativo com UI do Playwright
 npm run test:e2e:ui
 
-# Debug passo a passo
-npm run test:e2e:debug
-
-# Gerar novos testes com codegen
-npm run test:e2e:codegen
-
-# Ver relatório HTML dos últimos testes
-npm run test:e2e:report
-
-# Relatório consolidado completo
-npm run test:e2e:consolidated
+# Execução headed para depuração visual local
+npm run test:e2e:headed
 ```
 
 ### Suites de Teste
 
-| Arquivo                     | Cobertura                                             |
-| --------------------------- | ----------------------------------------------------- |
-| `home.spec.ts`              | Renderização completa da home, conteúdo de cada seção |
-| `navigation.spec.ts`        | Header, links de âncora, drawer mobile                |
-| `portfolio-filter.spec.ts`  | Filtros de categoria, contagem de cards               |
-| `portfolio-gallery.spec.ts` | Abertura de modal, navegação de fotos                 |
-| `whatsapp-cta.spec.ts`      | Todos os botões WhatsApp e links gerados              |
-| `footer.spec.ts`            | Conteúdo, links e informações do rodapé               |
-| `accessibility.spec.ts`     | WCAG 2.1 AA, ARIA, teclado navigation                 |
-| `performance.spec.ts`       | Core Web Vitals, Lighthouse score                     |
+| Arquivo                           | Cobertura                                                   |
+| --------------------------------- | ----------------------------------------------------------- |
+| `home.smoke.spec.ts`              | Renderização da home e seções essenciais                    |
+| `navigation.smoke.spec.ts`        | Navegação por âncora em mobile (drawer) e desktop (navbar)  |
+| `portfolio.desktop.smoke.spec.ts` | Abertura/fechamento de modal de projeto no desktop          |
+| `whatsapp.smoke.spec.ts`          | Validação de CTAs WhatsApp (hero, footer e botão flutuante) |
 
 ### Browsers Testados
 
@@ -1314,32 +1308,42 @@ FROM node:18-alpine AS runner
 
 ### `ci.yml` — Quality Gate (obrigatório)
 
-Executado em todo push e PR:
+Executado em push/PR para `develop`:
 
 ```yaml
 jobs:
   quality:
     steps:
       - npm ci
-      - npm run lint # ESLint
-      - npm run type-check # TypeScript
-      - npm run build # Build de produção
+      - npm run lint
+      - npm run type-check
+      - npm run format:check
+  build:
+    needs: quality
+    steps:
+      - npm ci
+      - npm run build
 ```
 
 ### `playwright.yml` — E2E Tests
 
-Executado após o quality gate passar:
+Executado em push/PR para `develop` somente quando arquivos relevantes mudam
+(`app`, `components`, `lib`, `tests`, `playwright.config.ts`, etc.):
 
 ```yaml
 jobs:
   e2e:
     steps:
       - npm ci
-      - npx playwright install
-      - npm run build # Testa sempre em produção build
-      - npm run test:e2e
-      - Upload artifacts (reports, videos)
+      - npx playwright install --with-deps
+      - npm run test:e2e:smoke # padrão em push/PR
+      - Upload artifacts (playwright-report, test-results)
 ```
+
+Execução manual (`workflow_dispatch`):
+
+- `suite=smoke` para validação rápida
+- `suite=full` para suíte completa em todos os projetos
 
 ---
 
