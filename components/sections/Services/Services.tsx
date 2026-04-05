@@ -7,11 +7,7 @@ import type { ServicesProps } from './Services.types';
 
 export function Services({ services, whatsappUrl }: ServicesProps) {
   return (
-    <section
-      id="servicos"
-      className="bg-slate-50"
-      aria-label="Serviços - Mandure Serviços"
-    >
+    <section id="servicos" className="bg-slate-50" aria-label="Serviços - Mandure Serviços">
       <div className="container-max section-padding">
         {/* Header */}
         <motion.div

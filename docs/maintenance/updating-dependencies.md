@@ -26,12 +26,12 @@ npm run build
 
 ## Dependencias criticas
 
-| Pacote | Risco | Notas |
-|--------|-------|-------|
-| `next` | Alto | Verificar breaking changes do App Router |
-| `framer-motion` | Medio | API relativamente estavel |
-| `tailwindcss` | Baixo | Raro ter breaking changes |
-| `typescript` | Baixo | Pode revelar novos erros |
+| Pacote          | Risco | Notas                                    |
+| --------------- | ----- | ---------------------------------------- |
+| `next`          | Alto  | Verificar breaking changes do App Router |
+| `framer-motion` | Medio | API relativamente estavel                |
+| `tailwindcss`   | Baixo | Raro ter breaking changes                |
+| `typescript`    | Baixo | Pode revelar novos erros                 |
 
 ## Apos atualizar
 

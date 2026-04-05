@@ -26,7 +26,8 @@ Hero/
 
 ## 3. Service Layer com classes estaticas
 
-Integracoes e utilitarios de dominio ficam em `lib/services/` sem necessidade de instancia:
+Integracoes e utilitarios de dominio ficam em `lib/services/` sem necessidade de
+instancia:
 
 ```typescript
 const whatsappUrl = WhatsAppService.generateUrl();
@@ -36,15 +37,20 @@ AnalyticsService.trackEvent('portfolio_filter', { category: 'Residencial' });
 ## 4. Animacoes reutilizaveis centralizadas
 
 Variantes e configs compartilhadas ficam em `lib/constants/animations.ts`.
-Animacoes pequenas e locais (ex.: hover pontual) podem ficar inline no componente.
+Animacoes pequenas e locais (ex.: hover pontual) podem ficar inline no
+componente.
 
 ```typescript
-import { FADE_IN_UP, GALLERY_STAGGER_CONTAINER } from '@/lib/constants/animations';
+import {
+  FADE_IN_UP,
+  GALLERY_STAGGER_CONTAINER,
+} from '@/lib/constants/animations';
 ```
 
 ## 5. Sincronizacao de estado com URL
 
-No portfolio, o estado do modal e da imagem ativa e sincronizado com query params:
+No portfolio, o estado do modal e da imagem ativa e sincronizado com query
+params:
 
 ```text
 ?projeto=<slug>&imagem=<src-da-imagem>
@@ -54,5 +60,5 @@ Isso permite compartilhamento de link e restauracao de estado via `popstate`.
 
 ## 6. Design tokens como fonte de verdade
 
-Tokens semanticos e primitivos ficam em `styles/themes/*` e `styles/tokens/*`,
-e sao injetados no Tailwind em `tailwind.config.ts`.
+Tokens semanticos e primitivos ficam em `styles/themes/*` e `styles/tokens/*`, e
+sao injetados no Tailwind em `tailwind.config.ts`.

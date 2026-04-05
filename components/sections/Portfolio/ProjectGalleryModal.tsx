@@ -33,7 +33,7 @@ export function ProjectGalleryModal({
 
   // isMobile: calculado imediatamente no cliente para evitar flash
   const [isMobile, setIsMobile] = useState(() =>
-    typeof window !== 'undefined' ? window.innerWidth < 1024 : false,
+    typeof window !== 'undefined' ? window.innerWidth < 1024 : false
   );
 
   useEffect(() => {
@@ -70,7 +70,7 @@ export function ProjectGalleryModal({
       setDirection(dir);
       onImageChange(src);
     },
-    [onImageChange],
+    [onImageChange]
   );
 
   const handlePrevious = useCallback(() => {
@@ -128,10 +128,10 @@ export function ProjectGalleryModal({
           aria-label={`Galeria do projeto ${project.title}`}
           data-testid="project-gallery-modal"
           className="
-            relative flex flex-col overflow-hidden bg-white
-            w-full h-full
-            lg:rounded-2xl lg:shadow-2xl lg:shadow-slate-950/30
+            relative flex h-full w-full flex-col
+            overflow-hidden bg-white
             lg:h-[calc(100dvh-3rem)] lg:max-h-[860px] lg:max-w-5xl
+            lg:rounded-2xl lg:shadow-2xl lg:shadow-slate-950/30
           "
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}

@@ -31,12 +31,12 @@ docker-compose down
 
 ## Dockerfile (Multi-stage)
 
-| Stage | Descricao |
-|-------|-----------|
-| `base` | Node 20 Alpine base |
-| `deps` | Instala dependencias |
-| `builder` | Build Next.js |
-| `runner` | Imagem minima de producao |
+| Stage     | Descricao                 |
+| --------- | ------------------------- |
+| `base`    | Node 20 Alpine base       |
+| `deps`    | Instala dependencias      |
+| `builder` | Build Next.js             |
+| `runner`  | Imagem minima de producao |
 
 Usuario nao-root (`nextjs:nodejs`) por seguranca.
 

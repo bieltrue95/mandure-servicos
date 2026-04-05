@@ -28,6 +28,7 @@ Cada PR gera um ambiente de preview automatico.
 ## Performance
 
 A Vercel otimiza automaticamente:
+
 - Edge Network (CDN global)
 - Image Optimization (AVIF/WebP)
 - Core Web Vitals monitoring

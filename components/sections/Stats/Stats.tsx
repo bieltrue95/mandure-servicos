@@ -7,11 +7,7 @@ import type { StatsProps } from './Stats.types';
 
 export function Stats({ stats }: StatsProps) {
   return (
-    <section
-      id="stats"
-      className="bg-slate-100"
-      aria-label="Estatísticas - Mandure Serviços"
-    >
+    <section id="stats" className="bg-slate-100" aria-label="Estatísticas - Mandure Serviços">
       <div className="container-max section-padding">
         <motion.div
           variants={STAGGER_CONTAINER}

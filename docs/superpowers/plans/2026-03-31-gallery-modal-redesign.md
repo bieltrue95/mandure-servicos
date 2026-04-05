@@ -1,12 +1,21 @@
 # Gallery Modal Redesign — Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use
+> superpowers:subagent-driven-development (recommended) or
+> superpowers:executing-plans to implement this plan task-by-task. Steps use
+> checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Redesenhar o `ProjectGalleryModal` para layout vertical imersivo — imagem domina o topo, faixa de informações compacta abaixo, navegação por swipe/drag sem setas visíveis.
+**Goal:** Redesenhar o `ProjectGalleryModal` para layout vertical imersivo —
+imagem domina o topo, faixa de informações compacta abaixo, navegação por
+swipe/drag sem setas visíveis.
 
-**Architecture:** O componente é reescrito inteiramente mantendo a mesma interface de props. A lógica de URL sync permanece no pai (`Portfolio.tsx`). O modal passa a usar `drag="x"` na imagem para navegação e `drag="y"` na faixa mobile para expandir/colapsar.
+**Architecture:** O componente é reescrito inteiramente mantendo a mesma
+interface de props. A lógica de URL sync permanece no pai (`Portfolio.tsx`). O
+modal passa a usar `drag="x"` na imagem para navegação e `drag="y"` na faixa
+mobile para expandir/colapsar.
 
-**Tech Stack:** Next.js 15, React, Framer Motion (`motion`, `AnimatePresence`, `useMotionValue`, `useTransform`), Tailwind CSS, TypeScript
+**Tech Stack:** Next.js 15, React, Framer Motion (`motion`, `AnimatePresence`,
+`useMotionValue`, `useTransform`), Tailwind CSS, TypeScript
 
 **Spec:** `docs/superpowers/specs/2026-03-30-gallery-modal-redesign.md`
 
@@ -14,25 +23,30 @@
 
 ## File Map
 
-| Arquivo | Ação |
-|---|---|
+| Arquivo                                                 | Ação               |
+| ------------------------------------------------------- | ------------------ |
 | `components/sections/Portfolio/ProjectGalleryModal.tsx` | Reescrita completa |
-| `components/sections/Portfolio/Portfolio.types.ts` | Sem mudança |
-| `components/sections/Portfolio/Portfolio.utils.ts` | Sem mudança |
-| `components/sections/Portfolio/Portfolio.tsx` | Sem mudança |
+| `components/sections/Portfolio/Portfolio.types.ts`      | Sem mudança        |
+| `components/sections/Portfolio/Portfolio.utils.ts`      | Sem mudança        |
+| `components/sections/Portfolio/Portfolio.tsx`           | Sem mudança        |
 
 ---
 
 ## Task 1: Estrutura base do modal (layout vertical)
 
-Substituir o layout horizontal atual (imagem esquerda / info direita) pelo layout vertical (imagem topo / faixa abaixo). Sem lógica de navegação ainda — apenas a estrutura HTML/CSS.
+Substituir o layout horizontal atual (imagem esquerda / info direita) pelo
+layout vertical (imagem topo / faixa abaixo). Sem lógica de navegação ainda —
+apenas a estrutura HTML/CSS.
 
 **Files:**
+
 - Modify: `components/sections/Portfolio/ProjectGalleryModal.tsx`
 
 - [ ] **1.1 — Substituir o JSX do modal**
 
-Substituir todo o conteúdo do `return` do componente pelo layout abaixo. Manter o backdrop e o `motion.div` externo existentes. Remover o `div` com `flex-row` atual e as duas colunas.
+Substituir todo o conteúdo do `return` do componente pelo layout abaixo. Manter
+o backdrop e o `motion.div` externo existentes. Remover o `div` com `flex-row`
+atual e as duas colunas.
 
 ```tsx
 return (
@@ -56,10 +70,10 @@ return (
         aria-label={`Galeria do projeto ${project.title}`}
         data-testid="project-gallery-modal"
         className="
-          relative flex flex-col overflow-hidden bg-white
-          w-full h-full
-          lg:rounded-2xl lg:shadow-2xl lg:shadow-slate-950/30
+          relative flex h-full w-full flex-col
+          overflow-hidden bg-white
           lg:h-[calc(100dvh-3rem)] lg:max-h-[860px] lg:max-w-5xl
+          lg:rounded-2xl lg:shadow-2xl lg:shadow-slate-950/30
         "
         initial={{ opacity: 0, scale: 0.97 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -100,13 +114,16 @@ return (
 
 - [ ] **1.2 — Remover imports não usados**
 
-Remover `ChevronLeft`, `ChevronRight`, `Calendar`, `MapPin`, `Maximize2` dos imports (serão readicionados nas tarefas seguintes). Manter `X`, `Image`, `motion`, `AnimatePresence`.
+Remover `ChevronLeft`, `ChevronRight`, `Calendar`, `MapPin`, `Maximize2` dos
+imports (serão readicionados nas tarefas seguintes). Manter `X`, `Image`,
+`motion`, `AnimatePresence`.
 
 - [ ] **1.3 — Verificar build**
 
 ```bash
 npm run build
 ```
+
 Esperado: build sem erros de TypeScript.
 
 - [ ] **1.4 — Commit**
@@ -120,9 +137,11 @@ git commit -m "refactor(modal): layout vertical base — imagem topo, faixa abai
 
 ## Task 2: Navegação por swipe/drag na imagem
 
-Adicionar `drag="x"` na imagem com `useMotionValue`, `useTransform`, `AnimatePresence` direcional e o helper `navigateToImage`.
+Adicionar `drag="x"` na imagem com `useMotionValue`, `useTransform`,
+`AnimatePresence` direcional e o helper `navigateToImage`.
 
 **Files:**
+
 - Modify: `components/sections/Portfolio/ProjectGalleryModal.tsx`
 
 - [ ] **2.1 — Adicionar estado e motion values**
@@ -135,7 +154,8 @@ const dragX = useMotionValue(0);
 const rotateY = useTransform(dragX, [-300, 0, 300], [2, 0, -2]);
 ```
 
-Adicionar ao imports do React: `useState`. Adicionar imports do Framer Motion: `useMotionValue`, `useTransform`.
+Adicionar ao imports do React: `useState`. Adicionar imports do Framer Motion:
+`useMotionValue`, `useTransform`.
 
 - [ ] **2.2 — Implementar helper navigateToImage**
 
@@ -147,7 +167,9 @@ const navigateToImage = (src: string, dir: 1 | -1) => {
 
 const handlePrevious = () => {
   const prev =
-    galleryImages[(safeActiveImageIndex - 1 + galleryImages.length) % galleryImages.length];
+    galleryImages[
+      (safeActiveImageIndex - 1 + galleryImages.length) % galleryImages.length
+    ];
   navigateToImage(prev.src, -1);
 };
 
@@ -159,10 +181,13 @@ const handleNext = () => {
 
 - [ ] **2.3 — Substituir a área da imagem por motion.div com drag**
 
-Substituir o `<div className="relative min-h-0 flex-1 bg-slate-900">` atual pelo bloco abaixo:
+Substituir o `<div className="relative min-h-0 flex-1 bg-slate-900">` atual pelo
+bloco abaixo:
 
 ```tsx
-{/* Área da imagem com swipe */}
+{
+  /* Área da imagem com swipe */
+}
 <div
   className="relative min-h-0 flex-1 overflow-hidden bg-slate-900"
   style={{ perspective: '1200px' }}
@@ -207,7 +232,7 @@ Substituir o `<div className="relative min-h-0 flex-1 bg-slate-900">` atual pelo
       {safeActiveImageIndex + 1} de {galleryImages.length}
     </div>
   )}
-</div>
+</div>;
 ```
 
 - [ ] **2.4 — Verificar build**
@@ -215,11 +240,13 @@ Substituir o `<div className="relative min-h-0 flex-1 bg-slate-900">` atual pelo
 ```bash
 npm run build
 ```
+
 Esperado: build sem erros.
 
 - [ ] **2.5 — Teste manual: swipe**
 
-Abrir o modal no browser. Arrastar a imagem para a esquerda — deve avançar para a próxima com slide direcional. Arrastar para a direita — deve voltar.
+Abrir o modal no browser. Arrastar a imagem para a esquerda — deve avançar para
+a próxima com slide direcional. Arrastar para a direita — deve voltar.
 
 - [ ] **2.6 — Commit**
 
@@ -232,9 +259,11 @@ git commit -m "feat(modal): swipe/drag direcional na imagem com AnimatePresence"
 
 ## Task 3: Teclado e fechar por swipe mobile
 
-Adicionar listeners de teclado (← → ESC) e fechar por swipe down com alta velocity no mobile.
+Adicionar listeners de teclado (← → ESC) e fechar por swipe down com alta
+velocity no mobile.
 
 **Files:**
+
 - Modify: `components/sections/Portfolio/ProjectGalleryModal.tsx`
 
 - [ ] **3.1 — Substituir o useEffect de teclado existente**
@@ -247,7 +276,10 @@ useEffect(() => {
   document.body.style.overflow = 'hidden';
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') { onClose(); return; }
+    if (e.key === 'Escape') {
+      onClose();
+      return;
+    }
     if (galleryImages.length <= 1) return;
     if (e.key === 'ArrowRight') handleNext();
     if (e.key === 'ArrowLeft') handlePrevious();
@@ -307,9 +339,11 @@ git commit -m "feat(modal): navegação por teclado e fechar por swipe down mobi
 
 ## Task 4: Faixa de informações — Desktop
 
-Substituir o placeholder `<p>{project.title}</p>` na faixa pelas 4 linhas completas para desktop.
+Substituir o placeholder `<p>{project.title}</p>` na faixa pelas 4 linhas
+completas para desktop.
 
 **Files:**
+
 - Modify: `components/sections/Portfolio/ProjectGalleryModal.tsx`
 
 - [ ] **4.1 — Readicionar imports necessários**
@@ -322,7 +356,9 @@ import { Calendar, MapPin, Maximize2, X } from 'lucide-react';
 - [ ] **4.2 — Substituir o conteúdo da faixa por 4 linhas**
 
 ```tsx
-{/* Faixa de informações */}
+{
+  /* Faixa de informações */
+}
 <div className="shrink-0 border-t border-slate-200 bg-white px-6 py-4">
   {/* Linha 1: badge + título + contador */}
   <div className="flex items-center justify-between gap-4">
@@ -368,7 +404,9 @@ import { Calendar, MapPin, Maximize2, X } from 'lucide-react';
               ? 'border-primary-500 shadow-sm'
               : 'border-transparent hover:border-slate-300'
           }`}
-          onClick={() => navigateToImage(image.src, index > safeActiveImageIndex ? 1 : -1)}
+          onClick={() =>
+            navigateToImage(image.src, index > safeActiveImageIndex ? 1 : -1)
+          }
         >
           <Image
             src={image.src}
@@ -395,12 +433,14 @@ import { Calendar, MapPin, Maximize2, X } from 'lucide-react';
       ))}
     </div>
   )}
-</div>
+</div>;
 ```
 
 - [ ] **4.3 — Remover o contador duplicado da área da imagem**
 
-Na Task 2 foi adicionado um contador sobre a imagem. Agora que a faixa tem o contador na linha 1, remover o `<div>` com "X de N" que está sobre a imagem (o `absolute bottom-3 left-3`).
+Na Task 2 foi adicionado um contador sobre a imagem. Agora que a faixa tem o
+contador na linha 1, remover o `<div>` com "X de N" que está sobre a imagem (o
+`absolute bottom-3 left-3`).
 
 - [ ] **4.4 — Verificar build**
 
@@ -410,7 +450,8 @@ npm run build
 
 - [ ] **4.5 — Teste visual desktop**
 
-Abrir modal em tela ≥ 1024px. Verificar: 4 linhas visíveis, thumbnail ativo com borda `primary-500`, tags aparecem.
+Abrir modal em tela ≥ 1024px. Verificar: 4 linhas visíveis, thumbnail ativo com
+borda `primary-500`, tags aparecem.
 
 - [ ] **4.6 — Commit**
 
@@ -423,9 +464,11 @@ git commit -m "feat(modal): faixa de informações desktop com 4 linhas"
 
 ## Task 5: Faixa de informações — Mobile colapsável
 
-Tornar a faixa colapsável no mobile com `drag="y"`, altura animada entre 180px e 45vh, handle de swipe visível e tags ocultas no estado colapsado.
+Tornar a faixa colapsável no mobile com `drag="y"`, altura animada entre 180px e
+45vh, handle de swipe visível e tags ocultas no estado colapsado.
 
 **Files:**
+
 - Modify: `components/sections/Portfolio/ProjectGalleryModal.tsx`
 
 - [ ] **5.1 — Adicionar estado e lógica do painel mobile**
@@ -468,28 +511,36 @@ Substituir o `<div className="shrink-0 ...">` da faixa por:
     <div className="h-1 w-10 rounded-full bg-slate-300" />
   </div>
 
-  <div className={`px-6 pb-4 ${isPanelExpanded ? 'overflow-y-auto' : 'overflow-hidden'}`}
-       style={{ maxHeight: isPanelExpanded ? 'calc(45vh - 20px)' : undefined }}>
+  <div
+    className={`px-6 pb-4 ${isPanelExpanded ? 'overflow-y-auto' : 'overflow-hidden'}`}
+    style={{ maxHeight: isPanelExpanded ? 'calc(45vh - 20px)' : undefined }}
+  >
     {/* ... conteúdo das 4 linhas da Task 4 ... */}
   </div>
 </motion.div>
 ```
 
-> **Importante:** O conteúdo interno (4 linhas) permanece idêntico ao da Task 4. Apenas o wrapper muda.
+> **Importante:** O conteúdo interno (4 linhas) permanece idêntico ao da Task 4.
+> Apenas o wrapper muda.
 
 - [ ] **5.3 — Ocultar tags no mobile quando colapsado**
 
 Na Linha 4 (tags), adicionar classe condicional:
 
 ```tsx
-{project.tags && project.tags.length > 0 && (
-  <div className={`mt-2 flex flex-wrap gap-1.5 ${!isPanelExpanded ? 'lg:flex hidden' : 'flex'}`}>
-    ...
-  </div>
-)}
+{
+  project.tags && project.tags.length > 0 && (
+    <div
+      className={`mt-2 flex flex-wrap gap-1.5 ${!isPanelExpanded ? 'hidden lg:flex' : 'flex'}`}
+    >
+      ...
+    </div>
+  );
+}
 ```
 
-Isso garante que as tags aparecem sempre no desktop (lg+) e apenas quando expandido no mobile.
+Isso garante que as tags aparecem sempre no desktop (lg+) e apenas quando
+expandido no mobile.
 
 - [ ] **5.4 — Verificar build**
 
@@ -500,6 +551,7 @@ npm run build
 - [ ] **5.5 — Teste manual mobile**
 
 Abrir DevTools → modo mobile (< 1024px). Verificar:
+
 - Faixa começa em 180px com handle visível
 - Arrastar para cima expande para ~45vh mostrando tags
 - Arrastar para baixo colapsa (não fecha o modal)
@@ -521,6 +573,7 @@ git commit -m "feat(modal): faixa mobile colapsável com drag e swipe up para ta
 ```bash
 npm run build
 ```
+
 Esperado: zero erros, zero warnings de TypeScript.
 
 - [ ] **6.2 — Checklist dos critérios de aceitação**

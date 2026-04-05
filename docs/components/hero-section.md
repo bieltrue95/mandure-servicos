@@ -5,7 +5,8 @@
 
 ## Overview
 
-Full-viewport hero with background image, gradient overlay, animated text, and two CTAs (WhatsApp + scroll indicator).
+Full-viewport hero with background image, gradient overlay, animated text, and
+two CTAs (WhatsApp + scroll indicator).
 
 ## Props
 
@@ -29,14 +30,16 @@ Conteudo visual e textual principal vem de `lib/data/hero.data.ts`.
 
 ## Animation
 
-Usa animacao inicial em `animate="visible"` para o bloco principal e loop infinito no indicador de scroll.
+Usa animacao inicial em `animate="visible"` para o bloco principal e loop
+infinito no indicador de scroll.
 
 ## Customization
 
-Edite `lib/data/hero.data.ts` para alterar imagem de fundo (`backgroundImage`) e textos.
-Imagens do hero ficam em `public/images/hero/`.
+Edite `lib/data/hero.data.ts` para alterar imagem de fundo (`backgroundImage`) e
+textos. Imagens do hero ficam em `public/images/hero/`.
 
 ## Asset Strategy
 
 - Prioriza asset local para estabilidade visual no first fold
-- Mantem compatibilidade com `next/image` e formatos modernos (AVIF/WebP quando aplicavel)
+- Mantem compatibilidade com `next/image` e formatos modernos (AVIF/WebP quando
+  aplicavel)
