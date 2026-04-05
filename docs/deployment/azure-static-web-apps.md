@@ -8,7 +8,6 @@ mantendo o fluxo GitFlow:
 ```
 feature/* -> pull request para develop -> preview environment
 develop   -> ambiente de teste/homologacao
-main      -> producao futura
 ```
 
 ## Estrategia adotada
@@ -172,8 +171,9 @@ No portal da Azure:
   `AZURE_TEST_SITE_URL`.
 - `metadata`, `robots.txt` e `sitemap.xml` passam a usar a URL do ambiente
   atual.
-- Para producao, o ideal e um segundo workflow apontando `main` para outra
-  Static Web App ou para outro ambiente dedicado.
+- Se no futuro houver ambiente de producao separado, criar um segundo workflow
+  para a branch de producao escolhida (por exemplo `main`) e outra Static Web
+  App/ambiente dedicado.
 
 ## Comandos uteis
 

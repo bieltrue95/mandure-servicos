@@ -1346,11 +1346,10 @@ jobs:
 ## 🌿 Git Flow
 
 ```
-main                    ← produção estável, tagged
-  └── develop           ← integração contínua
-      ├── feature/*     ← novas funcionalidades
-      ├── fix/*         ← correções de bugs
-      └── hotfix/*      ← correções urgentes em produção
+develop                 ← branch ativa e padrão
+  ├── feature/*         ← novas funcionalidades
+  ├── fix/*             ← correções de bugs
+  └── hotfix/*          ← correções urgentes
 ```
 
 ### Convenção de Commits
@@ -1382,11 +1381,11 @@ git commit -m "feat: adiciona seção de FAQ com animações"
 git push origin feature/nova-secao
 # Criar PR no GitHub → aguardar CI passar → merge
 
-# Release para main (quando develop estiver estável)
-git checkout main
-git merge develop --no-ff
+# Versionamento em develop (quando estiver estável)
+git checkout develop
+git pull origin develop
 git tag v1.1.0
-git push origin main --tags
+git push origin develop --tags
 ```
 
 ---

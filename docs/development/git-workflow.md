@@ -3,11 +3,11 @@
 ## Branch Strategy
 
 ```
-main          → production-ready code
-develop       → integration branch
+develop       → active/default integration branch
 feature/*     → new features
 fix/*         → bug fixes
 chore/*       → maintenance tasks
+hotfix/*      → urgent fixes
 ```
 
 ## Environment Mapping
@@ -15,7 +15,6 @@ chore/*       → maintenance tasks
 ```
 feature/* PR → preview environment on Azure Static Web Apps
 develop      → test / homolog environment on Azure Static Web Apps
-main         → reserved for production release
 ```
 
 ## Commit Convention
@@ -56,7 +55,8 @@ Azure preview environment for review.
 ### Bug Fix
 
 ```bash
-git checkout main
+git checkout develop
+git pull origin develop
 git checkout -b fix/whatsapp-url-encoding
 
 # ... fix bug, add test ...
@@ -64,7 +64,7 @@ git checkout -b fix/whatsapp-url-encoding
 git commit -m "fix: encode special chars in WhatsApp message"
 git push origin fix/whatsapp-url-encoding
 
-# Open PR to main (hotfix) or develop
+# Open PR to develop
 ```
 
 ## Pull Request Checklist
@@ -79,11 +79,12 @@ git push origin fix/whatsapp-url-encoding
 ## Release
 
 ```bash
-git checkout main
-git merge develop --no-ff
+git checkout develop
+git pull origin develop
 git tag -a v1.0.0 -m "Release v1.0.0"
-git push origin main --tags
+git push origin develop --tags
 ```
 
-After `develop` is merged into `main`, production can be published by a separate
-workflow or Azure app dedicated to production.
+`develop` is currently the only long-lived active branch. If a dedicated
+production branch is introduced in the future (for example `main`), this
+document must be updated with the release flow and CI/CD mapping.
