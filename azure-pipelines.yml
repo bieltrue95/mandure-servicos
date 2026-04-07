@@ -1,0 +1,148 @@
+trigger:
+  branches:
+    include:
+      - develop
+      - main
+
+pr:
+  autoCancel: true
+  branches:
+    include:
+      - develop
+      - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  NODE_VERSION: '20.x'
+  SENTRY_ORG: gabriel-db
+  SENTRY_PROJECT: mandure-servicos
+
+stages:
+  - stage: ci
+    displayName: CI
+    jobs:
+      - job: quality_and_build
+        displayName: Quality and Build
+        steps:
+          - checkout: self
+
+          - task: NodeTool@0
+            displayName: Use Node.js $(NODE_VERSION)
+            inputs:
+              versionSpec: $(NODE_VERSION)
+
+          - script: npm ci --no-audit --no-fund
+            displayName: Install dependencies
+
+          - script: npm run lint
+            displayName: Run ESLint
+
+          - script: npm run type-check
+            displayName: Run TypeScript type check
+
+          - script: npm run format:check
+            displayName: Check Prettier formatting
+
+          - script: npm run build
+            displayName: Build Next.js (standalone)
+
+          - script: npm run build:azure
+            displayName: Build Next.js static export (Azure)
+
+  - stage: deploy_test
+    displayName: Deploy Test (develop)
+    dependsOn: ci
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'), ne(variables['Build.Reason'], 'PullRequest'))
+    jobs:
+      - job: deploy_test_job
+        displayName: Build and deploy test environment
+        steps:
+          - checkout: self
+
+          - task: NodeTool@0
+            displayName: Use Node.js $(NODE_VERSION)
+            inputs:
+              versionSpec: $(NODE_VERSION)
+
+          - script: npm ci --no-audit --no-fund
+            displayName: Install dependencies
+
+          - bash: |
+              export NEXT_PUBLIC_SENTRY_DSN="${AZURE_TEST_SENTRY_DSN:-${NEXT_PUBLIC_SENTRY_DSN:-}}"
+              npm run build:azure
+            displayName: Build static export for test
+            env:
+              NEXT_PUBLIC_SITE_URL: $(AZURE_TEST_SITE_URL)
+              NEXT_PUBLIC_GA_ID: $(AZURE_TEST_GA_ID)
+              AZURE_TEST_SENTRY_DSN: $(AZURE_TEST_SENTRY_DSN)
+              NEXT_PUBLIC_SENTRY_DSN: $(NEXT_PUBLIC_SENTRY_DSN)
+              SENTRY_ENVIRONMENT: test
+              SENTRY_ORG: $(SENTRY_ORG)
+              SENTRY_PROJECT: $(SENTRY_PROJECT)
+              SENTRY_AUTH_TOKEN: $(SENTRY_AUTH_TOKEN)
+
+          - script: echo "##vso[task.logissue type=warning]AZURE_STATIC_WEB_APPS_API_TOKEN_TEST is not set. Skipping deployment."
+            displayName: Skip deploy when test token is missing
+            condition: eq(variables['AZURE_STATIC_WEB_APPS_API_TOKEN_TEST'], '')
+
+          - task: AzureStaticWebApp@0
+            displayName: Deploy test environment to Azure Static Web Apps
+            condition: ne(variables['AZURE_STATIC_WEB_APPS_API_TOKEN_TEST'], '')
+            inputs:
+              app_location: out
+              output_location: ''
+              skip_app_build: true
+              skip_api_build: true
+              is_static_export: true
+              azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN_TEST)
+              production_branch: develop
+
+  - stage: deploy_prod
+    displayName: Deploy Production (main)
+    dependsOn: ci
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'), ne(variables['Build.Reason'], 'PullRequest'))
+    jobs:
+      - job: deploy_prod_job
+        displayName: Build and deploy production environment
+        steps:
+          - checkout: self
+
+          - task: NodeTool@0
+            displayName: Use Node.js $(NODE_VERSION)
+            inputs:
+              versionSpec: $(NODE_VERSION)
+
+          - script: npm ci --no-audit --no-fund
+            displayName: Install dependencies
+
+          - bash: |
+              export NEXT_PUBLIC_SENTRY_DSN="${AZURE_PROD_SENTRY_DSN:-${NEXT_PUBLIC_SENTRY_DSN:-}}"
+              npm run build:azure
+            displayName: Build static export for production
+            env:
+              NEXT_PUBLIC_SITE_URL: $(AZURE_PROD_SITE_URL)
+              NEXT_PUBLIC_GA_ID: $(AZURE_PROD_GA_ID)
+              AZURE_PROD_SENTRY_DSN: $(AZURE_PROD_SENTRY_DSN)
+              NEXT_PUBLIC_SENTRY_DSN: $(NEXT_PUBLIC_SENTRY_DSN)
+              SENTRY_ENVIRONMENT: production
+              SENTRY_ORG: $(SENTRY_ORG)
+              SENTRY_PROJECT: $(SENTRY_PROJECT)
+              SENTRY_AUTH_TOKEN: $(SENTRY_AUTH_TOKEN)
+
+          - script: echo "##vso[task.logissue type=warning]AZURE_STATIC_WEB_APPS_API_TOKEN_PROD is not set. Skipping deployment."
+            displayName: Skip deploy when prod token is missing
+            condition: eq(variables['AZURE_STATIC_WEB_APPS_API_TOKEN_PROD'], '')
+
+          - task: AzureStaticWebApp@0
+            displayName: Deploy production environment to Azure Static Web Apps
+            condition: ne(variables['AZURE_STATIC_WEB_APPS_API_TOKEN_PROD'], '')
+            inputs:
+              app_location: out
+              output_location: ''
+              skip_app_build: true
+              skip_api_build: true
+              is_static_export: true
+              azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN_PROD)
+              production_branch: main
