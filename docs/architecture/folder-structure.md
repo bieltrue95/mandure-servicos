@@ -5,7 +5,9 @@ mandure-servicos/
 │
 ├── .github/workflows/      # GitHub Actions CI/CD
 │   ├── ci.yml              # Lint + type-check + format-check + build
-│   └── azure-static-web-apps-test.yml
+│   ├── playwright.yml      # E2E smoke (auto) + full (manual)
+│   ├── azure-static-web-apps-test.yml  # Deploy homolog + preview PR
+│   └── azure-static-web-apps-prod.yml  # Deploy producao (main)
 │
 ├── app/                    # Next.js App Router
 │   ├── layout.tsx          # Root layout + metadata

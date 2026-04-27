@@ -506,8 +506,9 @@ mandure-servicos/
 ├── .github/
 │   └── workflows/
 │       ├── ci.yml                    # Lint + type-check + format + build
-│       ├── azure-static-web-apps-test.yml # Deploy de homolog em develop
-│       └── playwright.yml            # E2E smoke automático + full manual
+│       ├── playwright.yml            # E2E smoke automático + full manual
+│       ├── azure-static-web-apps-test.yml # Deploy de homolog em develop + preview PR
+│       └── azure-static-web-apps-prod.yml # Deploy de produção em main
 │
 ├── Dockerfile                        # Build multi-stage (builder + runner)
 ├── docker-compose.yml                # Dev e prod environments
@@ -1346,6 +1347,25 @@ Execução manual (`workflow_dispatch`):
 
 - `suite=smoke` para validação rápida
 - `suite=full` para suíte completa em todos os projetos
+
+#### `azure-static-web-apps-test.yml` — Homologação
+
+- Gatilhos: `push` em `develop`, `pull_request` para `develop` (inclui evento
+  `closed`) e `workflow_dispatch`
+- Build com `npm run build:azure`
+- Deploy de homologação no Azure Static Web Apps (plano gratuito)
+- Fecha automaticamente preview environment quando o PR é encerrado
+
+#### `azure-static-web-apps-prod.yml` — Produção
+
+- Gatilhos: `push` em `main` e `workflow_dispatch`
+- Build com `npm run build:azure`
+- Deploy de produção no Azure Static Web Apps (plano gratuito)
+
+#### Observação
+
+- Apenas os workflows `azure-static-web-apps-test.yml` e
+  `azure-static-web-apps-prod.yml` devem ficar ativos para deploy Azure SWA.
 
 ---
 

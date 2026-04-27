@@ -180,9 +180,9 @@ No portal da Azure:
   `AZURE_TEST_SITE_URL`.
 - `metadata`, `robots.txt` e `sitemap.xml` passam a usar a URL do ambiente
   atual.
-- Se no futuro houver ambiente de producao separado, criar um segundo workflow
-  para a branch de producao escolhida (por exemplo `main`) e outra Static Web
-  App/ambiente dedicado.
+- Mantenha somente os workflows de deploy ativos:
+  `.github/workflows/azure-static-web-apps-test.yml` e
+  `.github/workflows/azure-static-web-apps-prod.yml`.
 
 ## Comandos uteis
 
