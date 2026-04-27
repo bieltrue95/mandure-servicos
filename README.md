@@ -1384,6 +1384,25 @@ Hospedagem atual dos ambientes:
 - Apenas os workflows `azure-static-web-apps-test.yml` e
   `azure-static-web-apps-prod.yml` devem ficar ativos para deploy Azure SWA.
 
+#### `azure-static-web-apps-test.yml` — Homologação
+
+- Gatilhos: `push` em `develop`, `pull_request` para `develop` (inclui evento
+  `closed`) e `workflow_dispatch`
+- Build com `npm run build:azure`
+- Deploy de homologação no Azure Static Web Apps (plano gratuito)
+- Fecha automaticamente preview environment quando o PR é encerrado
+
+#### `azure-static-web-apps-prod.yml` — Produção
+
+- Gatilhos: `push` em `main` e `workflow_dispatch`
+- Build com `npm run build:azure`
+- Deploy de produção no Azure Static Web Apps (plano gratuito)
+
+#### Observação
+
+- Apenas os workflows `azure-static-web-apps-test.yml` e
+  `azure-static-web-apps-prod.yml` devem ficar ativos para deploy Azure SWA.
+
 ---
 
 ## 🌿 Git Flow
