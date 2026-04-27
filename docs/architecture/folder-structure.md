@@ -7,8 +7,7 @@ mandure-servicos/
 │   ├── ci.yml              # Lint + type-check + format-check + build
 │   ├── playwright.yml      # E2E smoke (auto) + full (manual)
 │   ├── azure-static-web-apps-test.yml  # Deploy homolog + preview PR
-│   ├── azure-static-web-apps-prod.yml  # Deploy producao (main)
-│   └── azure-static-web-apps-witty-beach-0e91aae1e.yml  # Legado Azure auto-gerado
+│   └── azure-static-web-apps-prod.yml  # Deploy producao (main)
 │
 ├── app/                    # Next.js App Router
 │   ├── layout.tsx          # Root layout + metadata
