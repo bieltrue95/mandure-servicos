@@ -519,8 +519,7 @@ mandure-servicos/
 │       ├── ci.yml                    # Lint + type-check + format + build
 │       ├── playwright.yml            # E2E smoke automático + full manual
 │       ├── azure-static-web-apps-test.yml # Deploy de homolog em develop + preview PR
-│       ├── azure-static-web-apps-prod.yml # Deploy de produção em main
-│       └── azure-static-web-apps-witty-beach-0e91aae1e.yml # Workflow legado Azure
+│       └── azure-static-web-apps-prod.yml # Deploy de produção em main
 │
 ├── Dockerfile                        # Build multi-stage (builder + runner)
 ├── docker-compose.yml                # Dev e prod environments
@@ -1363,9 +1362,8 @@ Hospedagem atual dos ambientes:
 
 #### Observação
 
-- O arquivo `azure-static-web-apps-witty-beach-0e91aae1e.yml` é legado
-  (auto-gerado pela Azure) e pode causar deploy duplicado em `main` se ficar
-  habilitado.
+- Apenas os workflows `azure-static-web-apps-test.yml` e
+  `azure-static-web-apps-prod.yml` devem ficar ativos para deploy Azure SWA.
 
 ---
 

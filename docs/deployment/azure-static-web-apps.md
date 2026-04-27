@@ -237,9 +237,9 @@ No portal da Azure:
   `AZURE_TEST_SITE_URL` (homolog) ou `AZURE_PROD_SITE_URL` (producao).
 - `metadata`, `robots.txt` e `sitemap.xml` passam a usar a URL do ambiente
   atual.
-- O arquivo `.github/workflows/azure-static-web-apps-witty-beach-0e91aae1e.yml`
-  e um workflow legado (gerado automaticamente pela Azure) e pode causar deploy
-  duplicado em `main` se permanecer habilitado.
+- Mantenha somente os workflows de deploy ativos:
+  `.github/workflows/azure-static-web-apps-test.yml` e
+  `.github/workflows/azure-static-web-apps-prod.yml`.
 
 ## Comandos uteis
 
