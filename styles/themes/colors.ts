@@ -6,20 +6,20 @@
  */
 
 export const colors = {
-  // Primary: Esmeralda (CTAs, acentos, hover states)
-  // Centrado em #10b981 — contraste alto para testes visuais em homolog
+  // Primary: Terracota (CTAs, acentos, hover states)
+  // Centrado em #c2410c — vermelho-laranja queimado, arquitetura, sofisticação
   primary: {
-    50: '#ecfdf5',
-    100: '#d1fae5',
-    200: '#a7f3d0',
-    300: '#6ee7b7',
-    400: '#34d399',
-    500: '#10b981',
-    600: '#059669',
-    700: '#047857',
-    800: '#065f46',
-    900: '#064e3b',
-    950: '#022c22',
+    50: '#fef4ef',
+    100: '#fce4d4',
+    200: '#f9c4a3',
+    300: '#f49e6e',
+    400: '#ec7440',
+    500: '#c2410c',
+    600: '#a13409',
+    700: '#822907',
+    800: '#641f05',
+    900: '#461504',
+    950: '#280c02',
   },
 
   // Secondary: Slate (backgrounds, cards, estrutura)
@@ -95,13 +95,13 @@ export const colors = {
 export const gradients = {
   'hero-gradient': 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
   'hero-overlay': 'linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.9))',
-  'primary-shimmer': 'linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%)',
+  'primary-shimmer': 'linear-gradient(135deg, #c2410c 0%, #a13409 50%, #822907 100%)',
   'slate-to-blue': 'linear-gradient(135deg, #334155 0%, #2563eb 100%)',
-  'card-hover-gradient': 'linear-gradient(to top, rgba(16, 185, 129, 0.1), transparent)',
+  'card-hover-gradient': 'linear-gradient(to top, rgba(194, 65, 12, 0.1), transparent)',
   'hero-grid':
-    'linear-gradient(rgba(16, 185, 129, 0.3) 1px, transparent 1px), linear-gradient(to right, rgba(16, 185, 129, 0.3) 1px, transparent 1px)',
+    'linear-gradient(rgba(194, 65, 12, 0.3) 1px, transparent 1px), linear-gradient(to right, rgba(194, 65, 12, 0.3) 1px, transparent 1px)',
   'footer-radial':
-    'radial-gradient(circle at top left, rgba(16, 185, 129, 0.18), transparent 30%), radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12), transparent 28%)',
+    'radial-gradient(circle at top left, rgba(194, 65, 12, 0.18), transparent 30%), radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12), transparent 28%)',
 } as const;
 
 export type Colors = typeof colors;
