@@ -1,14 +1,20 @@
-# Deploy de Teste na Azure Static Web Apps
+# Deploy na Azure Static Web Apps (Teste e Producao)
 
 ## Objetivo
 
-Publicar a branch `develop` como ambiente de teste/homologacao na Azure,
-mantendo o fluxo GitFlow:
+Publicar as branches `develop` (teste/homologacao) e `main` (producao) na
+Azure Static Web Apps, mantendo o fluxo GitFlow:
 
 ```
 feature/* -> pull request para develop -> preview environment
 develop   -> ambiente de teste/homologacao
+main      -> ambiente de producao
 ```
+
+Ambientes hospedados atualmente no Azure Static Web Apps (plano Free):
+
+- Producao: `https://www.mandureservicos.com.br`
+- Teste/Homologacao: `https://gray-grass-0c073cb1e.2.azurestaticapps.net/`
 
 ## Estrategia adotada
 
@@ -16,16 +22,36 @@ develop   -> ambiente de teste/homologacao
   Node.js.
 - O deploy da Azure usa um build especifico com `NEXT_OUTPUT_MODE=export`.
 - O workflow `.github/workflows/azure-static-web-apps-test.yml`:
-  - faz lint e type-check
+  - instala dependencias e gera `out/` com `npm run build:azure`
+  - publica homologacao para `develop`
+  - publica preview por PR em `develop`
+  - fecha preview automaticamente quando o PR e encerrado
+- O workflow `.github/workflows/azure-static-web-apps-prod.yml`:
   - gera `out/` com `npm run build:azure`
-  - publica o artefato na Azure Static Web Apps
-  - fecha previews automaticamente quando o PR para `develop` e encerrado
+  - publica producao para `main`
+
+## Workflows ativos
+
+- `.github/workflows/ci.yml`
+  - quality gate (lint, type-check, format-check) + build
+  - executa em push/PR para `develop`
+- `.github/workflows/playwright.yml`
+  - E2E smoke em push/PR para `develop`
+  - suite full manual com `workflow_dispatch`
+- `.github/workflows/azure-static-web-apps-test.yml`
+  - deploy de homologacao (`develop`) + preview por PR para `develop`
+- `.github/workflows/azure-static-web-apps-prod.yml`
+  - deploy de producao (`main`)
 
 ## Recursos Azure necessarios
 
-1. Criar um recurso **Azure Static Web Apps** no plano **Free**.
-2. Associar o repositório GitHub ou usar apenas o deployment token.
-3. Em `Manage deployment token`, copiar o token do ambiente de teste.
+1. Criar recursos **Azure Static Web Apps** no plano **Free** para:
+   - homologacao (`develop`)
+   - producao (`main`)
+2. Associar o repositório GitHub ou usar apenas deployment tokens.
+3. Em `Manage deployment token`, copiar:
+   - token de homologacao
+   - token de producao
 
 ## Configuracao no GitHub
 
@@ -35,6 +61,7 @@ Adicionar os seguintes itens no repositorio:
 
 ```bash
 AZURE_STATIC_WEB_APPS_API_TOKEN_TEST
+AZURE_STATIC_WEB_APPS_API_TOKEN_PROD
 SENTRY_AUTH_TOKEN            # opcional, para upload de sourcemaps
 ```
 
@@ -44,6 +71,9 @@ SENTRY_AUTH_TOKEN            # opcional, para upload de sourcemaps
 AZURE_TEST_SITE_URL
 AZURE_TEST_GA_ID   # opcional
 AZURE_TEST_SENTRY_DSN  # opcional
+AZURE_PROD_SITE_URL
+AZURE_PROD_GA_ID   # opcional
+AZURE_PROD_SENTRY_DSN  # opcional
 SENTRY_ORG             # opcional (default: gabriel-db)
 SENTRY_PROJECT         # opcional (default: mandure-servicos)
 ```
@@ -100,6 +130,9 @@ $DefaultHostname
 $DeploymentToken
 ```
 
+Repita o mesmo processo para a Static Web App de producao e salve os valores
+equivalentes.
+
 ### 3. Cadastrar segredo e variavel no GitHub
 
 No repositorio do GitHub:
@@ -107,9 +140,12 @@ No repositorio do GitHub:
 1. `Settings` -> `Secrets and variables` -> `Actions`
 2. Em `Secrets`, criar:
    - `AZURE_STATIC_WEB_APPS_API_TOKEN_TEST`
+   - `AZURE_STATIC_WEB_APPS_API_TOKEN_PROD`
 3. Em `Variables`, criar:
    - `AZURE_TEST_SITE_URL`
+   - `AZURE_PROD_SITE_URL`
    - `AZURE_TEST_SENTRY_DSN` (opcional)
+   - `AZURE_PROD_SENTRY_DSN` (opcional)
    - `SENTRY_ORG` (opcional)
    - `SENTRY_PROJECT` (opcional)
 
@@ -117,6 +153,12 @@ Valor sugerido para `AZURE_TEST_SITE_URL`:
 
 ```text
 https://<default-hostname-da-static-web-app>
+```
+
+Valor sugerido para `AZURE_PROD_SITE_URL`:
+
+```text
+https://www.mandureservicos.com.br
 ```
 
 ### 4. Subir o fluxo GitFlow
@@ -132,8 +174,18 @@ Com isso:
 
 - `develop` publica a homologacao
 - PRs para `develop` geram preview environments temporarios
+- `main` publica a producao
 - Se `SENTRY_AUTH_TOKEN` estiver configurado, sourcemaps tambem sao enviados
   para o Sentry durante o build
+
+Promocao para producao (quando `develop` estiver aprovado):
+
+```bash
+git checkout main
+git pull origin main
+git merge --no-ff develop
+git push origin main
+```
 
 ### 5. Confirmar o deploy
 
@@ -163,9 +215,8 @@ No portal da Azure:
 
 ### Push em `develop`
 
-- executa lint
-- executa type-check
-- gera export estatico
+- instala dependencias
+- gera export estatico com `npm run build:azure`
 - publica a versao de teste na Azure
 
 ### Pull request para `develop`
@@ -174,15 +225,21 @@ No portal da Azure:
 - publica um preview environment temporario vinculado ao PR
 - fecha o preview quando o PR for encerrado
 
+### Push em `main`
+
+- instala dependencias
+- gera export estatico com `npm run build:azure`
+- publica a versao de producao na Azure
+
 ## Observacoes de SEO e ambiente
 
 - `NEXT_PUBLIC_SITE_URL` e injetada no workflow com base em
-  `AZURE_TEST_SITE_URL`.
+  `AZURE_TEST_SITE_URL` (homolog) ou `AZURE_PROD_SITE_URL` (producao).
 - `metadata`, `robots.txt` e `sitemap.xml` passam a usar a URL do ambiente
   atual.
-- Se no futuro houver ambiente de producao separado, criar um segundo workflow
-  para a branch de producao escolhida (por exemplo `main`) e outra Static Web
-  App/ambiente dedicado.
+- O arquivo `.github/workflows/azure-static-web-apps-witty-beach-0e91aae1e.yml`
+  e um workflow legado (gerado automaticamente pela Azure) e pode causar deploy
+  duplicado em `main` se permanecer habilitado.
 
 ## Comandos uteis
 

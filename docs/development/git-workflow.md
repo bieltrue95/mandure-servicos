@@ -3,7 +3,8 @@
 ## Branch Strategy
 
 ```
-develop       → active/default integration branch
+main          → production branch (Azure SWA production deploy)
+develop       → active/default integration branch (test/homolog)
 feature/*     → new features
 fix/*         → bug fixes
 chore/*       → maintenance tasks
@@ -15,7 +16,30 @@ hotfix/*      → urgent fixes
 ```
 feature/* PR → preview environment on Azure Static Web Apps
 develop      → test / homolog environment on Azure Static Web Apps
+main         → production environment on Azure Static Web Apps
 ```
+
+Both production and test environments are hosted on Azure Static Web Apps
+(Free plan):
+
+- Production URL: `https://www.mandureservicos.com.br`
+- Test/Homolog URL: `https://gray-grass-0c073cb1e.2.azurestaticapps.net/`
+
+## Workflow Mapping (GitHub Actions)
+
+- `.github/workflows/ci.yml`
+  - `push`/`pull_request` em `develop`
+  - jobs obrigatorios: `quality` e `build`
+- `.github/workflows/playwright.yml`
+  - `push`/`pull_request` em `develop` + `workflow_dispatch`
+  - check obrigatorio: `e2e`
+- `.github/workflows/azure-static-web-apps-test.yml`
+  - `push` em `develop`
+  - `pull_request` para `develop` (inclui fechamento de preview quando PR fecha)
+  - `workflow_dispatch`
+- `.github/workflows/azure-static-web-apps-prod.yml`
+  - `push` em `main`
+  - `workflow_dispatch`
 
 ## Commit Convention
 
@@ -89,12 +113,13 @@ Current protection rules in GitHub:
 ## Release
 
 ```bash
-git checkout develop
-git pull origin develop
+git checkout main
+git pull origin main
+git merge --no-ff develop
+git push origin main
 git tag -a v1.0.0 -m "Release v1.0.0"
-git push origin develop --tags
+git push origin main --tags
 ```
 
-`develop` is currently the only long-lived active branch. If a dedicated
-production branch is introduced in the future (for example `main`), this
-document must be updated with the release flow and CI/CD mapping.
+Current long-lived branches are `develop` (integration/test) and `main`
+(production).
