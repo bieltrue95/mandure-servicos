@@ -69,6 +69,17 @@ reformas, manutenção predial e obras especiais no estado de São Paulo. Esta
 landing page foi concebida como uma **ferramenta de negócio** — não apenas uma
 vitrine — com conversão para WhatsApp como objetivo central.
 
+### Resumo Executivo
+
+- **Contexto**: Necessidade de presença digital premium para transmitir
+  credibilidade e gerar contatos qualificados.
+- **Objetivo**: Construir uma landing page com foco em conversão, performance,
+  SEO técnico e manutenção simples.
+- **Execução**: Arquitetura modular em Next.js, componentes reutilizáveis,
+  dados tipados, monitoramento e testes E2E com Playwright.
+- **Resultado**: Plataforma moderna e escalável, preparada para evolução
+  contínua e geração de leads.
+
 ### Objetivos de Negócio
 
 | Objetivo                         | Implementação                                                   |
@@ -1307,46 +1318,52 @@ FROM node:18-alpine AS runner
 
 ## 🔄 CI/CD
 
-### `ci.yml` — Quality Gate (obrigatório)
+Hospedagem atual dos ambientes:
 
-Executado em push/PR para `develop`:
+- Produção: Azure Static Web Apps (plano gratuito)
+- URL de produção: `https://www.mandureservicos.com.br`
+- Testes/Homologação: Azure Static Web Apps (plano gratuito)
+- URL de homologação: `https://gray-grass-0c073cb1e.2.azurestaticapps.net/`
 
-```yaml
-jobs:
-  quality:
-    steps:
-      - npm ci
-      - npm run lint
-      - npm run type-check
-      - npm run format:check
-  build:
-    needs: quality
-    steps:
-      - npm ci
-      - npm run build
-```
+### Workflows Ativos
 
-### `playwright.yml` — E2E Tests
+#### `ci.yml` — Quality Gate (obrigatório)
 
-Executado em todo push/PR para `develop`. No próprio job, os testes Playwright
-só rodam quando arquivos relevantes mudam (`app`, `components`, `lib`, `tests`,
-`playwright.config.ts`, etc.). Em PRs apenas de documentação, o check `e2e` é
-reportado como sucesso sem rodar a suíte.
+- Gatilhos: `push` e `pull_request` para `develop` (+ `workflow_dispatch`)
+- Job `quality`: `lint`, `type-check`, `format:check`
+- Job `build`: `npm run build` (depende de `quality`)
+- Artifact de build: `.next/` com retenção de 1 dia
 
-```yaml
-jobs:
-  e2e:
-    steps:
-      - npm ci
-      - npx playwright install --with-deps
-      - npm run test:e2e:smoke # padrão em push/PR
-      - Upload artifacts (playwright-report, test-results)
-```
+#### `playwright.yml` — E2E
 
-Execução manual (`workflow_dispatch`):
+- Gatilhos: `push` e `pull_request` para `develop` (+ `workflow_dispatch`)
+- Timeout do job no CI: 45 minutos
+- Detecta paths relevantes com `dorny/paths-filter@v3`
+- Em alteração docs-only, conclui `e2e` como sucesso sem rodar Playwright
+- Em push/PR com mudança relevante, roda `npm run test:e2e:smoke`
+- Em execução manual:
+  - `suite=smoke`
+  - `suite=full`
+- Artefatos publicados: `playwright-report/` e `test-results/` (retenção 7 dias)
 
-- `suite=smoke` para validação rápida
-- `suite=full` para suíte completa em todos os projetos
+#### `azure-static-web-apps-test.yml` — Homologação
+
+- Gatilhos: `push` em `develop`, `pull_request` para `develop` (inclui evento
+  `closed`) e `workflow_dispatch`
+- Build com `npm run build:azure`
+- Deploy de homologação no Azure Static Web Apps (plano gratuito)
+- Fecha automaticamente preview environment quando o PR é encerrado
+
+#### `azure-static-web-apps-prod.yml` — Produção
+
+- Gatilhos: `push` em `main` e `workflow_dispatch`
+- Build com `npm run build:azure`
+- Deploy de produção no Azure Static Web Apps (plano gratuito)
+
+#### Observação
+
+- Apenas os workflows `azure-static-web-apps-test.yml` e
+  `azure-static-web-apps-prod.yml` devem ficar ativos para deploy Azure SWA.
 
 #### `azure-static-web-apps-test.yml` — Homologação
 
@@ -1372,9 +1389,11 @@ Execução manual (`workflow_dispatch`):
 ## 🌿 Git Flow
 
 ```
-develop                 ← branch ativa e padrão
+main                    ← produção (deploy Azure SWA)
+develop                 ← integração/homologação
   ├── feature/*         ← novas funcionalidades
   ├── fix/*             ← correções de bugs
+  ├── chore/*           ← manutenção técnica
   └── hotfix/*          ← correções urgentes
 ```
 
@@ -1407,11 +1426,13 @@ git commit -m "feat: adiciona seção de FAQ com animações"
 git push origin feature/nova-secao
 # Criar PR no GitHub → aguardar CI passar → merge
 
-# Versionamento em develop (quando estiver estável)
-git checkout develop
-git pull origin develop
+# Promoção para produção e versionamento
+git checkout main
+git pull origin main
+git merge --no-ff develop
+git push origin main
 git tag v1.1.0
-git push origin develop --tags
+git push origin main --tags
 ```
 
 ---
@@ -1429,12 +1450,12 @@ git push origin develop --tags
 | [Padrões de Código](docs/development/coding-standards.md)                | Convenções e boas práticas                        |
 | [Git Workflow](docs/development/git-workflow.md)                         | Branching, commits e releases                     |
 | [Guia de Testes](docs/development/testing.md)                            | Playwright, suites e melhores práticas            |
-| [Deploy Azure Static Web Apps](docs/deployment/azure-static-web-apps.md) | Homologação na Azure com GitFlow e preview de PRs |
+| [Deploy Azure Static Web Apps](docs/deployment/azure-static-web-apps.md) | Homologação e produção na Azure com GitFlow e preview de PRs |
 | [Deploy Docker](docs/deployment/docker.md)                               | Configuração e deployment com Docker              |
 | [Deploy Vercel](docs/deployment/vercel.md)                               | Configuração e deployment na Vercel               |
 | [Performance](docs/maintenance/performance-optimization.md)              | Tuning e monitoramento                            |
 | [Troubleshooting](docs/maintenance/common-issues.md)                     | Problemas comuns e soluções                       |
-| [Diagrama de Fluxo](docs/architecture/fluxo-completo.excalidraw)         | Diagrama visual completo do projeto               |
+| [Diagrama de Fluxo](docs/architecture/mandure-servicos-complete-diagram.excalidraw) | Diagrama visual completo do projeto |
 
 ---
 
