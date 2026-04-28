@@ -63,4 +63,3 @@
 - Padroes de codigo: `.codex/docs/coding-standards.md`
 - Deploy: `.codex/docs/deployment-guide.md`
 - Troubleshooting: `.codex/docs/troubleshooting.md`
-- Desativacao Claude legado: `.codex/docs/claude-deactivation-checklist.md`
