@@ -1,0 +1,609 @@
+"Work Item Type","Title 1","Title 2","Description","Acceptance Criteria","State","Area Path","Iteration Path","Priority","Tags"
+"User Story","chore/ab-id-adicionar-lighthouse-ci-no-pipeline","","Objetivo: criar verificacao automatica de performance no CI para evitar regressao
+Escopo: workflow, thresholds e artefatos de relatorio
+Branch padrao: chore/ab-id-adicionar-lighthouse-ci-no-pipeline
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Workflow executa Lighthouse em PR/push configurado.
+2) Thresholds minimos definidos para Performance, A11y e SEO.
+3) Pipeline falha quando metricas ficam abaixo do limite.
+4) Relatorio fica salvo como artefato.
+5) Branch criada a partir de `develop` no padrao `chore/ab-id-adicionar-lighthouse-ci-no-pipeline` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:excalidraw;phase:0-30d;area:ci;priority:alta;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-adicionar-lighthouse-ci-no-pipeline","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Adicionar Lighthouse CI no pipeline
+Branch padrao: chore/ab-id-planejar-adicionar-lighthouse-ci-no-pipeline
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-implementar-adicionar-lighthouse-ci-no-pipeline","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Adicionar Lighthouse CI no pipeline
+Branch padrao: chore/ab-id-implementar-adicionar-lighthouse-ci-no-pipeline
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-adicionar-lighthouse-ci-no-pipeline","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Adicionar Lighthouse CI no pipeline
+Branch padrao: test/ab-id-validar-e-documentar-adicionar-lighthouse-ci-no-pipeline
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"User Story","chore/ab-id-ativar-branch-protection-no-github","","Objetivo: impedir merge direto sem validacoes
+Escopo: regras de protecao para main/develop
+Branch padrao: chore/ab-id-ativar-branch-protection-no-github
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Branches principais protegidas contra push direto.
+2) Review obrigatorio configurado.
+3) Checks obrigatorios de CI habilitados.
+4) Restricoes validadas com teste de permissao.
+5) Branch criada a partir de `develop` no padrao `chore/ab-id-ativar-branch-protection-no-github` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:excalidraw;phase:0-30d;area:governance;priority:alta;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-ativar-branch-protection-no-github","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Ativar branch protection no GitHub
+Branch padrao: chore/ab-id-planejar-ativar-branch-protection-no-github
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-implementar-ativar-branch-protection-no-github","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Ativar branch protection no GitHub
+Branch padrao: chore/ab-id-implementar-ativar-branch-protection-no-github
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-ativar-branch-protection-no-github","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Ativar branch protection no GitHub
+Branch padrao: test/ab-id-validar-e-documentar-ativar-branch-protection-no-github
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"User Story","chore/ab-id-configurar-custom-domain-para-ambiente-azure","","Objetivo: habilitar dominio proprio para acesso publico com branding
+Escopo: DNS, validacao e HTTPS
+Branch padrao: chore/ab-id-configurar-custom-domain-para-ambiente-azure
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Dominio custom associado ao recurso Azure correto.
+2) Certificado HTTPS ativo sem alerta no navegador.
+3) Redirecionamento de dominio antigo definido (se aplicavel).
+4) URL final documentada no projeto.
+5) Branch criada a partir de `develop` no padrao `chore/ab-id-configurar-custom-domain-para-ambiente-azure` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:excalidraw;phase:0-30d;area:infra;priority:alta;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-configurar-custom-domain-para-ambiente-azure","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Configurar custom domain para ambiente Azure
+Branch padrao: chore/ab-id-planejar-configurar-custom-domain-para-ambiente-azure
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-implementar-configurar-custom-domain-para-ambiente-azure","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Configurar custom domain para ambiente Azure
+Branch padrao: chore/ab-id-implementar-configurar-custom-domain-para-ambiente-azure
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-configurar-custom-domain-para-ambiente-azure","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Configurar custom domain para ambiente Azure
+Branch padrao: test/ab-id-validar-e-documentar-configurar-custom-domain-para-ambiente-azure
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"User Story","chore/ab-id-configurar-variaveis-separadas-de-prod-e-test-no-azure-swa","","Objetivo: separar configuracoes por ambiente na plataforma Azure SWA
+Escopo: mapear variaveis, atualizar segredos e validar runtime
+Branch padrao: chore/ab-id-configurar-variaveis-separadas-de-prod-e-test-no-azure-swa
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Variaveis de producao e teste separadas no Azure SWA.
+2) Segredos nao sao compartilhados entre ambientes.
+3) Build/deploy usa variaveis corretas por branch ambiente.
+4) Tabela de variaveis por ambiente documentada.
+5) Branch criada a partir de `develop` no padrao `chore/ab-id-configurar-variaveis-separadas-de-prod-e-test-no-azure-swa` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:excalidraw;phase:0-30d;area:infra;priority:alta;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-configurar-variaveis-separadas-de-prod-e-test-no-azure-swa","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Configurar variaveis separadas de prod e test no Azure SWA
+Branch padrao: chore/ab-id-planejar-configurar-variaveis-separadas-de-prod-e-test-no-azure-swa
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-implementar-configurar-variaveis-separadas-de-prod-e-test-no-azure-swa","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Configurar variaveis separadas de prod e test no Azure SWA
+Branch padrao: chore/ab-id-implementar-configurar-variaveis-separadas-de-prod-e-test-no-azure-swa
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-configurar-variaveis-separadas-de-prod-e-test-no-azure-swa","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Configurar variaveis separadas de prod e test no Azure SWA
+Branch padrao: test/ab-id-validar-e-documentar-configurar-variaveis-separadas-de-prod-e-test-no-azure-swa
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"User Story","chore/ab-id-configurar-waf-e-routing-rules-staticwebapp-config-json","","Objetivo: configurar regras de roteamento e seguranca de borda para reduzir risco de exposicao e melhorar governanca de acesso
+Escopo: Implementacao, validacao e documentacao da entrega.
+Branch padrao: chore/ab-id-configurar-waf-e-routing-rules-staticwebapp-config-json
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Arquivo staticwebapp.config.json criado/atualizado com regras necessarias.
+2) Rotas e rewrites validos para app e erros.
+3) Regras de seguranca (headers/allow-deny) aplicadas conforme necessidade.
+4) Validacao em ambiente de teste com evidencias.
+5) Branch criada a partir de `develop` no padrao `chore/ab-id-configurar-waf-e-routing-rules-staticwebapp-config-json` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:excalidraw;phase:0-30d;area:infra;priority:alta;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-configurar-waf-e-routing-rules-staticwebapp-config-json","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Configurar WAF e routing rules (staticwebapp
+Branch padrao: chore/ab-id-planejar-configurar-waf-e-routing-rules-staticwebapp-config-json
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-implementar-configurar-waf-e-routing-rules-staticwebapp-config-json","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Configurar WAF e routing rules (staticwebapp
+Branch padrao: chore/ab-id-implementar-configurar-waf-e-routing-rules-staticwebapp-config-json
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-configurar-waf-e-routing-rules-staticwebapp-config-json","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Configurar WAF e routing rules (staticwebapp
+Branch padrao: test/ab-id-validar-e-documentar-configurar-waf-e-routing-rules-staticwebapp-config-json
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"User Story","docs/ab-id-criar-template-de-pull-request-em-github-pull-request-template-md","","Objetivo: padronizar informacoes minimas em PR para melhorar revisao
+Escopo: template com contexto, checklist e testes
+Branch padrao: docs/ab-id-criar-template-de-pull-request-em-github-pull-request-template-md
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Arquivo .github/pull_request_template.md criado.
+2) Template inclui contexto, mudancas, riscos e checklist de testes.
+3) Novo PR ja aparece com template automaticamente.
+4) Time validou o formato.
+5) Branch criada a partir de `develop` no padrao `docs/ab-id-criar-template-de-pull-request-em-github-pull-request-template-md` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:excalidraw;phase:0-30d;area:governance;priority:alta;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-criar-template-de-pull-request-em-github-pull-request-template-md","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Criar template de Pull Request em
+Branch padrao: chore/ab-id-planejar-criar-template-de-pull-request-em-github-pull-request-template-md
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","docs/ab-id-implementar-criar-template-de-pull-request-em-github-pull-request-template-md","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Criar template de Pull Request em
+Branch padrao: docs/ab-id-implementar-criar-template-de-pull-request-em-github-pull-request-template-md
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-criar-template-de-pull-request-em-github-pull-request-template-md","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Criar template de Pull Request em
+Branch padrao: test/ab-id-validar-e-documentar-criar-template-de-pull-request-em-github-pull-request-template-md
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"User Story","feature/ab-id-integrar-monitoramento-de-erros-com-sentry","","Objetivo: implantar monitoramento de erros no app para frontend e backend
+Escopo: configurar SDK, variaveis e validacao de eventos em ambiente de teste
+Branch padrao: feature/ab-id-integrar-monitoramento-de-erros-com-sentry
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Sentry configurado no projeto com DSN por ambiente.
+2) Erros de cliente e servidor chegam no Sentry.
+3) Variaveis documentadas em docs/deployment/environment-variables.md.
+4) Evidencia de teste anexada no work item.
+5) Branch criada a partir de `develop` no padrao `feature/ab-id-integrar-monitoramento-de-erros-com-sentry` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:excalidraw;phase:0-30d;area:observability;priority:alta;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-integrar-monitoramento-de-erros-com-sentry","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Integrar monitoramento de erros com Sentry
+Branch padrao: chore/ab-id-planejar-integrar-monitoramento-de-erros-com-sentry
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","feature/ab-id-implementar-integrar-monitoramento-de-erros-com-sentry","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Integrar monitoramento de erros com Sentry
+Branch padrao: feature/ab-id-implementar-integrar-monitoramento-de-erros-com-sentry
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-integrar-monitoramento-de-erros-com-sentry","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Integrar monitoramento de erros com Sentry
+Branch padrao: test/ab-id-validar-e-documentar-integrar-monitoramento-de-erros-com-sentry
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"User Story","test/ab-id-separar-ambiente-de-producao-do-ambiente-de-teste","","Objetivo: garantir isolamento completo entre configuracoes de test e prod
+Escopo: variaveis, segredos e validacao de deploy
+Branch padrao: test/ab-id-separar-ambiente-de-producao-do-ambiente-de-teste
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Variaveis de test e prod separadas em cada ambiente.
+2) Segredos diferentes por ambiente.
+3) Build de test nao usa valores de producao.
+4) Checklist de validacao de ambiente documentado.
+5) Branch criada a partir de `develop` no padrao `test/ab-id-separar-ambiente-de-producao-do-ambiente-de-teste` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:excalidraw;phase:0-30d;area:infra;priority:alta;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-separar-ambiente-de-producao-do-ambiente-de-teste","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Separar ambiente de producao do ambiente de teste
+Branch padrao: chore/ab-id-planejar-separar-ambiente-de-producao-do-ambiente-de-teste
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-implementar-separar-ambiente-de-producao-do-ambiente-de-teste","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Separar ambiente de producao do ambiente de teste
+Branch padrao: test/ab-id-implementar-separar-ambiente-de-producao-do-ambiente-de-teste
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-separar-ambiente-de-producao-do-ambiente-de-teste","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Separar ambiente de producao do ambiente de teste
+Branch padrao: test/ab-id-validar-e-documentar-separar-ambiente-de-producao-do-ambiente-de-teste
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","1","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"User Story","feature/ab-id-criar-ou-validar-arquivo-public-og-image-jpg","","Objetivo: garantir imagem Open Graph padrao para compartilhamento social
+Escopo: gerar asset e referenciar no metadata
+Branch padrao: feature/ab-id-criar-ou-validar-arquivo-public-og-image-jpg
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Arquivo /public/og-image.jpg existe no tamanho recomendado.
+2) Metadata aponta para a imagem correta em todos os ambientes.
+3) Compartilhamento em rede social exibe preview valido.
+4) Asset otimizado e versionado.
+5) Branch criada a partir de `develop` no padrao `feature/ab-id-criar-ou-validar-arquivo-public-og-image-jpg` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 1","2","source:excalidraw;phase:0-30d;area:seo;priority:media;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-criar-ou-validar-arquivo-public-og-image-jpg","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Criar ou validar arquivo /public/og-image
+Branch padrao: chore/ab-id-planejar-criar-ou-validar-arquivo-public-og-image-jpg
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","2","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","feature/ab-id-implementar-criar-ou-validar-arquivo-public-og-image-jpg","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Criar ou validar arquivo /public/og-image
+Branch padrao: feature/ab-id-implementar-criar-ou-validar-arquivo-public-og-image-jpg
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","2","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-criar-ou-validar-arquivo-public-og-image-jpg","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Criar ou validar arquivo /public/og-image
+Branch padrao: test/ab-id-validar-e-documentar-criar-ou-validar-arquivo-public-og-image-jpg
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 1","2","source:generated;kind:subtask;phase:0-30d;workflow:gitflow;workflow:conventional-commits"
+"User Story","test/ab-id-adicionar-testes-de-acessibilidade-com-axe","","Objetivo: detectar problemas basicos de acessibilidade automaticamente
+Escopo: integrar axe nos testes e2e ou componente
+Branch padrao: test/ab-id-adicionar-testes-de-acessibilidade-com-axe
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Testes com axe executam no CI.
+2) Pags principais validadas sem violacoes criticas.
+3) Falhas de acessibilidade quebram pipeline.
+4) Guia rapido de execucao documentado.
+5) Branch criada a partir de `develop` no padrao `test/ab-id-adicionar-testes-de-acessibilidade-com-axe` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 2","1","source:excalidraw;phase:30-60d;area:a11y;priority:alta;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-adicionar-testes-de-acessibilidade-com-axe","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Adicionar testes de acessibilidade com axe
+Branch padrao: chore/ab-id-planejar-adicionar-testes-de-acessibilidade-com-axe
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","1","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-implementar-adicionar-testes-de-acessibilidade-com-axe","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Adicionar testes de acessibilidade com axe
+Branch padrao: test/ab-id-implementar-adicionar-testes-de-acessibilidade-com-axe
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","1","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-adicionar-testes-de-acessibilidade-com-axe","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Adicionar testes de acessibilidade com axe
+Branch padrao: test/ab-id-validar-e-documentar-adicionar-testes-de-acessibilidade-com-axe
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","1","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"User Story","test/ab-id-criar-testes-unitarios-para-logica-critica-jest-ou-vitest","","Objetivo: cobrir utilitarios e regras de negocio criticas com testes unitarios
+Escopo: setup de framework e suite inicial
+Branch padrao: test/ab-id-criar-testes-unitarios-para-logica-critica-jest-ou-vitest
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Framework de teste configurado e rodando no CI.
+2) Suite cobre modulos criticos de formatacao/validacao.
+3) Casos de erro e casos de sucesso incluidos.
+4) Comando de teste documentado no README.
+5) Branch criada a partir de `develop` no padrao `test/ab-id-criar-testes-unitarios-para-logica-critica-jest-ou-vitest` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 2","1","source:excalidraw;phase:30-60d;area:tests;priority:alta;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-criar-testes-unitarios-para-logica-critica-jest-ou-vitest","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Criar testes unitarios para logica critica (Jest ou Vitest)
+Branch padrao: chore/ab-id-planejar-criar-testes-unitarios-para-logica-critica-jest-ou-vitest
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","1","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-implementar-criar-testes-unitarios-para-logica-critica-jest-ou-vitest","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Criar testes unitarios para logica critica (Jest ou Vitest)
+Branch padrao: test/ab-id-implementar-criar-testes-unitarios-para-logica-critica-jest-ou-vitest
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","1","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-criar-testes-unitarios-para-logica-critica-jest-ou-vitest","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Criar testes unitarios para logica critica (Jest ou Vitest)
+Branch padrao: test/ab-id-validar-e-documentar-criar-testes-unitarios-para-logica-critica-jest-ou-vitest
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","1","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"User Story","perf/ab-id-conectar-usewebvitals-a-endpoint-de-coleta","","Objetivo: coletar metricas Web Vitals em backend para monitoramento continuo
+Escopo: endpoint e envio dos dados
+Branch padrao: perf/ab-id-conectar-usewebvitals-a-endpoint-de-coleta
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Hook useWebVitals envia metricas para endpoint configurado.
+2) Endpoint recebe e persiste/loga dados.
+3) Falhas de envio nao quebram UX.
+4) Documentacao de consulta das metricas criada.
+5) Branch criada a partir de `develop` no padrao `perf/ab-id-conectar-usewebvitals-a-endpoint-de-coleta` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:roadmap;phase:30-60d;area:observability;priority:media;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-conectar-usewebvitals-a-endpoint-de-coleta","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Conectar useWebVitals a endpoint de coleta
+Branch padrao: chore/ab-id-planejar-conectar-usewebvitals-a-endpoint-de-coleta
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","perf/ab-id-implementar-conectar-usewebvitals-a-endpoint-de-coleta","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Conectar useWebVitals a endpoint de coleta
+Branch padrao: perf/ab-id-implementar-conectar-usewebvitals-a-endpoint-de-coleta
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-conectar-usewebvitals-a-endpoint-de-coleta","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Conectar useWebVitals a endpoint de coleta
+Branch padrao: test/ab-id-validar-e-documentar-conectar-usewebvitals-a-endpoint-de-coleta
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"User Story","perf/ab-id-definir-bundle-size-budget-no-ci","","Objetivo: controlar crescimento de bundle e evitar perda de performance
+Escopo: ferramenta de budget e limite por bundle principal
+Branch padrao: perf/ab-id-definir-bundle-size-budget-no-ci
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Ferramenta de budget configurada no CI.
+2) Limites por bundle definidos com baseline atual.
+3) Pipeline alerta/falha ao ultrapassar limite.
+4) Processo de atualizacao de baseline documentado.
+5) Branch criada a partir de `develop` no padrao `perf/ab-id-definir-bundle-size-budget-no-ci` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:excalidraw;phase:30-60d;area:performance;priority:media;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-definir-bundle-size-budget-no-ci","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Definir bundle size budget no CI
+Branch padrao: chore/ab-id-planejar-definir-bundle-size-budget-no-ci
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","perf/ab-id-implementar-definir-bundle-size-budget-no-ci","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Definir bundle size budget no CI
+Branch padrao: perf/ab-id-implementar-definir-bundle-size-budget-no-ci
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-definir-bundle-size-budget-no-ci","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Definir bundle size budget no CI
+Branch padrao: test/ab-id-validar-e-documentar-definir-bundle-size-budget-no-ci
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"User Story","feature/ab-id-implementar-formulario-de-contato-com-validacao","","Objetivo: oferecer alternativa ao contato exclusivo por WhatsApp
+Escopo: formulario, validacao e envio
+Branch padrao: feature/ab-id-implementar-formulario-de-contato-com-validacao
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Formulario funcional com campos obrigatorios.
+2) Validacao client-side e mensagens de erro claras.
+3) Envio concluido com feedback de sucesso/erro.
+4) Evento de conversao registrado.
+5) Branch criada a partir de `develop` no padrao `feature/ab-id-implementar-formulario-de-contato-com-validacao` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:roadmap;phase:30-60d;area:product;priority:media;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-implementar-formulario-de-contato-com-validacao","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Implementar formulario de contato com validacao
+Branch padrao: chore/ab-id-planejar-implementar-formulario-de-contato-com-validacao
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","feature/ab-id-implementar-implementar-formulario-de-contato-com-validacao","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Implementar formulario de contato com validacao
+Branch padrao: feature/ab-id-implementar-implementar-formulario-de-contato-com-validacao
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-implementar-formulario-de-contato-com-validacao","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Implementar formulario de contato com validacao
+Branch padrao: test/ab-id-validar-e-documentar-implementar-formulario-de-contato-com-validacao
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","2","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"User Story","feature/ab-id-configurar-pwa-manifest-e-install-prompt","","Objetivo: habilitar experiencia PWA basica para instalacao do site
+Escopo: Implementacao, validacao e documentacao da entrega.
+Branch padrao: feature/ab-id-configurar-pwa-manifest-e-install-prompt
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Manifest completo e valido publicado.
+2) Service worker configurado conforme estrategia definida.
+3) Install prompt disponivel em navegadores suportados.
+4) Auditoria Lighthouse PWA sem erros criticos.
+5) Branch criada a partir de `develop` no padrao `feature/ab-id-configurar-pwa-manifest-e-install-prompt` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 2","3","source:roadmap;phase:30-60d;area:product;priority:baixa;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-configurar-pwa-manifest-e-install-prompt","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Configurar PWA (manifest e install prompt)
+Branch padrao: chore/ab-id-planejar-configurar-pwa-manifest-e-install-prompt
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","3","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","feature/ab-id-implementar-configurar-pwa-manifest-e-install-prompt","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Configurar PWA (manifest e install prompt)
+Branch padrao: feature/ab-id-implementar-configurar-pwa-manifest-e-install-prompt
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","3","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-configurar-pwa-manifest-e-install-prompt","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Configurar PWA (manifest e install prompt)
+Branch padrao: test/ab-id-validar-e-documentar-configurar-pwa-manifest-e-install-prompt
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 2","3","source:generated;kind:subtask;phase:30-60d;workflow:gitflow;workflow:conventional-commits"
+"User Story","chore/ab-id-adicionar-arquivo-github-codeowners","","Objetivo: definir revisores automaticos por pasta/area
+Escopo: mapear ownership tecnico e aplicar regras iniciais
+Branch padrao: chore/ab-id-adicionar-arquivo-github-codeowners
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Arquivo .github/CODEOWNERS criado com donos por diretorio.
+2) PR em pasta mapeada solicita review automaticamente.
+3) Donos definidos e confirmados com o time.
+4) Regras documentadas em CONTRIBUTING.
+5) Branch criada a partir de `develop` no padrao `chore/ab-id-adicionar-arquivo-github-codeowners` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:excalidraw;phase:60-90d;area:governance;priority:media;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-adicionar-arquivo-github-codeowners","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Adicionar arquivo
+Branch padrao: chore/ab-id-planejar-adicionar-arquivo-github-codeowners
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-implementar-adicionar-arquivo-github-codeowners","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Adicionar arquivo
+Branch padrao: chore/ab-id-implementar-adicionar-arquivo-github-codeowners
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-adicionar-arquivo-github-codeowners","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Adicionar arquivo
+Branch padrao: test/ab-id-validar-e-documentar-adicionar-arquivo-github-codeowners
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
+"User Story","feature/ab-id-adicionar-json-ld-por-projeto-para-rich-results","","Objetivo: melhorar SEO com dados estruturados por projeto do portfolio
+Escopo: schema por item e validacao
+Branch padrao: feature/ab-id-adicionar-json-ld-por-projeto-para-rich-results
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Cada pagina/projeto relevante expoe JSON-LD valido.
+2) Marcacao segue schema.org apropriado.
+3) Validacao em ferramenta de rich results sem erros criticos.
+4) Estrutura reutilizavel centralizada em utilitario.
+5) Branch criada a partir de `develop` no padrao `feature/ab-id-adicionar-json-ld-por-projeto-para-rich-results` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:excalidraw;phase:60-90d;area:seo;priority:media;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-adicionar-json-ld-por-projeto-para-rich-results","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Adicionar JSON-LD por projeto para rich results
+Branch padrao: chore/ab-id-planejar-adicionar-json-ld-por-projeto-para-rich-results
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
+"Task","","feature/ab-id-implementar-adicionar-json-ld-por-projeto-para-rich-results","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Adicionar JSON-LD por projeto para rich results
+Branch padrao: feature/ab-id-implementar-adicionar-json-ld-por-projeto-para-rich-results
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-adicionar-json-ld-por-projeto-para-rich-results","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Adicionar JSON-LD por projeto para rich results
+Branch padrao: test/ab-id-validar-e-documentar-adicionar-json-ld-por-projeto-para-rich-results
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
+"User Story","docs/ab-id-criar-contributing-md-para-onboarding","","Objetivo: reduzir atrito de entrada para contribuidores novos
+Escopo: setup, padroes de branch/commit e fluxo de PR
+Branch padrao: docs/ab-id-criar-contributing-md-para-onboarding
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) CONTRIBUTING.md criado na raiz.
+2) Documento cobre setup local, comandos e padrao de commit.
+3) Fluxo de branch e PR descrito de ponta a ponta.
+4) Link adicionado no README.
+5) Branch criada a partir de `develop` no padrao `docs/ab-id-criar-contributing-md-para-onboarding` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:excalidraw;phase:60-90d;area:docs;priority:media;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-criar-contributing-md-para-onboarding","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Criar CONTRIBUTING
+Branch padrao: chore/ab-id-planejar-criar-contributing-md-para-onboarding
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
+"Task","","docs/ab-id-implementar-criar-contributing-md-para-onboarding","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Criar CONTRIBUTING
+Branch padrao: docs/ab-id-implementar-criar-contributing-md-para-onboarding
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-criar-contributing-md-para-onboarding","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Criar CONTRIBUTING
+Branch padrao: test/ab-id-validar-e-documentar-criar-contributing-md-para-onboarding
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","2","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
+"User Story","chore/ab-id-automatizar-changelog-e-versionamento-semantico","","Objetivo: automatizar release notes e bump de versao
+Escopo: conventional commits + processo de release
+Branch padrao: chore/ab-id-automatizar-changelog-e-versionamento-semantico
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","1) Estrategia de conventional commits definida.
+2) Ferramenta de changelog/versionamento configurada.
+3) Processo de release gera changelog automaticamente.
+4) Passos de rollback e hotfix documentados.
+5) Branch criada a partir de `develop` no padrao `chore/ab-id-automatizar-changelog-e-versionamento-semantico` (substituir `ab-id` pelo numero real).
+6) Commits no padrao `tipo(escopo): descricao AB#<ID>`.
+7) PR para `develop` com secoes Markdown:
+- `Contexto`
+- `O que foi feito`
+- `Impacto`
+- `Testes realizados`
+- `Como validar`
+- `Checklist`","New","mandure-servicos","mandure-servicos\Iteration 3","3","source:excalidraw;phase:60-90d;area:release;priority:baixa;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-planejar-automatizar-changelog-e-versionamento-semantico","Objetivo: detalhar escopo tecnico, dependencias e criterio de pronto para implementacao
+Contexto: Automatizar changelog e versionamento semantico
+Branch padrao: chore/ab-id-planejar-automatizar-changelog-e-versionamento-semantico
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","3","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
+"Task","","chore/ab-id-implementar-automatizar-changelog-e-versionamento-semantico","Objetivo: implementar a solucao tecnica conforme escopo aprovado da story
+Contexto: Automatizar changelog e versionamento semantico
+Branch padrao: chore/ab-id-implementar-automatizar-changelog-e-versionamento-semantico
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","3","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
+"Task","","test/ab-id-validar-e-documentar-automatizar-changelog-e-versionamento-semantico","Objetivo: validar entrega (teste/manual/CI) e atualizar documentacao necessaria
+Contexto: Automatizar changelog e versionamento semantico
+Branch padrao: test/ab-id-validar-e-documentar-automatizar-changelog-e-versionamento-semantico
+PR alvo: develop (AB#<ID>)
+Commits: tipo(escopo): descricao AB#<ID>","","New","mandure-servicos","mandure-servicos\Iteration 3","3","source:generated;kind:subtask;phase:60-90d;workflow:gitflow;workflow:conventional-commits"
